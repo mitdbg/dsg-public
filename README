@@ -1,0 +1,6 @@
+dsg-public
+=========
+
+This contains the deploy-ready static files for dsg.csail.mit.edu.
+
+Do not manually edit these files, go to mitdbg/dsg-source to edit the website.
