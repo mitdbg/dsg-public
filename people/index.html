@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <style>
+body {
+  padding-top: 76px;
+}
+
+ 
+@font-face{font-family:'Josefin Sans';font-style:normal;font-weight:400;src:local('Josefin Sans'),local('JosefinSans'),url(/fonts/josefin-sans-v9-latin_latin-ext-regular.woff2) format('woff2')}.cool-style{font-family:"Josefin Sans","Open+Sans","Century Gothic","Apple Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:300}
+
+.cool-style {
+    font-family: "Josefin Sans","Open+Sans","Century Gothic","Apple Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+}
+
+.title-style {
+  font-weight: 300;
+}
+
+.sidebar-block{
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  background: #fafafa;
+}
+
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.container > .navbar-header {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#title {
+  border: none;
+  box-shadow:  none;
+  background: none;
+  outline: none;
+  color: #2dbe60;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Josefin Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  margin-top: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#app-navbar {
+  margin-bottom: 0px;
+}
+
+#app-navbar #brand-name {
+  margin: 0;
+  float: left;
+  font-size: 36px;
+  line-height: 55px;
+  margin-right: 10px;
+  color: white;
+  display: inline;
+}
+
+#app-navbar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+ 
+  background-color: #fff;
+}
+
+#app-navbar .navbar-nav>li>a {
+  margin: 10px;
+  padding: 3px 10px;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: #0d0d0d;
+   font-size: 15px;
+}
+
+#app-navbar .navbar-nav>li>a:hover,
+.multiline-footer .mainnavigation-row ul li a:hover
+{
+ 
+  border-color: #000;
+  color: #000;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-red:hover {
+  background-color: #FF1111;
+  border-color: #FF0000;
+  color: #fff;
+}
+
+#app-navbar .nav-item>a.nav-btn-green {
+  background-color: #2DBE60;
+  border-color: #2DBE60;
+  color: #fff;
+}
+
+#app-navbar .nav-item>a.nav-btn-green:hover {
+  background-color: #249540;
+  border-color: #249540;
+  color: #fff;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-blue {
+  color: #666;
+  border: 1px solid #666;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-blue:hover {
+  background-color: #59A7EB;
+  border-color: #59A7EB;
+  color: #fff;
+}
+
+footer {
+  background: #31303a;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+}
+
+footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+footer ul>li{
+  padding: 5px;
+}
+
+footer a, footer a:hover {
+  color: #fff!important;
+  text-decoration: none;
+}
+
+.bd-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.bd-lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.bd-content-title {
+    display: block;
+    pointer-events: auto;
+}
+
+.anchorjs-link {
+    font-weight: 400;
+    color: rgba(0,123,255,.5);
+    transition: color .15s ease-in-out,opacity .15s ease-in-out;
+}
+
+.anchorjs-link:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.anchorjs-link {
+    opacity: 0;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+}
+
+[data-anchorjs-icon]::after {
+    content: attr(data-anchorjs-icon);
+}
+
+.anchorjs-link:hover, .anchorjs-link:focus {
+    opacity: 1;
+}
+
+:hover > .anchorjs-link, .anchorjs-link:focus {
+    opacity: 1;
+}
+
+.bd-content>h2:not(:first-child) {
+    margin-top: 3rem;
+}
+
+.bd-content>h2[id]::before, .bd-content>h3[id]::before, .bd-content>h4[id]::before {
+    display: block;
+    height: 6rem;
+    margin-top: -6rem;
+    content: "";
+}
+main {
+  padding-bottom: 50px;
+}
+</style>
+    <title>Data Systems Group Folks</title>
+    <style>
+.association-img {
+  width: 100%;
+}
+
+.card, .cardHolder {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.cardHolder {
+  margin-right: 30px;
+}
+    </style>
+  </head>
+  <body>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="app-navbar">
+      <div class='container'>
+        <a class="navbar-brand" href="/">
+
+          <img src='/img/logo.jpg' style='height: 50px;' />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href='/'>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='/projects/'>Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='/people/'>People</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='#'>Internal</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class='container' id='people-container'>
+        <h1 class='bd-title' style='margin-bottom: 30px;'>People @ DSG</h1>
+      </div>
+    </main>
+
+        <footer style="margin-bottom: 0px;">
+      <div class='container'>
+        Any issues ? File a ticket on <a href='https://github.com/mitdbg/dsg.csail.mit.edu'>Github</a>
+      </div>
+    </footer>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+
+const groups = [
+  {name: "Faculty", members: [["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/tim_Kraska.jpg","Tim Kraska"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/madden.jpg","Sam Madden"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/stonebraker-71.png","Michael Stonebraker"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/04/michjc-1.jpg","Michael Cafarella"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/04/pic.jpg","Julian Shun"]]},
+  {name: "Associated", members: [["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/MLBrodie_1.jpg","Michael Brodie"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/03/Xiaoyu-Affiliate.png","Xiaoyu Liu"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/03/nesime_tatbul-200x200.png","Nesime Tatbul"]]},
+  {name: "Postdoctoral Students", members: [["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/leicao-1-2.png","Lei Cao"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/RyanM.png","Ryan Marcus"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/elkindi-bio-pic-1.png","Elkindi Rezig"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/giovanni-1.png","Giovanni Simonini"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/Xiangyao-Yu-1.png","Xiangyao Yu"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/ez-1.png","Emanuel Zgraggen"]]},
+  {name: "Students", members: [["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/Favyen-Bastini-1-1.png","Favyen Bastani"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/jialin-1.png","Jialin Ding"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/yi-2.png","Yi Lu"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/oscarmoll.png","Oscar Moll"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/Matt-Perron-Photo-1.png","Matt Perron"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/AnilShanbhag.png","Anil Shanbhag"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/wenbo-1.png","Wenbo Tao"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/Joana-1.png","Joana M.F. da Trindade"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/kapil.png","Kapil Vaidya"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/02/Zeyuan-1.png","Zeyuan Shang"],["http://dsg.csail.mit.edu/wp-content/uploads/2019/06/weitzner-sm.jpg","Daniel Weitzner"]]}
+  ];
+
+const container = document.querySelector('#people-container');
+for (var k = 0; k < groups.length; k++) {
+  const groupContainer = document.createElement('div');
+  groupContainer.classList.add('group');
+  const people = groups[k];
+
+  groupContainer.innerHTML = `<h2>${people.name}</h2>`
+
+  const cards = document.createElement('div');
+
+  for (var i=0; i<people.members.length; i++) {
+    const person = people.members[i];
+    const html = `
+            <div class="card" style="width: 150px;border: none;">
+            <img class="card-img-top" data-src="holder.js/100px180/" alt="100%x180" style="height: 150px;width: 100%;display: block;" src="${person[0]}">
+            <div class="card-body" style="padding-left: 0;padding-top: 10px;">
+              <h5 class="card-title">${person[1]}</h5>
+            </div>
+          </div>`;
+    const div = document.createElement('div');
+    div.classList.add('cardHolder');
+    div.innerHTML = html;
+    cards.appendChild(div);
+  }
+
+  groupContainer.appendChild(cards);
+  container.appendChild(groupContainer);
+}
+
+
+    </script>
+  </body>
+</html>
+

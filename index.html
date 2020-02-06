@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta name="generator" content="Hugo 0.62.0" />
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <style>
+body {
+  padding-top: 76px;
+}
+
+ 
+@font-face{font-family:'Josefin Sans';font-style:normal;font-weight:400;src:local('Josefin Sans'),local('JosefinSans'),url(/fonts/josefin-sans-v9-latin_latin-ext-regular.woff2) format('woff2')}.cool-style{font-family:"Josefin Sans","Open+Sans","Century Gothic","Apple Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:300}
+
+.cool-style {
+    font-family: "Josefin Sans","Open+Sans","Century Gothic","Apple Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+}
+
+.title-style {
+  font-weight: 300;
+}
+
+.sidebar-block{
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  background: #fafafa;
+}
+
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.container > .navbar-header {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#title {
+  border: none;
+  box-shadow:  none;
+  background: none;
+  outline: none;
+  color: #2dbe60;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Josefin Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  margin-top: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#app-navbar {
+  margin-bottom: 0px;
+}
+
+#app-navbar #brand-name {
+  margin: 0;
+  float: left;
+  font-size: 36px;
+  line-height: 55px;
+  margin-right: 10px;
+  color: white;
+  display: inline;
+}
+
+#app-navbar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+ 
+  background-color: #fff;
+}
+
+#app-navbar .navbar-nav>li>a {
+  margin: 10px;
+  padding: 3px 10px;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: #0d0d0d;
+   font-size: 15px;
+}
+
+#app-navbar .navbar-nav>li>a:hover,
+.multiline-footer .mainnavigation-row ul li a:hover
+{
+ 
+  border-color: #000;
+  color: #000;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-red:hover {
+  background-color: #FF1111;
+  border-color: #FF0000;
+  color: #fff;
+}
+
+#app-navbar .nav-item>a.nav-btn-green {
+  background-color: #2DBE60;
+  border-color: #2DBE60;
+  color: #fff;
+}
+
+#app-navbar .nav-item>a.nav-btn-green:hover {
+  background-color: #249540;
+  border-color: #249540;
+  color: #fff;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-blue {
+  color: #666;
+  border: 1px solid #666;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-blue:hover {
+  background-color: #59A7EB;
+  border-color: #59A7EB;
+  color: #fff;
+}
+
+footer {
+  background: #31303a;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+}
+
+footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+footer ul>li{
+  padding: 5px;
+}
+
+footer a, footer a:hover {
+  color: #fff!important;
+  text-decoration: none;
+}
+
+.bd-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.bd-lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.bd-content-title {
+    display: block;
+    pointer-events: auto;
+}
+
+.anchorjs-link {
+    font-weight: 400;
+    color: rgba(0,123,255,.5);
+    transition: color .15s ease-in-out,opacity .15s ease-in-out;
+}
+
+.anchorjs-link:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.anchorjs-link {
+    opacity: 0;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+}
+
+[data-anchorjs-icon]::after {
+    content: attr(data-anchorjs-icon);
+}
+
+.anchorjs-link:hover, .anchorjs-link:focus {
+    opacity: 1;
+}
+
+:hover > .anchorjs-link, .anchorjs-link:focus {
+    opacity: 1;
+}
+
+.bd-content>h2:not(:first-child) {
+    margin-top: 3rem;
+}
+
+.bd-content>h2[id]::before, .bd-content>h3[id]::before, .bd-content>h4[id]::before {
+    display: block;
+    height: 6rem;
+    margin-top: -6rem;
+    content: "";
+}
+main {
+  padding-bottom: 50px;
+}
+</style>
+    <title>Data Systems Group @ MIT</title>
+    <style>
+.association-img {
+  max-height: 100px;
+  max-width: 200px;
+}
+
+.pub>a {
+  color: #333;
+}
+
+.pub h6 {
+  margin-bottom: 0;
+}
+
+.pub {
+  margin-bottom: 10px;
+}
+
+.sidebar-block p {
+  margin-bottom: 7px;
+}
+    </style>
+  </head>
+  <body>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="app-navbar">
+      <div class='container'>
+        <a class="navbar-brand" href="/">
+
+          <img src='/img/logo.jpg' style='height: 50px;' />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href='/'>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='/projects/'>Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='/people/'>People</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='#'>Internal</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-md-9'>
+            
+            <p class='bd-lead' style='margin-top: 30px;'>
+            The Data Systems Group (DSG) at MIT conducts research on all areas of database systems and information management. Projects range from the design of new user interfaces and query languages to low-level query execution issues, to the design of new systems for database analytics and main memory databases to query processing in next-generation pervasive and ubiquitous environments such as sensor networks, wide area information systems, personal databases, and the Web. 
+            
+            <p class='bd-lead'>We work concurrently on a number of research projects. You can find the full list under the <a href='/projects'>Projects</a> tab. Below is a list of our recent publications: </p>
+            
+            </p>
+            <div id='pubs'>
+
+            </div>
+          </div>
+          <div class='col-md-3'>
+            <div class='sidebar-block'>
+              <h2 class='cool-style'>PIs</h2>
+              <p>
+                <a href='http://db.csail.mit.edu/6.830/'>Tim Kraska</a>
+              </p>
+              <p>
+                <a href='http://db.csail.mit.edu/6.830/'>Sam Madden</a>
+              </p>
+              <p>
+                <a href='http://db.csail.mit.edu/6.830/'>Michael Stonebraker</a>
+              </p>
+            </div>
+            <div class='sidebar-block'>
+              <h3 class='cool-style'>Courses</h3>
+              <p>
+                <a href='http://db.csail.mit.edu/6.830/'>6.814/6.830 Database Systems</a>
+              </p>
+              <p>
+                <a href='http://dsg.csail.mit.edu/6.S080/'>6.S080 Software Systems for Data Science</a>
+              </p>
+            </div>
+            <div class='sidebar-block'>
+              <h2 class='cool-style'>Quicklinks</h2>
+              <a href='http://dsail.csail.mit.edu/'>
+                <img class='association-img' style='max-height: 100px' src='img/dsail-logo.png' />
+              </a>
+              <a href='http://istc-bigdata.org/'>
+                <img class='association-img' src='img/istc-logo.png' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+        <footer style="margin-bottom: 0px;">
+      <div class='container'>
+        Any issues ? File a ticket on <a href='https://github.com/mitdbg/dsg.csail.mit.edu'>Github</a>
+      </div>
+    </footer>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+async function loadPubs() {
+  const pubs = [
+{
+"@score":"1",
+"@id":"104525",
+"info":{"authors":{"author":["Ryan C. Marcus","Parimarjan Negi","Hongzi Mao","Chi Zhang","Mohammad Alizadeh","Tim Kraska","Olga Papaemmanouil","Nesime Tatbul"]},"title":"Neo - A Learned Query Optimizer.","venue":"PVLDB","volume":"12","number":"11","pages":"1705-1718","year":"2019","type":"Journal Articles","key":"journals/pvldb/MarcusNMZAKPT19","doi":"10.14778/3342263.3342644","ee":"http://www.vldb.org/pvldb/vol12/p1705-marcus.pdf","url":"https://dblp.org/rec/journals/pvldb/MarcusNMZAKPT19"},
+"url":"URL#104525"
+},
+{
+"@score":"1",
+"@id":"164022",
+"info":{"authors":{"author":["Kevin Zeng Hu","Michiel A. Bakker","Stephen Li","Tim Kraska","César A. Hidalgo"]},"title":"VizML - A Machine Learning Approach to Visualization Recommendation.","venue":"CHI","pages":"128","year":"2019","type":"Conference and Workshop Papers","key":"conf/chi/HuBLKH19","doi":"10.1145/3290605.3300358","ee":"https://doi.org/10.1145/3290605.3300358","url":"https://dblp.org/rec/conf/chi/HuBLKH19"},
+"url":"URL#164022"
+},
+{
+"@score":"1",
+"@id":"104416",
+"info":{"authors":{"author":["Lei Cao","Wenbo Tao","Sungtae An","Jing Jin","Yizhou Yan","Xiaoyu Liu","Wendong Ge","Adam Sah","Leilani Battle","Jimeng Sun","Remco Chang","M. Brandon Westover","Samuel Madden","Michael Stonebraker"]},"title":"Smile - A System to Support Machine Learning on EEG Data at Scale.","venue":"PVLDB","volume":"12","number":"12","pages":"2230-2241","year":"2019","type":"Journal Articles","key":"journals/pvldb/CaoTAJYLGSBSCWM19","doi":"10.14778/3352063.3352138","ee":"http://www.vldb.org/pvldb/vol12/p2230-cao.pdf","url":"https://dblp.org/rec/journals/pvldb/CaoTAJYLGSBSCWM19"},
+"url":"URL#104416"
+},
+{
+"@score":"1",
+"@id":"104555",
+"info":{"authors":{"author":["El Kindi Rezig","Lei Cao","Michael Stonebraker","Giovanni Simonini","Wenbo Tao","Samuel Madden","Mourad Ouzzani","Nan Tang 0001","Ahmed K. Elmagarmid"]},"title":"Data Civilizer 2.0 - A Holistic Framework for Data Preparation and Analytics.","venue":"PVLDB","volume":"12","number":"12","pages":"1954-1957","year":"2019","type":"Journal Articles","key":"journals/pvldb/RezigCSSTMOTE19","doi":"10.14778/3352063.3352108","ee":"http://www.vldb.org/pvldb/vol12/p1954-rezig.pdf","url":"https://dblp.org/rec/journals/pvldb/RezigCSSTMOTE19"},
+"url":"URL#104555"
+},
+{
+"@score":"1",
+"@id":"104573",
+"info":{"authors":{"author":["Junjay Tan","Thanaa Ghanem","Matthew Perron","Xiangyao Yu","Michael Stonebraker","David J. DeWitt","Marco Serafini","Ashraf Aboulnaga","Tim Kraska"]},"title":"Choosing A Cloud DBMS - Architectures and Tradeoffs.","venue":"PVLDB","volume":"12","number":"12","pages":"2170-2182","year":"2019","type":"Journal Articles","key":"journals/pvldb/TanGPYSDSAK19","doi":"10.14778/3352063.3352133","ee":"http://www.vldb.org/pvldb/vol12/p2170-tan.pdf","url":"https://dblp.org/rec/journals/pvldb/TanGPYSDSAK19"},
+"url":"URL#104573"
+},
+{
+"@score":"1",
+"@id":"104605",
+"info":{"authors":{"author":["Erfan Zamanian","Xiangyao Yu","Michael Stonebraker","Tim Kraska"]},"title":"Rethinking Database High Availability with RDMA Networks.","venue":"PVLDB","volume":"12","number":"11","pages":"1637-1650","year":"2019","type":"Journal Articles","key":"journals/pvldb/ZamanianYSK19","doi":"10.14778/3342263.3342639","ee":"http://www.vldb.org/pvldb/vol12/p1637-zamanian.pdf","url":"https://dblp.org/rec/journals/pvldb/ZamanianYSK19"},
+"url":"URL#104605"
+}
+  ];
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  function formatAuthors(authors) {
+    return authors.join(', ');
+  }
+
+  const pubsDiv = document.querySelector('#pubs');
+  for (i = 0; i < 10; i++) {
+    const pub = pubs[i];
+    console.log(pub.info.authors.author);
+    pub.info.authors.author = formatAuthors(pub.info.authors.author);
+    const pubElem = document.createElement('div');
+    pubElem.classList.add('pub');
+    pubElem.innerHTML = `
+      <a target='_blank' href='${pub.info.url}'><h6>${pub.info.title} ${pub.info.venue} ${pub.info.year}</h6></a>
+      <small>${pub.info.authors.author}</small>
+    `;
+    pubsDiv.appendChild(pubElem);
+  }
+}
+
+loadPubs();
+    </script>
+  </body>
+</html>
+
