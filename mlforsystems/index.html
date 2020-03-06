@@ -224,20 +224,7 @@ main {
 }
 </style>
     <title>ML for Systems Projects</title>
-    <style>
-.association-img {
-  width: 100%;
-}
 
-.card, .cardHolder {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.cardHolder {
-  margin-right: 30px;
-}
-    </style>
   </head>
   <body>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="app-navbar">
@@ -277,12 +264,12 @@ main {
             	<h1>ML for Systems </h1>
             	<p>
         			Our vision for research on ML for Systems is laid out in <a href="http://cidrdb.org/cidr2019/papers/p117-kraska-cidr19.pdf">SageDB</a>, a new type of data processing system that highly specializes to a particular application through code synthesis and machine learning.
-            	This vision is also a focus of <a href="http://dsail.csail.mit.edu/">MIT DSAIL</a>.
-            	Data systems components that we are currently working on:
+            	This vision is also a focus of <a href="http://dsail.csail.mit.edu/">MIT DSAIL</a>.</p>
+            	<p>We provide an overview of data systems components that we are currently working on, with more detailed project descriptions in the links, as well as a list of open-source repositories:
             	</p>
               <h2 class='bd-title'>Data Access </h2>
               <p>Storage layout and index structures are the most important factors to guarantee efficient data access, and both
-    					are amenable to be enhanced by learned data and workload models. The original work on <a href="https://arxiv.org/pdf/1712.01208.pdf">learned indexes</a> showed that replacing traditional index structures with learned models can improve data access times while reducing memory footprint. Since then, we have worked to make learned indexes <a href="https://arxiv.org/pdf/1905.08898.pdf">more practical</a>, developed <a href="https://arxiv.org/pdf/1912.01668.pdf">learned multi-dimensional indexes</a>, created a <a href="https://learned.systems/papers/sosd.pdf">benchmark for learned index structures</a>, and applied learned indexes to <a href="https://arxiv.org/pdf/1910.04728.pdf">DNA sequence search</a>. We have also released a <a href="https://github.com/learnedsystems/RMI">reference implementation of the recursive model index (RMI)</a> described in the original <a href="https://arxiv.org/pdf/1712.01208.pdf">learned index paper</a>.</p>
+    					are amenable to be enhanced by learned data and workload models. The original work on <a href="https://arxiv.org/pdf/1712.01208.pdf">learned indexes</a> showed that replacing traditional index structures with learned models can improve data access times while reducing memory footprint. Since then, we have worked to make learned indexes <a href="https://arxiv.org/pdf/1905.08898.pdf">more practical</a>, developed <a href="https://arxiv.org/pdf/1912.01668.pdf">learned multi-dimensional indexes</a>, created a <a href="https://learned.systems/papers/sosd.pdf">benchmark for learned index structures</a>, and applied learned indexes to <a href="https://arxiv.org/pdf/1910.04728.pdf">DNA sequence search</a>.</p>
     					<p>Publications:</p>
     					<ul>
     					  <li><a href="https://arxiv.org/pdf/1712.01208.pdf">The Case for Learned Index Structures. SIGMOD 2018.</a> Tim Kraska, Alex Beutel, Ed Chi, Jeffrey Dean, Neoklis Polyzotis</li>
@@ -293,10 +280,10 @@ main {
     					  <li><a href="https://arxiv.org/pdf/1905.08898.pdf">ALEX: An Updatable Adaptive Learned Index. Preprint.</a> Jialin Ding, Umar Farooq Minhas, Hantian Zhang, Yinan Li, Chi Wang, Badrish Chandramouli, Johannes Gehrke, Donald Kossmann, David Lomet</li>
     					</ul>
 				      <h2 class='bd-title'>Query Execution </h2>
-            	<p>Learning the data distribution can also be used to speed up query execution. In particular, we are applying learned techniques to <a href="http://learningsys.org/sosp19/assets/papers/22_CameraReadySubmission_Abstract___SOSP__19_ML_Sys_workshop-4.pdf">sorting</a>, scheduling, and joins.</p>
+            	<p>Learning the data distribution can also be used to speed up query execution. In particular, we are applying learned techniques to <a href="http://learningsys.org/sosp19/assets/papers/22_CameraReadySubmission_Abstract___SOSP__19_ML_Sys_workshop-4.pdf">sorting</a>, <a href="https://web.mit.edu/decima/content/sigcomm-2019.pdf">scheduling</a>, and joins.</p>
             	<p>Publications:</p>
             	<ul>
-    					  
+    					  <li><a href="https://web.mit.edu/decima/content/sigcomm-2019.pdf">Learning Scheduling Algorithms for Data Processing Clusters. SIGCOMM 2019.</a> Hongzi Mao, Malte Schwarzkopf, Shaileshh Bojja Venkatakrishnan, Zili Meng, Mohammad Alizadeh</li>
     					  <li><a href="http://learningsys.org/sosp19/assets/papers/22_CameraReadySubmission_Abstract___SOSP__19_ML_Sys_workshop-4.pdf">The Case for a Learned Sorting Algorithm. SOSP Workshop on AI Systems 2019.</a> Ani Kristo*, Kapil Vaidya*, Ugur Cetintemel, Tim Kraska</li>
     					</ul>
               <h2 class='bd-title'>Query Optimization </h2>
@@ -307,6 +294,14 @@ main {
   						  <li><a href="http://www.vldb.org/pvldb/vol12/p1705-marcus.pdf">Neo: A Learned Query Optimizer. VLDB 2019.</a> Ryan Marcus, Parimarjan Negi, Hongzi Mao, Chi Zhang, Mohammad Alizadeh, Tim Kraska, Olga Papaemmanouil, Nesime Tatbul</li>
   						  <li><a href="http://db.cs.pitt.edu/smdb2020/">Cost-Guided Cardinality Estimation: Focus Where it Matters. SMDB 2020.</a> Parimarjan Negi, Ryan Marcus, Hongzi Mao, Nesime Tatbul, Tim Kraska, Mohammad Alizadeh</li>
   						</ul>
+              <h2 class='bd-title'>Open Source </h2>
+              <p>We have open-sourced a number of our projects, including <a href="https://github.com/learnedsystems/sosd">SOSD</a>, a benchmark for learned index structures; a <a href="https://github.com/learnedsystems/RMI">reference implementation of the recursive model index (RMI)</a> described in the original <a href="https://arxiv.org/pdf/1712.01208.pdf">learned index paper</a>; and <a href="https://github.com/park-project/park">Park</a>, a platform for researchers to experiment with Reinforcement Learning (RL) for various systems problems.</p>
+              <p>Open-source repositories (with associated publication):</p>
+              <ul>
+                <li>Search on Sorted Data Benchmark (SOSD). <a href="https://github.com/learnedsystems/sosd">https://github.com/learnedsystems/sosd</a>. (<a href="https://learned.systems/papers/sosd.pdf">Link to NeurIPS 2019 workshop paper</a>)</li>
+                <li>Reference implementation of recursive model index (RMI). <a href="https://github.com/learnedsystems/RMI">https://github.com/learnedsystems/RMI</a>. (<a href="https://learned.systems/papers/sosd.pdf">Link to NeurIPS 2019 workshop paper</a>)</li>
+                <li>Park: An Open Platform for Learning Augmented Computer Systems. <a href="https://github.com/park-project/park">https://github.com/park-project/park</a>. (<a href="https://papers.nips.cc/paper/8519-park-an-open-platform-for-learning-augmented-computer-systems.pdf">Link to NeurIPS 2019 paper</a>)</li>
+              </ul>
             </div>
           </div>
         </div>
