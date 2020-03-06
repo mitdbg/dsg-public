@@ -8,6 +8,10 @@
   </url>
   
   <url>
+    <loc>http://dsg.csail.mit.edu/mlforsystems/flood/</loc>
+  </url>
+  
+  <url>
     <loc>http://dsg.csail.mit.edu/people/</loc>
     <priority>0</priority>
   </url>
@@ -67,6 +71,10 @@
   
   <url>
     <loc>http://dsg.csail.mit.edu/projects/active/mapster/</loc>
+  </url>
+  
+  <url>
+    <loc>http://dsg.csail.mit.edu/mlforsystems/</loc>
   </url>
   
   <url>
