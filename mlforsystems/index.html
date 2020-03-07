@@ -1,83 +1,310 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Data Systems Group at MIT </title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.65.3" />
-    
-    
-      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-    
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
 
-    
-    
-      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    
+    <style>
+body {
+  padding-top: 76px;
+}
 
-    
-      
-    
+ 
+@font-face{font-family:'Josefin Sans';font-style:normal;font-weight:400;src:local('Josefin Sans'),local('JosefinSans'),url(/fonts/josefin-sans-v9-latin_latin-ext-regular.woff2) format('woff2')}.cool-style{font-family:"Josefin Sans","Open+Sans","Century Gothic","Apple Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:300}
 
-    
-    
-      <link href="/mlforsystems/index.xml" rel="alternate" type="application/rss+xml" title="Data Systems Group at MIT" />
-      <link href="/mlforsystems/index.xml" rel="feed" type="application/rss+xml" title="Data Systems Group at MIT" />
-      
-    
-    
-    <meta property="og:title" content="Mlforsystems" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://dsg.csail.mit.edu/mlforsystems/" />
+.cool-style {
+    font-family: "Josefin Sans","Open+Sans","Century Gothic","Apple Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+}
 
-<meta itemprop="name" content="Mlforsystems">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mlforsystems"/>
-<meta name="twitter:description" content=""/>
+.title-style {
+  font-weight: 300;
+}
+
+.sidebar-block{
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  background: #fafafa;
+}
+
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.container > .navbar-header {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#title {
+  border: none;
+  box-shadow:  none;
+  background: none;
+  outline: none;
+  color: #2dbe60;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Josefin Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  margin-top: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#app-navbar {
+  margin-bottom: 0px;
+}
+
+#app-navbar #brand-name {
+  margin: 0;
+  float: left;
+  font-size: 36px;
+  line-height: 55px;
+  margin-right: 10px;
+  color: white;
+  display: inline;
+}
+
+#app-navbar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+ 
+  background-color: #fff;
+}
+
+#app-navbar .navbar-nav>li>a {
+  margin: 10px;
+  padding: 3px 10px;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: #0d0d0d;
+   font-size: 15px;
+}
+
+#app-navbar .navbar-nav>li>a:hover,
+.multiline-footer .mainnavigation-row ul li a:hover
+{
+ 
+  border-color: #000;
+  color: #000;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-red:hover {
+  background-color: #FF1111;
+  border-color: #FF0000;
+  color: #fff;
+}
+
+#app-navbar .nav-item>a.nav-btn-green {
+  background-color: #2DBE60;
+  border-color: #2DBE60;
+  color: #fff;
+}
+
+#app-navbar .nav-item>a.nav-btn-green:hover {
+  background-color: #249540;
+  border-color: #249540;
+  color: #fff;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-blue {
+  color: #666;
+  border: 1px solid #666;
+}
+
+#app-navbar .navbar-nav>li>a.nav-btn-blue:hover {
+  background-color: #59A7EB;
+  border-color: #59A7EB;
+  color: #fff;
+}
+
+footer {
+  background: #31303a;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+}
+
+footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+footer ul>li{
+  padding: 5px;
+}
+
+footer a, footer a:hover {
+  color: #fff!important;
+  text-decoration: none;
+}
+
+.bd-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.bd-lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.bd-content-title {
+    display: block;
+    pointer-events: auto;
+}
+
+.anchorjs-link {
+    font-weight: 400;
+    color: rgba(0,123,255,.5);
+    transition: color .15s ease-in-out,opacity .15s ease-in-out;
+}
+
+.anchorjs-link:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.anchorjs-link {
+    opacity: 0;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+}
+
+[data-anchorjs-icon]::after {
+    content: attr(data-anchorjs-icon);
+}
+
+.anchorjs-link:hover, .anchorjs-link:focus {
+    opacity: 1;
+}
+
+:hover > .anchorjs-link, .anchorjs-link:focus {
+    opacity: 1;
+}
+
+.bd-content>h2:not(:first-child) {
+    margin-top: 3rem;
+}
+
+.bd-content>h2[id]::before, .bd-content>h3[id]::before, .bd-content>h4[id]::before {
+    display: block;
+    height: 6rem;
+    margin-top: -6rem;
+    content: "";
+}
+main {
+  padding-bottom: 50px;
+}
+
+.navbar-brand.mobile {
+  display: none;
+}
+.navbar-brand.desktop {
+  display: block;
+}
+
+@media (max-width: 780px) {
+.navbar-brand.mobile {
+  display: block;
+}
+.navbar-brand.desktop {
+  display: none;
+}
+}
+</style>
+    <title>ML for Systems Projects</title>
 
   </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-
-  <header>
-    <div class="pb3-m pb6-l bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="http://dsg.csail.mit.edu/" class="f3 fw2 hover-white no-underline white-90 dib">
-      Data Systems Group at MIT
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-  </div>
-</nav>
-
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          Mlforsystems
-        </h1>
+  <body>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="app-navbar">
+      <div class='container'>
+        <a class="navbar-brand desktop" href="/">
+          <img src='/img/logo.jpg' style='height: 50px;' />
+        </a>
+        <a class="navbar-brand mobile" href="/">
+          <img src='/img/logo-mobile.jpeg' style='height: 50px;' />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href='/'>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='/projects/'>Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='/people/'>People</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='#'>Internal</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-md-9'>
+            <div class="well well-sm">
+            	<h1>ML for Systems </h1>
+            	<p>
+        			Our vision for research on ML for Systems is laid out in <a href="http://cidrdb.org/cidr2019/papers/p117-kraska-cidr19.pdf">SageDB</a>, a new type of data processing system that highly specializes to a particular application through code synthesis and machine learning.
+            	This vision is also a focus of <a href="http://dsail.csail.mit.edu/">MIT DSAIL</a>.</p>
+            	<p>We provide an overview of data systems components that we are currently working on, with more detailed project descriptions in the links, as well as a list of open-source repositories:
+            	</p>
+              <h2 class='bd-title'>Data Access </h2>
+              <p>Storage layout and index structures are the most important factors to guarantee efficient data access, and both
+    					are amenable to be enhanced by learned data and workload models. The original work on <a href="https://arxiv.org/pdf/1712.01208.pdf">learned indexes</a> showed that replacing traditional index structures with learned models can improve data access times while reducing memory footprint. Since then, we have worked to make learned indexes <a href="https://arxiv.org/pdf/1905.08898.pdf">more practical</a>, developed <a href="https://arxiv.org/pdf/1912.01668.pdf">learned multi-dimensional indexes</a>, created a <a href="https://learned.systems/papers/sosd.pdf">benchmark for learned index structures</a>, and applied learned indexes to <a href="https://arxiv.org/pdf/1910.04728.pdf">DNA sequence search</a>.</p>
+    					<p>Publications:</p>
+    					<ul>
+    					  <li><a href="https://arxiv.org/pdf/1712.01208.pdf">The Case for Learned Index Structures. SIGMOD 2018.</a> Tim Kraska, Alex Beutel, Ed Chi, Jeffrey Dean, Neoklis Polyzotis</li>
+    					  <li><a href="https://learned.systems/papers/sosd.pdf">SOSD: A Benchmark for Learned Indexes. NeurIPS Workshop on ML for Systems 2019.</a> Andreas Kipf*, Ryan Marcus*, Alexander van Renen*, Mihail Stoian, Alfons Kemper, Tim Kraska, Thomas Neumann</li>
+    					  <li><a href="https://arxiv.org/pdf/1910.04728.pdf">LISA: Towards Learned DNA Sequence Search. NeurIPS Workshop on Systems for ML 2019.</a> Darryl Ho, Jialin Ding, Sanchit Misra, Nesime Tatbul, Vikram Nathan, Vasimuddin Md, Tim Kraska</li>
+    					  <li><a href="https://arxiv.org/pdf/1912.01668.pdf">Learning Multi-dimensional Indexes. SIGMOD 2020.</a> Vikram Nathan*, Jialin Ding*, Mohammad Alizadeh, Tim Kraska</li>
+    					  <li><a href="http://sigmod2020.org/">CDFShop: Exploring and Optimizing Learned Index Structures. SIGMOD 2020 (demo).</a> Ryan Marcus, Emily Zhang, Tim Kraska</li>
+    					  <li><a href="https://arxiv.org/pdf/1905.08898.pdf">ALEX: An Updatable Adaptive Learned Index. Preprint.</a> Jialin Ding, Umar Farooq Minhas, Hantian Zhang, Yinan Li, Chi Wang, Badrish Chandramouli, Johannes Gehrke, Donald Kossmann, David Lomet</li>
+    					</ul>
+				      <h2 class='bd-title'>Query Execution </h2>
+            	<p>Learning the data distribution can also be used to speed up query execution. In particular, we are applying learned techniques to <a href="http://learningsys.org/sosp19/assets/papers/22_CameraReadySubmission_Abstract___SOSP__19_ML_Sys_workshop-4.pdf">sorting</a>, <a href="https://web.mit.edu/decima/content/sigcomm-2019.pdf">scheduling</a>, and joins.</p>
+            	<p>Publications:</p>
+            	<ul>
+    					  <li><a href="https://web.mit.edu/decima/content/sigcomm-2019.pdf">Learning Scheduling Algorithms for Data Processing Clusters. SIGCOMM 2019.</a> Hongzi Mao, Malte Schwarzkopf, Shaileshh Bojja Venkatakrishnan, Zili Meng, Mohammad Alizadeh</li>
+    					  <li><a href="http://learningsys.org/sosp19/assets/papers/22_CameraReadySubmission_Abstract___SOSP__19_ML_Sys_workshop-4.pdf">The Case for a Learned Sorting Algorithm. SOSP Workshop on AI Systems 2019.</a> Ani Kristo*, Kapil Vaidya*, Ugur Cetintemel, Tim Kraska</li>
+    					</ul>
+              <h2 class='bd-title'>Query Optimization </h2>
+              <p>Traditional query optimizers are extremely hard to build,
+    					maintain, and often yield sub-optimal query plans. The brittleness and complexity of the optimizer makes it a good candidate to be learned. We have introduced the first <a href="http://www.vldb.org/pvldb/vol12/p1705-marcus.pdf">end-to-end learned query optimizer</a>, and we are currently exploring how to generalize it to unseen data and schemas. We are also exploring <a href="http://db.cs.pitt.edu/smdb2020/">learning-based cardinality estimation</a> techniques.</p>
+    					<p>Publications:</p>
+  						<ul>
+  						  <li><a href="http://www.vldb.org/pvldb/vol12/p1705-marcus.pdf">Neo: A Learned Query Optimizer. VLDB 2019.</a> Ryan Marcus, Parimarjan Negi, Hongzi Mao, Chi Zhang, Mohammad Alizadeh, Tim Kraska, Olga Papaemmanouil, Nesime Tatbul</li>
+  						  <li><a href="http://db.cs.pitt.edu/smdb2020/">Cost-Guided Cardinality Estimation: Focus Where it Matters. SMDB 2020.</a> Parimarjan Negi, Ryan Marcus, Hongzi Mao, Nesime Tatbul, Tim Kraska, Mohammad Alizadeh</li>
+  						</ul>
+              <h2 class='bd-title'>Open Source </h2>
+              <p>We have open-sourced a number of our projects, including <a href="https://github.com/learnedsystems/sosd">SOSD</a>, a benchmark for learned index structures; a <a href="https://github.com/learnedsystems/RMI">reference implementation of the recursive model index (RMI)</a> described in the original <a href="https://arxiv.org/pdf/1712.01208.pdf">learned index paper</a>; and <a href="https://github.com/park-project/park">Park</a>, a platform for researchers to experiment with Reinforcement Learning (RL) for various systems problems.</p>
+              <p>Open-source repositories (with associated publication):</p>
+              <ul>
+                <li>Search on Sorted Data Benchmark (SOSD). <a href="https://github.com/learnedsystems/sosd">https://github.com/learnedsystems/sosd</a>. (<a href="https://learned.systems/papers/sosd.pdf">Link to NeurIPS 2019 workshop paper</a>)</li>
+                <li>Reference implementation of recursive model index (RMI). <a href="https://github.com/learnedsystems/RMI">https://github.com/learnedsystems/RMI</a>. (<a href="https://learned.systems/papers/sosd.pdf">Link to NeurIPS 2019 workshop paper</a>)</li>
+                <li>Park: An Open Platform for Learning Augmented Computer Systems. <a href="https://github.com/park-project/park">https://github.com/park-project/park</a>. (<a href="https://papers.nips.cc/paper/8519-park-an-open-platform-for-learning-augmented-computer-systems.pdf">Link to NeurIPS 2019 paper</a>)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>

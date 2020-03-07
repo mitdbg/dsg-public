@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://dsg.csail.mit.edu/mlforsystems/</guid>
-      <description></description>
+      <description>{{ partial &#34;header/site-header.html&#34; . }} ML for Systems Projects .association-img { width: 100%; } .card, .cardHolder { display: inline-block; vertical-align: top; } .cardHolder { margin-right: 30px; }  --   {{ partial &#34;header/site-nav.html&#34; . }}  ML for Systems   Our vision for research on ML for Systems is laid out in SageDB, a new type of data processing system that highly specializes to a particular application through code synthesis and machine learning.</description>
     </item>
     
     <item>
@@ -34,7 +34,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://dsg.csail.mit.edu/people/</guid>
-      <description></description>
+      <description>{{ partial &#34;header/site-header.html&#34; . }} Data Systems Group Folks  .association-img { width: 100%; } .card, .cardHolder { display: inline-block; vertical-align: top; } .cardHolder { margin-right: 30px; }    {{ partial &#34;header/site-nav.html&#34; . }}  People @ DSG   {{ partial &#34;footer/site-footer.html&#34; . }} {{ partial &#34;footer/scripts.html&#34; . }}  const groups = [ {name: &#34;Faculty&#34;, members: [[&#34;/img/people/tim_Kraska.jpg&#34;,&#34;Tim Kraska&#34;],[&#34;/img/people/madden.jpg&#34;,&#34;Sam Madden&#34;],[&#34;/img/people/stonebraker-71.png&#34;,&#34;Michael Stonebraker&#34;],[&#34;/img/people/michjc-1.jpg&#34;,&#34;Michael Cafarella&#34;],[&#34;/img/people/pic.jpg&#34;,&#34;Julian Shun&#34;]]}, {name: &#34;Associated&#34;, members: [[&#34;</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://dsg.csail.mit.edu/projects/</guid>
-      <description></description>
+      <description>  {{ partial &#34;header/site-header.html&#34; . }} Data Systems Group Projects  .association-img { width: 100%; }    {{ partial &#34;header/site-nav.html&#34; . }}    {{ partial &#34;footer/site-footer.html&#34; . }} {{ partial &#34;footer/scripts.html&#34; . }}   </description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@ As a result of exponential data growth and the challenges associated with proces
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://dsg.csail.mit.edu/projects/active/data-civilizer/</guid>
-      <description>Modern organizations are faced with a massive number of heterogeneous data sets. It&amp;rsquo;s not uncommon for a large enterprise to have 10,000 or more structured databases, not to mention millions of spreadsheets, text documents, and emails. Typically these databases do not have a common schema. As a result, data scientists in large organizations spend 90% or more of their time finding data they need and then cleaning and integrating it.</description>
+      <description>Modern organizations are faced with a massive number of heterogeneous data sets. It&#39;s not uncommon for a large enterprise to have 10,000 or more structured databases, not to mention millions of spreadsheets, text documents, and emails. Typically these databases do not have a common schema. As a result, data scientists in large organizations spend 90% or more of their time finding data they need and then cleaning and integrating it.</description>
     </item>
     
     <item>
@@ -109,7 +109,7 @@ When business conditions change (and they do at least once a quarter), then upda
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://dsg.csail.mit.edu/projects/past/kaskade/</guid>
-      <description>Kaskade is a query optimization framework for graph data processing systems. It&amp;rsquo;s core contribution is a novel inference-based materialized view enumeration technique that reduces the search space of views that need to be considered. When using Kaskade for optimizing graph queries over a real-world production workload at Microsoft, we see reasonable speedups over a set of representative queries.</description>
+      <description>Kaskade is a query optimization framework for graph data processing systems. It&#39;s core contribution is a novel inference-based materialized view enumeration technique that reduces the search space of views that need to be considered. When using Kaskade for optimizing graph queries over a real-world production workload at Microsoft, we see reasonable speedups over a set of representative queries.</description>
     </item>
     
     <item>
@@ -185,7 +185,7 @@ Learn more at https://mapster.csail.mit.edu/</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://dsg.csail.mit.edu/projects/active/taurus/</guid>
-      <description>Most databases adopt write-ahead logging for fault tolerance, wherein transactions log undo and redo records to persistent storage as a single stream. After a crash, transactions are recovered following the order in the log. The single log stream limits scalability on today&amp;rsquo;s massively parallel processors. Taurus is a parallel logging algorithm that supports multiple log streams. For transactions to recover in the correct order after a crash, Taurus logs the order information compressed as a per-transaction vector of timestamps.</description>
+      <description>Most databases adopt write-ahead logging for fault tolerance, wherein transactions log undo and redo records to persistent storage as a single stream. After a crash, transactions are recovered following the order in the log. The single log stream limits scalability on today&#39;s massively parallel processors. Taurus is a parallel logging algorithm that supports multiple log streams. For transactions to recover in the correct order after a crash, Taurus logs the order information compressed as a per-transaction vector of timestamps.</description>
     </item>
     
     <item>
