@@ -6,187 +6,187 @@
     <description>Recent content on Data Systems Group at MIT</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    
+
 	<atom:link href="http://dsg.csail.mit.edu/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+
+
     <item>
       <title></title>
       <link>http://dsg.csail.mit.edu/mlforsystems/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/mlforsystems/</guid>
-      <description>{{ partial &#34;header/site-header.html&#34; . }} ML for Systems Projects .association-img { width: 100%; } .card, .cardHolder { display: inline-block; vertical-align: top; } .cardHolder { margin-right: 30px; }  --   {{ partial &#34;header/site-nav.html&#34; . }}  ML for Systems   Our vision for research on ML for Systems is laid out in SageDB, a new type of data processing system that highly specializes to a particular application through code synthesis and machine learning.</description>
+      <description></description>
     </item>
-    
+
     <item>
       <title></title>
       <link>http://dsg.csail.mit.edu/people/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/people/</guid>
-      <description>{{ partial &#34;header/site-header.html&#34; . }} Data Systems Group Folks  .association-img { width: 100%; } .card, .cardHolder { display: inline-block; vertical-align: top; } .cardHolder { margin-right: 30px; }    {{ partial &#34;header/site-nav.html&#34; . }}  People @ DSG   {{ partial &#34;footer/site-footer.html&#34; . }} {{ partial &#34;footer/scripts.html&#34; . }}  const groups = [ {name: &#34;Faculty&#34;, members: [[&#34;/img/people/tim_Kraska.jpg&#34;,&#34;Tim Kraska&#34;],[&#34;/img/people/madden.jpg&#34;,&#34;Sam Madden&#34;],[&#34;/img/people/stonebraker-71.png&#34;,&#34;Michael Stonebraker&#34;],[&#34;/img/people/michjc-1.jpg&#34;,&#34;Michael Cafarella&#34;],[&#34;/img/people/pic.jpg&#34;,&#34;Julian Shun&#34;]]}, {name: &#34;Associated&#34;, members: [[&#34;</description>
+      <description></description>
     </item>
-    
+
     <item>
       <title></title>
       <link>http://dsg.csail.mit.edu/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/</guid>
-      <description>  {{ partial &#34;header/site-header.html&#34; . }} Data Systems Group Projects  .association-img { width: 100%; }    {{ partial &#34;header/site-nav.html&#34; . }}    {{ partial &#34;footer/site-footer.html&#34; . }} {{ partial &#34;footer/scripts.html&#34; . }}   </description>
+      <description></description>
     </item>
-    
+
     <item>
       <title>Alpine Meadow - Interactive Auto ML</title>
       <link>http://dsg.csail.mit.edu/projects/active/alpine-meadow/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/alpine-meadow/</guid>
       <description>Statistical knowledge and domain expertise are key to extracting actionable insights from data, yet such skills rarely coexist together. In Machine Learning (ML), high-quality results are only attainable via mindful data preprocessing, hyperparameter tuning and model selection. Domain experts are often overwhelmed by such complexity, de-facto inhibiting wider adoption of ML techniques. Existing libraries claim to solve this problem, but still require well-trained practitioners. Such frameworks involve heavy data preparation steps and are often too slow for interactive feedback from the user, severely limiting the scope of such systems.</description>
     </item>
-    
+
     <item>
       <title>Amoeba</title>
       <link>http://dsg.csail.mit.edu/projects/past/amoeba/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/past/amoeba/</guid>
       <description>Amoeba is a distributed storage system that uses adaptive multi-attribute data partitioning to efficiently support ad-hoc as well as recurring queries. Amoeba requires zero set-up and tuning effort, allowing analysts to get the benefits of partitioning without requiring upfront queries.</description>
     </item>
-    
+
     <item>
       <title>Crystal</title>
       <link>http://dsg.csail.mit.edu/projects/active/crystal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/crystal/</guid>
       <description>Businesses have always used always used data and analytics to make business decisions.
 As a result of exponential data growth and the challenges associated with processing large amount of data, a number of fast, in-memory analytical solutions have been developed in recent years, including systems Hyper and Vectorwise. Several vendors now offer a high-performance in-memory analytics system. As data volumes continue to increase and Moore’s Law no longer offers the hope of better CPU performance, researchers have increasingly looked at new architectures to increase performance.</description>
     </item>
-    
+
     <item>
       <title>Data Civilizer</title>
       <link>http://dsg.csail.mit.edu/projects/active/data-civilizer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/data-civilizer/</guid>
-      <description>Modern organizations are faced with a massive number of heterogeneous data sets. It&#39;s not uncommon for a large enterprise to have 10,000 or more structured databases, not to mention millions of spreadsheets, text documents, and emails. Typically these databases do not have a common schema. As a result, data scientists in large organizations spend 90% or more of their time finding data they need and then cleaning and integrating it.</description>
+      <description>Modern organizations are faced with a massive number of heterogeneous data sets. It&amp;rsquo;s not uncommon for a large enterprise to have 10,000 or more structured databases, not to mention millions of spreadsheets, text documents, and emails. Typically these databases do not have a common schema. As a result, data scientists in large organizations spend 90% or more of their time finding data they need and then cleaning and integrating it.</description>
     </item>
-    
+
     <item>
       <title>Database Designs: The Case for Co-evolution of Applications and Data</title>
       <link>http://dsg.csail.mit.edu/projects/active/dbdesign/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/dbdesign/</guid>
       <description>The traditional wisdom for performing logical database design can be found in any DBMS textbook, and is:
 Form an entity-relationship (E-R) model of your data. When you are satisfied with your E-R model, push a button which executes an E-R to third normal form (3NF) translation algorithm. Create the 3NF schema and code the application logic for this schema.
 When business conditions change (and they do at least once a quarter), then update the E-R model, update the schema, move the data to this schema and perform application maintenance</description>
     </item>
-    
+
     <item>
       <title>Drone</title>
       <link>http://dsg.csail.mit.edu/projects/active/drone/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/drone/</guid>
       <description>Small UAVs can be employed as a useful and highly mobile sensor, especially in remote areas, for applications like precision agriculture and infrastructure inspection. We are building a platform for analytics applications that makes it easy to deploy small UAVs for semi-autonomous data collection and monitoring tasks. We have interest in exploring whether quadrotor drones can enable cities to collect imagery data that can be released to the public under an open license, as well as applications of drones for traffic congestion monitoring and traffic analysis.</description>
     </item>
-    
+
     <item>
       <title>Kaskade</title>
       <link>http://dsg.csail.mit.edu/projects/past/kaskade/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/past/kaskade/</guid>
-      <description>Kaskade is a query optimization framework for graph data processing systems. It&#39;s core contribution is a novel inference-based materialized view enumeration technique that reduces the search space of views that need to be considered. When using Kaskade for optimizing graph queries over a real-world production workload at Microsoft, we see reasonable speedups over a set of representative queries.</description>
+      <description>Kaskade is a query optimization framework for graph data processing systems. It&amp;rsquo;s core contribution is a novel inference-based materialized view enumeration technique that reduces the search space of views that need to be considered. When using Kaskade for optimizing graph queries over a real-world production workload at Microsoft, we see reasonable speedups over a set of representative queries.</description>
     </item>
-    
+
     <item>
       <title>Kyrix: A Detail-on-Demand Visualization System</title>
       <link>http://dsg.csail.mit.edu/projects/active/kyrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/kyrix/</guid>
       <description>Kyrix is a “detail-on-demand” visualization system. As such, it supports a pan/zoom/jump interface similar to Google Maps. The benefit of such systems is the interface can be learned quickly and no user manual is required. Also, it facilitates browsing over large amounts of data, drilling into areas of interest to get more information. Although Kyrix is a natural on geographic data, it can also be used on many other kinds of data that are amenable to a two-dimensional layout.</description>
     </item>
-    
+
     <item>
       <title>Learned Index for Range Queries</title>
       <link>http://dsg.csail.mit.edu/projects/active/learned-index/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/learned-index/</guid>
       <description>We are exploring an index that incorporates knowledge of the data distribution through machine learning (ML) models to achieve comparable insert time, better lookup time, and smaller index size than a B-tree across a variety of datasets.
 This is a joint project with the Database Group at Microsoft Research.
 Participants Tim Kraska</description>
     </item>
-    
+
     <item>
       <title>Learned Multi-Dimensional Index for Date Warehouses</title>
       <link>http://dsg.csail.mit.edu/projects/active/learned-multi-index/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/learned-multi-index/</guid>
       <description>Given a multi-dimensional table in a data warehouse, an analyst will often want to run queries on subsets of those dimensions. For example, given a table that tracks employee attributes such as age, salary, level, and start date, one possible range query is, “Return all employees between ages 25-30 with salary between $90K and $100K.&amp;rdquo;
 Current methods for indexing multi-dimensional data are often unsatisfactory when there are many dimensions that are used in small combinations in queries.</description>
     </item>
-    
+
     <item>
       <title>Mapster</title>
       <link>http://dsg.csail.mit.edu/projects/active/mapster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/mapster/</guid>
       <description>Our goal is to leverage GPS trajectories, satellite and aerial imagery, drone imagery, and other data sources to improve the accuracy and coverage of maps, and to reduce the delay between physical road network changes and updates to the map.
 Learn more at https://mapster.csail.mit.edu/</description>
     </item>
-    
+
     <item>
       <title>Near Cloud Storage Computer</title>
       <link>http://dsg.csail.mit.edu/projects/active/near-storage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/near-storage/</guid>
       <description>Modern cloud platforms disaggregate computation and storage into separate services. In this project, we explored the idea of using the limited computation inside the simple storage service (S3) offered by AWS to accelerate data analytics. We use the existing S3 Select feature to accelerate not only simple database operators like select and project, but also complex operators like join, group-by, and top-K. We propose optimization techniques for each individual operator and demonstrate more than 6x performance improvement over a set of representative queries.</description>
     </item>
-    
+
     <item>
       <title>Northrup Grumman - A Real-Time Urban Information System</title>
       <link>http://dsg.csail.mit.edu/projects/active/northrup-grumman/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/northrup-grumman/</guid>
       <description>This project is integrating, in real time, public data from the city of Cambridge on parcels, permits, parking meters, traffic lights, traffic signs, etc. with data from dashboard cameras, drones and a Twitter feed. We are employing machine learning to find information from dash cams and drones, NLP to digest Twitter, and a real time data integration system for structured data. This system will also support modelling of users to discover interests, and then will send alerts to them when things they might be interested in occur.</description>
     </item>
-    
+
     <item>
       <title>Northstar - Making Data Science More Interactive</title>
       <link>http://dsg.csail.mit.edu/projects/active/northstar/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/northstar/</guid>
       <description>Unleashing the potential of Big Data for a broader range of users requires a paradigm shift in the algorithms and tools used to analyze data. Exploring complex datasets needs more than a simple question-and-response interface. Ideally, the user and the system would engage in a “conversation,&amp;rsquo;&amp;rsquo; each party contributing what it does best. The user can contribute judgment and direction, while the machine can contribute its ability to process massive amounts of data, perhaps even predicting what the user might require next.</description>
     </item>
-    
+
     <item>
       <title>Taurus Parallel Logging</title>
       <link>http://dsg.csail.mit.edu/projects/active/taurus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/taurus/</guid>
-      <description>Most databases adopt write-ahead logging for fault tolerance, wherein transactions log undo and redo records to persistent storage as a single stream. After a crash, transactions are recovered following the order in the log. The single log stream limits scalability on today&#39;s massively parallel processors. Taurus is a parallel logging algorithm that supports multiple log streams. For transactions to recover in the correct order after a crash, Taurus logs the order information compressed as a per-transaction vector of timestamps.</description>
+      <description>Most databases adopt write-ahead logging for fault tolerance, wherein transactions log undo and redo records to persistent storage as a single stream. After a crash, transactions are recovered following the order in the log. The single log stream limits scalability on today&amp;rsquo;s massively parallel processors. Taurus is a parallel logging algorithm that supports multiple log streams. For transactions to recover in the correct order after a crash, Taurus logs the order information compressed as a per-transaction vector of timestamps.</description>
     </item>
-    
+
     <item>
       <title>TGDB: A System for Efficient Temporal Graph Analytics</title>
       <link>http://dsg.csail.mit.edu/projects/active/tgdb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+
       <guid>http://dsg.csail.mit.edu/projects/active/tgdb/</guid>
       <description>Many real-world graphs appear as a massive temporal stream of edges and/or node updates. Examples include diverse types of interaction networks, such as communication activity in social graphs, vehicle and pedestrian traffic in road networks, molecular interaction in biological networks, and telemetry or provenance events in datacenter networks. These large-scale graphs present additional challenges for efficient graph query processing, such as heterogeneity (e.g., different types of nodes and edges in the same graph), as well as querying use cases that require support for analysis at multi-layer (e.</description>
     </item>
-    
+
   </channel>
 </rss>
