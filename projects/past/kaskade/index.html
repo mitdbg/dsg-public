@@ -223,7 +223,7 @@ main {
 }
 }
 </style>
-    <title>Data Systems Group @ MIT</title>
+    <title>Kaskade - DSG @ MIT</title>
     <style>
 .association-img {
   max-height: 100px;
@@ -251,7 +251,7 @@ main {
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="app-navbar">
       <div class='container'>
         <a class="navbar-brand desktop" href="/">
-          <img src='/img/logo.jpg' style='height: 50px;' />
+          <img src='/img/logo.png' style='height: 50px;' />
         </a>
         <a class="navbar-brand mobile" href="/">
           <img src='/img/logo-mobile.jpeg' style='height: 50px;' />
@@ -284,7 +284,7 @@ main {
     <main>
       <div class='container'>
         <div class='row'>
-          <div class='col-md-9'>
+          <div class='col-md-10 offset-md-1'>
             <h3 class='bd-title'>Kaskade<br> <small></small></h3>
             <hr>
             <p>In collaboration with folks at the Microsoft Gray Systems Lab (formerly known as CISL), we designed and implemented Kaskade, a query optimization framework that exploits materialized graph views for query optimization purposes. Kaskade employs a novel inference-based view enumeration technique that significantly reduces the search space of views that need to be considered. Moreover, it introduced a graph view size estimator to pick the most beneficial views to materialize given a query set and to select the best query evaluation plan given a set of materialized views. We evaluated its performance over real-world graphs, including a large-scale provenance graph maintained at Microsoft that enables auditing, service analytics, and advanced system optimizations. Our results showed that Kaskade substantially reduces the effective graph size and yields significant performance speedups (up to 50x), in some cases making otherwise intractable queries possible.</p>

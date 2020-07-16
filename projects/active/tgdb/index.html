@@ -223,7 +223,7 @@ main {
 }
 }
 </style>
-    <title>Data Systems Group @ MIT</title>
+    <title>TGDB: A System for Efficient Temporal Graph Analytics - DSG @ MIT</title>
     <style>
 .association-img {
   max-height: 100px;
@@ -251,7 +251,7 @@ main {
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="app-navbar">
       <div class='container'>
         <a class="navbar-brand desktop" href="/">
-          <img src='/img/logo.jpg' style='height: 50px;' />
+          <img src='/img/logo.png' style='height: 50px;' />
         </a>
         <a class="navbar-brand mobile" href="/">
           <img src='/img/logo-mobile.jpeg' style='height: 50px;' />
@@ -284,7 +284,7 @@ main {
     <main>
       <div class='container'>
         <div class='row'>
-          <div class='col-md-9'>
+          <div class='col-md-10 offset-md-1'>
             <h3 class='bd-title'>TGDB: A System for Efficient Temporal Graph Analytics<br> <small></small></h3>
             <hr>
             <p>Many real-world graphs appear as a massive temporal stream of edges and/or node updates.  Examples include diverse types of interaction networks, such as communication activity in social graphs, vehicle and pedestrian traffic in road networks, molecular interaction in biological networks, and telemetry or provenance events in datacenter networks. These large-scale graphs present additional challenges for efficient graph query processing, such as heterogeneity (e.g., different types of nodes and edges in the same graph), as well as querying use cases that require support for analysis at multi-layer (e.g., different aggregation levels) and/or multi-view slices of the graph (e.g., wall posts vs likes on a Facebook social graph). To the extent of our knowledge, however, little work has focused on supporting efficient query processing on massive heterogeneous temporal networks. Furthermore, existing research in temporal network analysis has largely focused on graph algorithms for dynamic graphs, with little focus on efficient language and system support for multilayer and multi-view graph data processing and subgraph matching. To this end, we are designing and implementing a graph analytics system that supports primitives for efficient temporal analysis of large-scale networks.  Our current focus is on data-structures &ndash; either novel ones, or extensions to the familiar CSR (Compressed Sparse Row) and LSM (Log-Structured Merge Trees) &ndash; that provide better cache locality for target temporal graph analytics workloads.</p>

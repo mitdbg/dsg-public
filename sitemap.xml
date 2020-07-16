@@ -4,22 +4,10 @@
   
   <url>
     <loc>http://dsg.csail.mit.edu/mlforsystems/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://dsg.csail.mit.edu/mlforsystems/flood/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>http://dsg.csail.mit.edu/people/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://dsg.csail.mit.edu/projects/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -67,7 +55,11 @@
   </url>
   
   <url>
-    <loc>http://dsg.csail.mit.edu/projects/active/learned-multi-index/</loc>
+    <loc>http://dsg.csail.mit.edu/projects/active/learned-multi-index-dw/</loc>
+  </url>
+  
+  <url>
+    <loc>http://dsg.csail.mit.edu/projects/active/flood/</loc>
   </url>
   
   <url>

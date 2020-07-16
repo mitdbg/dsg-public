@@ -223,7 +223,7 @@ main {
 }
 }
 </style>
-    <title>Crystal - DSG @ MIT</title>
+    <title>Learning Multi-Dimensional Indexes - DSG @ MIT</title>
     <style>
 .association-img {
   max-height: 100px;
@@ -285,14 +285,11 @@ main {
       <div class='container'>
         <div class='row'>
           <div class='col-md-10 offset-md-1'>
-            <h3 class='bd-title'>Crystal<br> <small></small></h3>
+            <h3 class='bd-title'>Learning Multi-Dimensional Indexes<br> <small></small></h3>
             <hr>
-            <p>Businesses have always used always used data and analytics to make business decisions.</p>
-<p>As a result of exponential data growth and the challenges associated with processing large amount of data, a number of fast, in-memory analytical solutions have been developed in recent years, including systems Hyper and Vectorwise.  Several vendors now offer a high-performance in-memory analytics system. As data volumes continue to increase and Moore’s Law no longer offers the hope of better CPU performance, researchers have increasingly looked at new architectures to increase performance.  Of particular interest are massively parallel GPU-like architectures.</p>
-<p>Data analytics are inherently highly parallel and thus are a perfect fit for the execution model of GPUs. Over the past decade, GPU hardware has improved significantly.  A modern GPU has 16GB-24GB of high-bandwidth memory capable of delivering 480-750GBps memory bandwidth and 14 Tflops of compute. This can be compared to a single CPU that has 1TB of memory with 60GBps memory bandwidth and ~ 1TFlop of compute. As most data analytic operations are memory- or compute- bound, significant performance gains are plausible from running on GPUs.  It is also possible to have multiple GPUs attached to a single host (up to 8 today), which will further enhance performance.</p>
-<p>However, there are a number of challenges associated with using GPUs for data analytics.  In this project, we are building a hybrid GPU-CPU data processing system called Crystal, focusing on new GPU-data processing algorithms as well as a cost model for predicting on which processor to run computation.</p>
-<h4 id="participants">Participants</h4>
-<p>Sam Madden, Anil Shanbhag</p>
+            <p>Scanning and filtering over multi-dimensional tables are key operations in modern analytical database engines. To optimize the performance of these operations, databases often create clustered indexes over a single dimension or multidimensional indexes such as R-Trees, or use complex sort orders (e.g., Z-ordering). However, these schemes are often hard to tune and their performance is inconsistent across different datasets and queries. In this paper, we introduce Flood, a multi-dimensional in-memory read-optimized index that automatically adapts itself to a particular dataset and workload by jointly optimizing the index structure and data storage layout. Flood achieves up to three orders of magnitude faster performance for range scans with predicates than state-of-theart multi-dimensional indexes or sort orders on real-world datasets and workloads. Our work serves as a building block towards an end-to-end learned database system.</p>
+<h2 id="publications">Publications</h2>
+<p><a href="https://arxiv.org/pdf/1912.01668.pdf">Learning Multi-dimensional Indexes</a>. SIGMOD 2020. Vikram Nathan*, Jialin Ding*, Mohammad Alizadeh, Tim Kraska</p>
 
           </div>
           <div class='col-md-3'>
