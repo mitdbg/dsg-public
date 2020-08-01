@@ -273,15 +273,17 @@ main {
               </p>
               <h2 class='bd-title'>Data Access </h2>
               <p>Storage layout and index structures are the most important factors to guarantee efficient data access, and both
-              are amenable to be enhanced by learned data and workload models. The original work on <a href="https://arxiv.org/pdf/1712.01208.pdf">learned indexes</a> showed that replacing traditional index structures with learned models can improve data access times while reducing memory footprint. Since then, we have worked to make learned indexes <a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/04/MSRAlexTechnicalReport.pdf">more practical</a>, developed <a href="/projects/flood/">learned multi-dimensional indexes</a>, created a <a href="https://learned.systems/papers/sosd.pdf">benchmark for learned index structures</a>, and applied learned indexes to <a href="https://arxiv.org/pdf/1910.04728.pdf">DNA sequence search</a>.</p>
+              are amenable to be enhanced by learned data and workload models. The original work on <a href="https://arxiv.org/pdf/1712.01208.pdf">learned indexes</a> showed that replacing traditional index structures with learned models can improve data access times while reducing memory footprint. Since then, we have worked to make learned indexes <a href="https://dl.acm.org/doi/pdf/10.1145/3318464.3389711">more practical</a>, developed <a href="https://arxiv.org/pdf/2006.13282.pdf">learned multi-dimensional indexes</a>, created a <a href="https://arxiv.org/pdf/2006.12804.pdf">benchmark for learned index structures</a>, and applied learned indexes to <a href="https://arxiv.org/pdf/1910.04728.pdf">DNA sequence search</a>.</p>
               <p>Publications:</p>
               <ul>
                 <li><a href="https://arxiv.org/pdf/1712.01208.pdf">The Case for Learned Index Structures. SIGMOD 2018.</a> Tim Kraska, Alex Beutel, Ed Chi, Jeffrey Dean, Neoklis Polyzotis</li>
                 <li><a href="https://learned.systems/papers/sosd.pdf">SOSD: A Benchmark for Learned Indexes. NeurIPS Workshop on ML for Systems 2019.</a> Andreas Kipf*, Ryan Marcus*, Alexander van Renen*, Mihail Stoian, Alfons Kemper, Tim Kraska, Thomas Neumann</li>
                 <li><a href="https://arxiv.org/pdf/1910.04728.pdf">LISA: Towards Learned DNA Sequence Search. NeurIPS Workshop on Systems for ML 2019.</a> Darryl Ho, Jialin Ding, Sanchit Misra, Nesime Tatbul, Vikram Nathan, Vasimuddin Md, Tim Kraska</li>
                 <li><a href="https://arxiv.org/pdf/1912.01668.pdf">Learning Multi-dimensional Indexes. SIGMOD 2020.</a> Vikram Nathan*, Jialin Ding*, Mohammad Alizadeh, Tim Kraska</li>
-                <li><a href="http://sigmod2020.org/">CDFShop: Exploring and Optimizing Learned Index Structures. SIGMOD 2020 (demo).</a> Ryan Marcus, Emily Zhang, Tim Kraska</li>
-                <li><a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/04/MSRAlexTechnicalReport.pdf">ALEX: An Updatable Adaptive Learned Index. SIGMOD 2020.</a> Jialin Ding, Umar Farooq Minhas, Jia Yu, Chi Wang, Jaeyoung Do, Yinan Li, Hantian Zhang, Badrish Chandramouli, Johannes Gehrke, Donald Kossmann, David Lomet, Tim Kraska</li>
+                <li><a href="https://dl.acm.org/doi/pdf/10.1145/3318464.3384706">CDFShop: Exploring and Optimizing Learned Index Structures. SIGMOD 2020 (demo).</a> Ryan Marcus, Emily Zhang, Tim Kraska</li>
+                <li><a href="https://dl.acm.org/doi/pdf/10.1145/3318464.3389711">ALEX: An Updatable Adaptive Learned Index. SIGMOD 2020.</a> Jialin Ding, Umar Farooq Minhas, Jia Yu, Chi Wang, Jaeyoung Do, Yinan Li, Hantian Zhang, Badrish Chandramouli, Johannes Gehrke, Donald Kossmann, David Lomet, Tim Kraska</li>
+                <li><a href="https://arxiv.org/pdf/2006.12804.pdf">Benchmarking Learned Indexes. VLDB 2021.</a> Ryan Marcus, Andreas Kipf, Alexander van Renen, Mihail Stoian, Sanchit Misra, Alfons Kemper, Thomas Neumann, Tim Kraska</li>
+                <li><a href="https://arxiv.org/pdf/2006.13282.pdf">Tsunami: A Learned Multi-dimensional Index for Correlated Data and Skewed Workloads. VLDB 2021.</a> Jialin Ding, Vikram Nathan, Mohammad Alizadeh, Tim Kraska</li>
               </ul>
               <h2 class='bd-title'>Query Execution </h2>
               <p>Learning the data distribution can also be used to speed up query execution. In particular, we are applying learned techniques to <a href="https://dl.acm.org/doi/pdf/10.1145/3318464.3389752">sorting</a>, <a href="https://web.mit.edu/decima/content/sigcomm-2019.pdf">scheduling</a>, and joins.</p>
@@ -292,20 +294,21 @@ main {
               </ul>
               <h2 class='bd-title'>Query Optimization </h2>
               <p>Traditional query optimizers are extremely hard to build,
-              maintain, and often yield sub-optimal query plans. The brittleness and complexity of the optimizer makes it a good candidate to be learned. We have introduced the first <a href="http://www.vldb.org/pvldb/vol12/p1705-marcus.pdf">end-to-end learned query optimizer</a>, and we are currently exploring how to generalize it to unseen data and schemas. We are also exploring <a href="http://db.cs.pitt.edu/smdb2020/">learning-based cardinality estimation</a> techniques.</p>
+              maintain, and often yield sub-optimal query plans. The brittleness and complexity of the optimizer makes it a good candidate to be learned. We have introduced the first <a href="http://www.vldb.org/pvldb/vol12/p1705-marcus.pdf">end-to-end learned</a> <a href="https://arxiv.org/pdf/2004.03814.pdf">query optimizer</a>. We are also exploring <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9094107">learning-based cardinality estimation</a> techniques.</p>
               <p>Publications:</p>
               <ul>
                 <li><a href="http://www.vldb.org/pvldb/vol12/p1705-marcus.pdf">Neo: A Learned Query Optimizer. VLDB 2019.</a> Ryan Marcus, Parimarjan Negi, Hongzi Mao, Chi Zhang, Mohammad Alizadeh, Tim Kraska, Olga Papaemmanouil, Nesime Tatbul</li>
-                <li><a href="http://db.cs.pitt.edu/smdb2020/">Cost-Guided Cardinality Estimation: Focus Where it Matters. SMDB 2020.</a> Parimarjan Negi, Ryan Marcus, Hongzi Mao, Nesime Tatbul, Tim Kraska, Mohammad Alizadeh</li>
+                <li><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9094107">Cost-Guided Cardinality Estimation: Focus Where it Matters. SMDB 2020.</a> Parimarjan Negi, Ryan Marcus, Hongzi Mao, Nesime Tatbul, Tim Kraska, Mohammad Alizadeh</li>
+                <li><a href="https://arxiv.org/pdf/2004.03814.pdf">Bao: Learning to Steer Query Optimizers. Preprint.</a> Ryan Marcus, Parimarjan Negi, Hongzi Mao, Nesime Tatbul, Mohammad Alizadeh, Tim Kraska</li>
               </ul>
               <h2 class='bd-title'>Open Source </h2>
-              <p>We have open-sourced a number of our projects, including <a href="https://github.com/learnedsystems/sosd">SOSD</a>, a benchmark for learned index structures; a <a href="https://github.com/learnedsystems/RMI">reference implementation of the recursive model index (RMI)</a> described in the original <a href="https://arxiv.org/pdf/1712.01208.pdf">learned index paper</a>; and <a href="https://github.com/park-project/park">Park</a>, a platform for researchers to experiment with Reinforcement Learning (RL) for various systems problems.</p>
-              <p>Open-source repositories (with associated publication):</p>
+              <p>We have open-sourced a number of our projects:</p>
               <ul>
-                <li>Search on Sorted Data Benchmark (SOSD). <a href="https://github.com/learnedsystems/sosd">https://github.com/learnedsystems/sosd</a>. (<a href="https://learned.systems/papers/sosd.pdf">Link to NeurIPS 2019 workshop paper</a>)</li>
-                <li>Reference implementation of recursive model index (RMI). <a href="https://github.com/learnedsystems/RMI">https://github.com/learnedsystems/RMI</a>. (<a href="https://learned.systems/papers/sosd.pdf">Link to NeurIPS 2019 workshop paper</a>)</li>
-                <li>Park: An Open Platform for Learning Augmented Computer Systems. <a href="https://github.com/park-project/park">https://github.com/park-project/park</a>. (<a href="https://papers.nips.cc/paper/8519-park-an-open-platform-for-learning-augmented-computer-systems.pdf">Link to NeurIPS 2019 paper</a>)</li>
+                <li>Search on Sorted Data Benchmark (SOSD). <a href="https://github.com/learnedsystems/sosd">https://github.com/learnedsystems/sosd</a>.</li>
+                <li>Reference implementation of recursive model index (RMI). <a href="https://github.com/learnedsystems/RMI">https://github.com/learnedsystems/RMI</a>.</li>
+                <li>Park: An Open Platform for Learning Augmented Computer Systems. <a href="https://github.com/park-project/park">https://github.com/park-project/park</a>.</li>
                 <li>Reference implementation of Learned Sort. <a href="https://github.com/learnedsystems/LearnedSort">https://github.com/learnedsystems/LearnedSort</a>.</li>
+                <li>ALEX: An Updatable Adaptive Learned Index. <a href="https://github.com/microsoft/ALEX">https://github.com/microsoft/ALEX</a>.</li>
               </ul>
             </div>
           </div>
