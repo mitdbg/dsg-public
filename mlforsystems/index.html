@@ -222,11 +222,51 @@ main {
   display: none;
 }
 }
+
+blockquote {
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content:open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote:after {
+  content:no-close-quote;
+}
+blockquote p {
+  display: inline;
+}
+
 </style>
     <title>ML for Systems Projects</title>
 
   </head>
   <body>
+    <script type="text/javascript">
+    function display(action, id)
+    {
+    if (action == 'show')
+    {
+    document.getElementById("explanation"+id).style.display = "block";
+    document.getElementById("link"+id).href= "javascript:display('hide', "+id+")";
+    document.getElementById("link"+id).innerHTML = "Collapse quotes";
+    }
+
+    if (action == 'hide')
+    {
+    document.getElementById("explanation"+id).style.display = "none";
+    document.getElementById("link"+id).href= "javascript:display('show', "+id+")";
+    document.getElementById("link"+id).innerHTML = "Click here for more quotes..";
+    }
+    }
+    </script>
+    
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="app-navbar">
       <div class='container'>
         <a class="navbar-brand desktop" href="/">
@@ -272,7 +312,16 @@ main {
               <p>We provide an overview of data systems components that we are currently working on, with more detailed project descriptions in the links, as well as a list of open-source repositories:
               </p>
               <h2 class='bd-title'>Data Access </h2>
-              <p>Storage layout and index structures are the most important factors to guarantee efficient data access, and both
+                <blockquote><p>Machine Learning just ate Algorithms in one large bite, thx to @tim_kraska, @alexbeutel, @edchi, @JeffDean & Polyzotis at @Google—faster, smaller trees, hashes, bloom filters</p>&mdash; Christopher Manning, Professor at Stanford</blockquote>
+                <div style="text-align:right;margin-top: -20px; ">    
+                <a id="link1" href="javascript:display('show', 1)">Click here for more quotes.</a>
+                </div>
+                <div id="explanation1" style="display:none">
+                  <blockquote><p>Wow! This could have huge benefits >> The Case for Learned Index Structures</p>&mdash; Kirk Borne, Principal Data Scientist at Booz Allen</blockquote>
+                  <blockquote><p>The first really radical approach to database indexing I have found since B-Trees and R-Trees</p>&mdash; Anant Jhingran, former VP and CTO for IBM’s Information Management Division</p></blockquote>
+                  <blockquote><p>This paper [Learned Indexes] blew my mind. I spent 100% of college and grad school on indexes. Geez, didn't think that would be a waste of time. ;-)</p>&mdash; Steven Sinofsky, Board Partner at A16Z and former President of Microsoft's Windows Division</a></p></blockquote>  
+                </div>
+              <p style="margin-top:20px; ">Storage layout and index structures are the most important factors to guarantee efficient data access, and both
               are amenable to be enhanced by learned data and workload models. The original work on <a href="https://arxiv.org/pdf/1712.01208.pdf">learned indexes</a> showed that replacing traditional index structures with learned models can improve data access times while reducing memory footprint. Since then, we have worked to make learned indexes <a href="https://dl.acm.org/doi/pdf/10.1145/3318464.3389711">more practical</a>, developed <a href="https://arxiv.org/pdf/2006.13282.pdf">learned multi-dimensional indexes</a>, created a <a href="https://arxiv.org/pdf/2006.12804.pdf">benchmark for learned index structures</a>, and applied learned indexes to <a href="https://arxiv.org/pdf/1910.04728.pdf">DNA sequence search</a>.</p>
               <p>Publications:</p>
               <ul>
