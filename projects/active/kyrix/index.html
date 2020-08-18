@@ -244,7 +244,7 @@ blockquote p {
 }
 
 </style>
-    <title>Kyrix: A Detail-on-Demand Visualization System - DSG @ MIT</title>
+    <title>Kyrix: Democratizing Details-on-Demand Data Visualizations - DSG @ MIT</title>
     <style>
 .association-img {
   max-height: 100px;
@@ -306,24 +306,32 @@ blockquote p {
       <div class='container'>
         <div class='row'>
           <div class='col-md-10 offset-md-1'>
-            <h3 class='bd-title'>Kyrix: A Detail-on-Demand Visualization System<br> <small></small></h3>
+            <h3 class='bd-title'>Kyrix: Democratizing Details-on-Demand Data Visualizations<br> <small></small></h3>
             <hr>
-            <p>Kyrix is a “detail-on-demand” visualization system.  As such, it supports a pan/zoom/jump interface similar to Google Maps. The benefit of such systems is the interface can be learned quickly and no user manual is required.  Also, it facilitates browsing over large amounts of data, drilling into areas of interest to get more information.  Although Kyrix is a natural on geographic data, it can also be used on many other kinds of data that are amenable to a two-dimensional layout.  Many detail-on-demand systems have been constructed for various kinds of data. However, these have generally been hard-coded to support exactly that class of applications.  In contrast, Kyrix is easily programmable to support any kinds of objects, not just maps or satellite imagery.</p>
+            <p>Kyrix is an <a href="https://github.com/tracyhenry/kyrix">open-source system</a> which facilitates the creation of data visualizations with details-on-demand interactions. As such, it supports a pan/zoom/jump interface similar to Google Maps. The benefit of such systems is the interface can be learned quickly and no user manual is required.  Also, it facilitates browsing over large amounts of data, drilling into areas of interest to get more information.  Although Kyrix is a natural on geographic data, it can also be used on many other kinds of data that are amenable to a two-dimensional layout:</p>
+<p><img src="https://media.giphy.com/media/lQ1c2HSDKnAcPp0snN/giphy.gif" alt="Alt text for my gif"></p>
+<p>Many detail-on-demand systems have been constructed for various kinds of data. However, these have generally been hard-coded to support exactly that class of applications. In contrast, Kyrix is easily programmable to support any kinds of objects, not just maps or satellite imagery.</p>
 <p>The Kyrix system makes use of the following concepts:</p>
-<blockquote>
-<p>Any number of two dimensional canvases, on which users can place objects.
-An SQL command that can retrieve from a database the objects to appear on the canvas.
-A location function for each canvas, which indicates where on the canvas any object should be placed.
-A rendering function that determines the visual representation of an object on the screen.  Rendering functions must be written in D3, which has a large prebuilt library of such functions.
-The notion of layers of a canvas so multiple kinds of objects can appear on the screen.
-The notion of a jump, whereby a user can point to an object and move to one or more related canvases.  One special case of a jump is to obtain more information, i.e., drill down.
-Kyrix is written primarily in JavaScript and is now operational.   Links to three Kyrix demos appear at the bottom of this page.</p>
-</blockquote>
-<p>We expect Kyrix will be used as a “data browser” for the Data Civilizer system, through which a user can navigate a large data set and drill down on objects of interest.  We have also been talking with a sleep study group at Massachusetts General Hospital (MGH) that wants to visualize EEG data in a variety of ways. In addition, there is a machine learning component to classify interesting waveform patterns based on training data.  Most of MGH’s proposed application can be done by current Kyrix, and we are using this application to suggest additional features.</p>
-<p>For example, the group wants the ability to have multiple canvases on the screen with related data in separate windows.  All windows are populated with data. However, they want the canvases/windows to be coordinated. That is, when a pan/zoom/jump is performed in one window, a corresponding action would be taken in a related window. For example, if the user pans one canvas, a similar pan should be performed automatically in another canvas or canvases.</p>
-<p>We are also working on Kyrix optimizations to support response times of 500 msec or less.  Please refer to our CIDR paper and our EuroVis paper for more details.</p>
+<ul>
+<li>Any number of two dimensional <strong>canvases</strong>, on which users can place objects.</li>
+<li>An <strong>SQL command</strong> that can retrieve from a database the objects to appear on the canvas.</li>
+<li>A <strong>location function</strong> for each canvas, which indicates where on the canvas any object should be placed.</li>
+<li>A <strong>rendering function</strong> that determines the visual representation of an object on the screen. Rendering functions must be written in D3, which has a large prebuilt library of such functions.</li>
+<li>The notion of <strong>layers</strong> of a canvas so multiple kinds of objects can appear on the screen.</li>
+<li>The notion of a <strong>jump</strong>, whereby a user can point to an object and move to one or more related canvases.  One special case of a jump is to obtain more information, i.e., drill down.</li>
+</ul>
+<h4 id="kyrix-s">Kyrix-S</h4>
+<p>Kyrix-S is an extension to Kyrix, which focuses on optimizing large-scale scatterplot-like visualizations. By augmenting Kyrix with a more concise visualization grammar, Kyrix-S enables the developer to quickly author a complex multi-zoom-level visualization in a few tens of lines of code.</p>
+<p>An example visualization with one billion Reddit comments can be found <a href="https://youtu.be/ccES97ni_vI">here</a>. Behind the scenes, Kyrix-S talks to Citus, a multi-node distributed PostgresQL database. We developed a distributed algorithm which automatically infers object placement on all zoom levels, and stores them in Citus for scalability. Kyrix-S is now <a href="https://github.com/tracyhenry/kyrix">open-sourced</a> as part of the first public release of Kyrix.</p>
+<h4 id="kyrix-in-the-wild">Kyrix in the Wild</h4>
+<p>We have applied Kyrix to build an in-production system for the neurology group at Massachusetts General Hospital (MGH) on 30T of EEG sleep study data (<a href="https://youtu.be/fZ32cE8KEi0">demo</a>). We also have a visual data explorer for the infectious disease group at MGH, a genomics browser (in conjunction with Paradigm4), a roadside assistance viewer for Agero, a browser into Internet traffic (in conjunction with Recorded Futures), and a browser for the MIT Data Civilizer data integration system. Some Kyrix demos videos appear at the bottom of this page.</p>
+<p>We&rsquo;d like to learn more about real-world application requirements to make Kyrix better. If you have a Kyrix app in mind for your data, please reach out to us (Wenbo Tao: <a href="mailto:wenbo@mit.edu">wenbo@mit.edu</a>, and Mike Stonebraker: <a href="mailto:stonebraker@csail.mit.edu">stonebraker@csail.mit.edu</a>).</p>
+<h4 id="citations">Citations</h4>
+<p>Wenbo Tao, Xinli Hou, Adam Sah, Leilani Battle, Remco Chang and Michael Stonebraker. <a href="https://arxiv.org/pdf/2007.15904.pdf">Kyrix-S: Authoring Scalable Scatterplot Visualizations of Big Data</a>. IEEE Information Visualization (InfoVis at VIS) 2020.</p>
+<p>Wenbo Tao, Xiaoyu Liu, Yedi Wang, Leilani Battle, Cagatay Demiralp, Remco Chang and Michael Stonebraker. <a href="http://web.mit.edu/wenbo/www/kyrix_eurovis.pdf">Kyrix: Interactive Pan/Zoom Visualizations at Scale</a>. Eurographics Conference on Visualization (EuroVis) 2019.</p>
+<p>Wenbo Tao, Xiaoyu Liu, Cagatay Demiralp, Remco Chang and Michael Stonebraker. <a href="http://cidrdb.org/cidr2019/papers/p70-tao-cidr19.pdf">Kyrix: Interactive Visual Data Exploration at Scale</a>. Conference on Innovative Data Systems Research (CIDR) 2019.</p>
 <h4 id="participants">Participants</h4>
-<p>Michael Stonebraker, Lei Cao, Elkindi Rezig, Wenbo Tao, Xiaoyu Liu</p>
+<p>Wenbo Tao, Erica Zhou, Peter Griggs, Amy Zhang, Leilani Battle, Remco Chang, Michael Stonebraker</p>
 
           </div>
           <div class='col-md-3'>

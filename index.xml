@@ -77,12 +77,12 @@ When business conditions change (and they do at least once a quarter), then upda
     </item>
     
     <item>
-      <title>Kyrix: A Detail-on-Demand Visualization System</title>
+      <title>Kyrix: Democratizing Details-on-Demand Data Visualizations</title>
       <link>http://dsg.csail.mit.edu/projects/active/kyrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://dsg.csail.mit.edu/projects/active/kyrix/</guid>
-      <description>Kyrix is a “detail-on-demand” visualization system. As such, it supports a pan/zoom/jump interface similar to Google Maps. The benefit of such systems is the interface can be learned quickly and no user manual is required. Also, it facilitates browsing over large amounts of data, drilling into areas of interest to get more information. Although Kyrix is a natural on geographic data, it can also be used on many other kinds of data that are amenable to a two-dimensional layout.</description>
+      <description>Kyrix is an open-source system which facilitates the creation of data visualizations with details-on-demand interactions. As such, it supports a pan/zoom/jump interface similar to Google Maps. The benefit of such systems is the interface can be learned quickly and no user manual is required. Also, it facilitates browsing over large amounts of data, drilling into areas of interest to get more information. Although Kyrix is a natural on geographic data, it can also be used on many other kinds of data that are amenable to a two-dimensional layout:</description>
     </item>
     
     <item>
