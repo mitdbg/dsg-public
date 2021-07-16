@@ -1,97 +1,51 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>http://dsg.csail.mit.edu/mlforsystems/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/people/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/alpine-meadow/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/past/amoeba/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/crystal/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/data-civilizer/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/dbdesign/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/drone/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/past/kaskade/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/kyrix/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/learned-index/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/learned-multi-index-dw/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/flood/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/mapster/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/near-storage/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/northrup-grumman/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/northstar/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/tags/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/taurus/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://dsg.csail.mit.edu/projects/active/tgdb/</loc>
   </url>
-  
 </urlset>
