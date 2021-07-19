@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
       <meta charset="utf-8">
@@ -246,6 +246,16 @@ blockquote p {
 
 </style>
   <title>ML for Systems Papers</title>
+  <style>
+    h3::before {
+      display: block;
+      content: " ";
+      margin-top: -80px;
+      height: 80px;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -294,6 +304,1700 @@ blockquote p {
               If you would like to be informed about new research papers, subscribe <a
                 href="https://lists.csail.mit.edu/mailman/listinfo/mlsyspapers" target="_blank">here</a>.
             </p>
+            <p><strong>Acknowledgement:</strong> Parts of this list were sourced from <a
+                href="https://github.com/LumingSun/ML4DB-paper-list" target="_blank">this repository.</a></p>
+            <h3 id="table-of-contents">Table of Contents</h3>
+            <ul>
+              
+              <li><a href="#tutorials-surveys">Tutorials / Surveys</a></li>
+              
+              <li><a href="#learned-range-indexes">Learned Range Indexes</a></li>
+              
+              <li><a href="#new-learned-index-applications">New Learned Index Applications</a></li>
+              
+              <li><a href="#learned-multidimensional-indexing-storage-layouts">Learned Multi-Dimensional Indexing &amp; Storage Layouts</a></li>
+              
+              <li><a href="#learned-bloom-filters">Learned Bloom Filters</a></li>
+              
+              <li><a href="#hashmaps">Hash-Maps</a></li>
+              
+              <li><a href="#partitioning">Partitioning</a></li>
+              
+              <li><a href="#data-compressions">Data Compressions</a></li>
+              
+              <li><a href="#systems-and-general-optimizations">Systems and General Optimizations</a></li>
+              
+              <li><a href="#index-recommendation">Index Recommendation</a></li>
+              
+              <li><a href="#configuration-tuning">Configuration Tuning</a></li>
+              
+              <li><a href="#cardinality-selectivity-estimation">Cardinality / Selectivity Estimation</a></li>
+              
+              <li><a href="#data-based-cardinality-estimation">Data-based Cardinality Estimation</a></li>
+              
+              <li><a href="#query-based-cardinality-estimation">Query-based Cardinality Estimation</a></li>
+              
+              <li><a href="#cost-estimation">Cost Estimation</a></li>
+              
+              <li><a href="#query-optimization">Query Optimization</a></li>
+              
+              <li><a href="#query-processing">Query Processing</a></li>
+              
+              <li><a href="#scheduling">Scheduling</a></li>
+              
+              <li><a href="#caching">Caching</a></li>
+              
+              <li><a href="#sorting">Sorting</a></li>
+              
+              <li><a href="#garbage-collection">Garbage Collection</a></li>
+              
+              <li><a href="#sketches">Sketches</a></li>
+              
+              <li><a href="#compilation-compilers">Compilation / Compilers</a></li>
+              
+              <li><a href="#sqlrelated">SQL-Related</a></li>
+              
+              <li><a href="#workload-related">Workload Related</a></li>
+              
+            </ul>
+            
+            <h3 id="tutorials-surveys">Tutorials / Surveys</h3>
+            <ol>
+              
+              <li>
+                <strong>From Auto-tuning One Size Fits All to Self-designed and Learned Data-intensive Systems.</strong>
+                Stratos Idreos, Tim Kraska.
+                <em>SIGMOD 2019.</em>
+              </li>
+              
+              <li>
+                <strong>A Tutorial on Learned Multi-dimensional Indexes.</strong>
+                Abdullah Al-Mamun, Hao Wu, Walid G. Aref.
+                <em>SIGSPATIAL 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Database Meets Artificial Intelligence: A Survey.</strong>
+                Xuanhe Zhou, Chengliang Chai, Guoliang L, Ji Sun.
+                <em>TKDE 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Learned data structures.</strong>
+                Paolo Ferragina and Giorgio Vinciguerra.
+                <em>Recent Trends in Learning From Data. Studies in Computational Intelligence, vol 896.</em>
+              </li>
+              
+              <li>
+                <strong>AI Meets Database: AI4DB and DB4AI.</strong>
+                Guoliang Li, Xuanhe Zhou, Lei Cao.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="learned-range-indexes">Learned Range Indexes</h3>
+            <ol>
+              
+              <li>
+                <strong>Pavo: A RNN-Based Learned Inverted Index, Supervised or Unsupervised?.</strong>
+                Wenkun Xiang, Hao Zhang, Rui Cui, Xing Chu, Keqin Li, Wei Zhou.
+                <em>IEEE 2018.</em>
+              </li>
+              
+              <li>
+                <strong>The Potential of Learned Index Structures for Index Compression.</strong>
+                Harrie Oosterhuis, J. Shane Culpepper, Maarten de Rijke.
+                <em>ADCS 2018.</em>
+              </li>
+              
+              <li>
+                <strong>A-Tree: A Bounded Approximate Index Structure.</strong>
+                Alex Galakatos, Michael Markovitch, Carsten Binnig, Rodrigo Fonseca, Tim Kraska.
+                <em>SIGMOD 2018.</em>
+              </li>
+              
+              <li>
+                <strong>FITing-Tree: A Data-aware Index Structure.</strong>
+                Alex Galakatos, Michael Markovitch, Carsten Binnig, Rodrigo Fonseca, Tim Kraska.
+                <em>SIGMOD 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Designing Succinct Secondary Indexing Mechanism by Exploiting Column Correlations.</strong>
+                Yingjun Wu, Jia Yu, Yuanyuan Tian, Richard Sidle, Ronald Barber.
+                <em>SIGMOD 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Efficiently Searching In-Memory Sorted Arrays: Revenge of the Interpolation Search?.</strong>
+                Peter Van Sandt, Yannis Chronis, Jignesh Manubhai Patel.
+                <em>SIGMOD 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Considerations for handling updates in learned index structures.</strong>
+                Ali Hadian, Thomas Heinis.
+                <em>aiDM 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Accelerating B&#43;tree Search by Using Simple Machine Learning Techniques.</strong>
+                Anisa Llaveshi, Utku Sirin, Anastasia Ailamaki, Robert West.
+                <em>AIDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Interpolation-friendly B-trees: Bridging the Gap Between Algorithmic and Learned Indexes.</strong>
+                Ali Hadian, Thomas Heinis.
+                <em>EDBT 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Learned Indexes for Dynamic Workloads.</strong>
+                Chuzhe Tang, Zhiyuan Dong, Minjie Wang, Zhaoguo Wang, Haibo Chen.
+                <em>CoRR 2019.</em>
+              </li>
+              
+              <li>
+                <strong>ASLM: Adaptive single layer model for learned index.</strong>
+                X Li, J Li, X Wang - International Conference on Database Systems for Advanced Applications.
+                <em>2019.</em>
+              </li>
+              
+              <li>
+                <strong>Hybrid indexes by exploring traditional B-tree and linear regression.</strong>
+                Wenwen Qu, Xiaoling Wang, Jingdong Li, and Xin Li.
+                <em>International Conference on Web Information Systems and Applications 2019.</em>
+              </li>
+              
+              <li>
+                <strong>A Scalable Learned Index Scheme in Storage Systems.</strong>
+                Pengfei Li, Yu Hua, Pengfei Zuo, Jingnan Jia.
+                <em>arXiv.</em>
+              </li>
+              
+              <li>
+                <strong>SOSD: A Benchmark for Learned Indexes.</strong>
+                Andreas Kipf, Ryan Marcus, Alexander van Renen, Mihail Stoian, Alfons Kemper, Tim Kraska, Thomas Neumann.
+                <em>NeurIPS 2019.</em>
+              </li>
+              
+              <li>
+                <strong>ALEX: An Updatable Adaptive Learned Index.</strong>
+                Jialin Ding, Umar Farooq Minhas, Jia Yu, Chi Wang, Jaeyoung Do, Yinan Li, Hantian Zhang, Badrish Chandramouli, Johannes Gehrke, Donald Kossmann, David Lomet, Tim Kraska.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>CDFShop: Exploring and Optimizing Learned Index Structures.</strong>
+                Ryan Marcus, Emily Zhang, Tim Kraska.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>LISA: A Learned Index Structure for Spatial Data.</strong>
+                Pengfei Li, Hua Lu, Qian Zheng, Long Yang, Gang Pan.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>RadixSpline: A Single-Pass Learned Index.</strong>
+                Andreas Kipf, Ryan Marcus, Alexander van Renen, Mihail Stoian, Alfons Kemper, Tim Kraska, Thomas Neumann.
+                <em>aiDM 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Why Are Learned Indexes So Effective?.</strong>
+                Paolo Ferragina, Fabrizio Lillo, Giorgio Vinciguerra.
+                <em>ICML 2020.</em>
+              </li>
+              
+              <li>
+                <strong>The Case for Learned Spatial Indexes.</strong>
+                Varun Pandey, Alexander van Renen, Andreas Kipf, Ibrahim Sabek, Jialin Ding, Alfons Kemper.
+                <em>AIDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>The PGM-Index: A Fully-Dynamic Compressed Learned Index with Provable Worst-Case Bounds.</strong>
+                Paolo Ferragina, Giorgio Vinciguerra.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>XIndex: A Scalable Learned Index for Multicore Data Storage.</strong>
+                Chuzhe Tang, Youyun Wang, Zhiyuan Dong, Gansen Hu, Zhaoguo Wang, Minjie Wang, Haibo Chen.
+                <em>PPoPP 2020.</em>
+              </li>
+              
+              <li>
+                <strong>SIndex: A Scalable Learned Index for String Keys.</strong>
+                Youyun Wang, Chuzhe Tang, Zhaoguo Wang, Haibo Chen.
+                <em>APSys 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Learned Indexes for a Google-scale Disk-based Database.</strong>
+                Hussam Abu-Libdeh, Deniz Altınbüken, Alex Beutel, Ed H. Chi, Lyric Doshi, Tim Kraska, Xiaozhou (Steve) Li, Andy Ly, Christopher Olston.
+                <em>ML for Systems Workshop 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Effectively Learning Spatial Indices.</strong>
+                Jianzhong Qi, Guanli Liu, Christian S. Jensen, Lars Kulik.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>START — Self-Tuning Adaptive Radix Tree.</strong>
+                Philipp Fent, Michael Jungmair, Andreas Kipf, Thomas Neumann.
+                <em>ICDEW 2020.</em>
+              </li>
+              
+              <li>
+                <strong>MADEX: Learning-augmented Algorithmic Index Structures.</strong>
+                Ali Hadian and Thomas Heinis.
+                <em>AIDB@VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>From WiscKey to Bourbon: A Learned Index for Log-Structured Merge Trees.</strong>
+                Yifan Dai, Yien Xu, Aishwarya Ganesan, Ramnatthan Alagappan, Brian Kroth, Andrea Arpaci-Dusseau, Remzi Arpaci-Dusseau.
+                <em>OSDI 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Fast RDMA-based Ordered Key-Value Store using Remote Learned Cache.</strong>
+                Xingda Wei, Rong Chen, Haibo Chen.
+                <em>OSDI 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Benchmarking Learned Indexes.</strong>
+                Ryan Marcus, Andreas Kipf, Alexander van Renen, Mihail Stoian, Sanchit Misra, Alfons Kemper, Thomas Neumann, Tim Kraska.
+                <em>VLDB 2021.</em>
+              </li>
+              
+              <li>
+                <strong>RUSLI: Real-time Updatable Spline Learned Index.</strong>
+                Mayank Mishra, Rekha Singhal.
+                <em>aiDM 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Updatable Learned Index with Precise Positions.</strong>
+                Jiacheng Wu, Yong Zhang, Shimin Chen, Jin Wang, Yu Chen, Chunxiao Xing.
+                <em>VLDB 2021.</em>
+              </li>
+              
+              <li>
+                <strong>APEX: A High-Performance Learned Index on Persistent Memory.</strong>
+                Baotong Lu, Jialin Ding, Eric Lo, Umar Farooq Minhas, Tianzheng Wang.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>A Lazy Approach for Efficient Index Learning.</strong>
+                Guanli Liu, Lars Kulik, Xingjun Ma, Jianzhong Qi.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>The RLR-Tree: A Reinforcement Learning Based R-Tree for Spatial Data.</strong>
+                Tu Gu, Kaiyu Feng, Gao Cong, Cheng Long, Zheng Wang, Sheng Wang.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Spatial Interpolation-based Learned Index for Range and kNN Queries.</strong>
+                Songnian Zhang, Suprio Ray, Rongxing Lu, Yandong Zheng.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>CARMI: A Cache-Aware Learned Index with a Cost-based Construction Algorithm.</strong>
+                Jiaoyi Zhang, Yihan Gao.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>The Price of Tailoring the Index to Your Data: Poisoning Attacks on Learned Index Structures.</strong>
+                Evgenios M. Kornaropoulos, Silei Ren, Roberto Tamassia.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Shift-Table: A Low-latency Learned Index for Range Queries using Model Correction.</strong>
+                Ali Hadian, Thomas Heinis.
+                <em>arXiv, 2021.</em>
+              </li>
+              
+              <li>
+                <strong>A Pluggable Learned Index Method via Sampling and Gap Insertion.</strong>
+                Yaliang Li, Daoyuan Chen, Bolin Ding, Kai Zeng, Jingren Zhou.
+                <em>arXiv, 2021.</em>
+              </li>
+              
+              <li>
+                <strong>PolyFit: Polynomial-based Indexing Approach for Fast Approximate Range Aggregate Queries.</strong>
+                Zhe Li, Tsz Nam Chan, Man Lung Yiu, Christian S.
+                <em>Jensen EDBT, 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Learned Metric Index.</strong>
+                Matej Antol, Jaroslav Ol’ha, Terézia Slanináková, Vlastislav Dohnal.
+                <em>Information Systems. 2021.</em>
+              </li>
+              
+              <li>
+                <strong>On the performance of learned data structures.</strong>
+                Paolo Ferragina, Fabrizio Lillo, Giorgio Vinciguerra.
+                <em>Theor. Comput. Sci. 2021.</em>
+              </li>
+              
+              <li>
+                <strong>A Tailored Regression for Learned Indexes: Logarithmic Error Regression.</strong>
+                Martin Eppert, Philipp Fent, Thomas Neumann.
+                <em>aiDM 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="new-learned-index-applications">New Learned Index Applications</h3>
+            <ol>
+              
+              <li>
+                <strong>A Computational Approach to Packet Classification.</strong>
+                Alon Rashelbach, Ori Rottenstreich, Mark Silberstein.
+                <em>SIGCOMM 2020.</em>
+              </li>
+              
+              <li>
+                <strong>LISA: Towards Learned DNA Sequence Search.</strong>
+                Darryl Ho, Jialin Ding, Sanchit Misra, Nesime Tatbul, Vikram Nathan, Vasimuddin Md, Tim Kraska.
+                <em>Workshop on Systems for ML at NeurIPS 2019.</em>
+              </li>
+              
+              <li>
+                <strong>A &#34;Learned&#34; Approach to Quicken and Compress Rank/Select Dictionaries.</strong>
+                Antonio Boffa, Paolo Ferragina, Giorgio Vinciguerra.
+                <em>ALENEX 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Feasibility of Longest Prefix Matching using Learned Index Structures.</strong>
+                Higuchi, Shunsuke and Takemasa, Junji and Koizumi, Yuki and Tagami, Atsushi and Hasegawa, Toru.
+                <em>SIGMETRICS Perform. Eval. Rev. 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="learned-multidimensional-indexing-storage-layouts">Learned Multi-Dimensional Indexing &amp; Storage Layouts</h3>
+            <ol>
+              
+              <li>
+                <strong>Qd-tree: Learning Data Layouts for Big Data Analytics.</strong>
+                Zongheng Yang, Badrish Chandramouli, Chi Wang, Johannes Gehrke, Yinan Li, Umar Farooq Minhas, Per-Åke Larson, Donald Kossmann, Rajeev Acharya.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Hands-off Model Integration in Spatial Index Structures.</strong>
+                Ali Hadian, Ankit Kumar, and Thomas Heinis.
+                <em>Proceedings of the 2nd International Workshop on Applied AI for Database Systems and Applications 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Leveraging Soft Functional Dependencies for Indexing Multi-dimensional Data.</strong>
+                Behzad Ghaffari, Ali Hadian, and Thomas Heinis.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Effectively learning spatial indices.</strong>
+                Jianzhong Qi, Guanli Liu, Christian S Jensen, and Lars Kulik.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>A Study of Learned KD Tree Based on Learned Index.</strong>
+                P. Yongxin, Z. Wei, Z. Lin and D. Hongle.
+                <em>2020 International Conference on Networking and Network Applications (NaNA).</em>
+              </li>
+              
+              <li>
+                <strong>The ML-Index: A Multidimensional, Learned Index for Point, Range, and Nearest-Neighbor Queries.</strong>
+                Angjela Davitkova, Evica Milchevski, Sebastian Michel.
+                <em>EDBT 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Learning Multi-dimensional Indexes.</strong>
+                Vikram Nathan, Jialin Ding, Mohammad Alizadeh, Tim Kraska.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Tsunami: A Learned Multi-dimensional Index for Correlated Data and Skewed Workloads.</strong>
+                Jialin Ding, Vikram Nathan, Mohammad Alizadeh, Tim Kraska.
+                <em>VLDB 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Instance-Optimized Data Layouts for Cloud Analytics Workloads.</strong>
+                Jialin Ding, Umar Farooq Minhas, Badrish Chandramouli, Chi Wang, Yinan Li, Ying Li, Donald Kossmann, Johannes Gehrke and Tim Kraska.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="learned-bloom-filters">Learned Bloom Filters</h3>
+            <ol>
+              
+              <li>
+                <strong>The Case for Learned Index Structures.</strong>
+                Tim Kraska, Alex Beutel, Ed H. Chi, Jeffrey Dean, Neoklis Polyzotis.
+                <em>SIGMOD 2018.</em>
+              </li>
+              
+              <li>
+                <strong>A Model for Learned Bloom Filters and Optimizing by Sandwiching.</strong>
+                Michael Mitzenmacher.
+                <em>NeurIPS 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Lifting the Curse of Multidimensional Data with Learned Existence Indexes.</strong>
+                Stephen Macke, Alex Beutel, Tim Kraska, Maheswaran Sathiamoorthy, Derek Zhiyuan Cheng, Ed H. Chi.
+                <em>ML for Systems Workshop 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Meta-Learning Neural Bloom Filters.</strong>
+                Jack W Rae, Sergey Bartunov, Timothy P Lillicrap.
+                <em>ICML 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Stable Learned Bloom Filters for Data Streams.</strong>
+                Qiyu Liu, Libin Zheng, Yanyan Shen, Lei Chen.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Adaptive Learned Bloom Filter (Ada-BF): Efficient Utilization of the Classifier with Application to Real-Time Information Filtering on the Web.</strong>
+                Zhenwei Dai, Anshumali Shrivastava.
+                <em>NeurIPS 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Partitioned Learned Bloom Filters.</strong>
+                Kapil Vaidya, Eric Knorr, Tim Kraska, Michael Mitzenmacher.
+                <em>ICLR 2021.</em>
+              </li>
+              
+              <li>
+                <strong>deepBF: Malicious URL detection using Learned Bloom Filter and Evolutionary Deep Learning.</strong>
+                Ripon Patgiri, Anupam Biswas, Sabuzima Nayak.
+                <em>In submission.</em>
+              </li>
+              
+              <li>
+                <strong>Stacked Filters: Learning to Filter by Structure.</strong>
+                Kyle Deeds, Brian Hentschel, and Stratos Idreos.
+                <em>VLDB 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="hashmaps">Hash-Maps</h3>
+            <ol>
+              
+              <li>
+                <strong>The Case for Learned Index Structures.</strong>
+                Tim Kraska, Alex Beutel, Ed H. Chi, Jeffrey Dean, Neoklis Polyzotis.
+                <em>SIGMOD 2018.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="partitioning">Partitioning</h3>
+            <ol>
+              
+              <li>
+                <strong>Schism: a Workload-Driven Approach to Database Replication and Partitioning.</strong>
+                Carlo Curino, Evan Philip Charles Jones, Yang Zhang, and Samuel R. Madden.
+                <em>VLDB 2010.</em>
+              </li>
+              
+              <li>
+                <strong>Automated Data Partitioning for Highly Scalable and Strongly Consistent Transactions.</strong>
+                Alexandru Turcu, Roberto Palmieri, Binoy Ravindran, and Sachin Hirve. IEEE Transactions on Parallel and Distributed Systems Volume: 27, Issue: 1, Jan.
+                <em>1 2016.</em>
+              </li>
+              
+              <li>
+                <strong>GridFormation: Towards Self-Driven Online Data Partitioning using Reinforcement Learning.</strong>
+                Gabriel Campero Durand, Marcus Pinnecke, Rufat Piriyev, Mahmoud Mohsen, David Broneske, Gunter Saake, Maya S. Sekeran, Fabián Rodriguez, and Laxmi Balami.
+                <em>aiDM 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Learning a Partitioning Advisor with Deep Reinforcement Learning.</strong>
+                Benjamin Hilprecht, Carsten Binnig, and Uwe Roehm.
+                <em>arXiv 2019.</em>
+              </li>
+              
+              <li>
+                <strong>A Genetic Optimization Physical Planner for Big Data Warehouses.</strong>
+                Benkrid, Soumia, Yacine Mestoui, Ladjel Bellatreche, and Carlos Ordonez.
+                <em>2020 IEEE International Conference on Big Data (Big Data).</em>
+              </li>
+              
+              <li>
+                <strong>Lachesis: Automated Partitioning for UDF-Centric Analytics.</strong>
+                Jia Zou, Amitabh Das, Pratik Barhate, Arun Iyengar, Binhang Yuan, Dimitrije Jankov, and Chris Jermaine.
+                <em>VLDB 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Learning a Partitioning Advisor for Cloud Databases.</strong>
+                Benjamin Hilprecht, Carsten Binnig, Uwe Röhm.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Automated vertical partitioning with deep reinforcement learning.</strong>
+                Gabriel Campero Durand, Rufat Piriyev, Marcus Pinnecke, David Broneske, Balasubramanian Gurumurthy, Gunter Saakee.
+                <em>ADBIS 2019.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="data-compressions">Data Compressions</h3>
+            <ol>
+              
+              <li>
+                <strong>LEA: A Learned Encoding Advisor for Column Stores.</strong>
+                Lujing Cen, Andreas Kipf, Ryan Marcus, Tim Kraska.
+                <em>aiDM 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="systems-and-general-optimizations">Systems and General Optimizations</h3>
+            <ol>
+              
+              <li>
+                <strong>Self-Driving Database Management Systems.</strong>
+                Andrew Pavlo, Gustavo Angulo, Joy Arulraj, Haibin Lin, Jiexi Lin, Lin Ma, Prashanth Menon, Todd C. Mowry, Matthew Perron, Ian Quah, Siddharth Santurkar, Anthony Tomasic, Skye Toor, Dana Van Aken, Ziqi Wang, Yingjun Wu, Ran Xian, Tieying Zhang.
+                <em>CIDR 2017.</em>
+              </li>
+              
+              <li>
+                <strong>SageDB: A Learned Database System.</strong>
+                Tim Kraska, Mohammad Alizadeh, Alex Beutel, Ed H. Chi, Jialin Ding, Ani Kristo, Guillaume Leclerc, Samuel Madden, Hongzi Mao, Vikram Nathan.
+                <em>CIDR 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Active Learning for ML Enhanced Database Systems.</strong>
+                Lin Ma, Bailu Ding, Sudipto Das, Adith Swaminathan.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Self-driving database systems: a conceptual approach.</strong>
+                Jan Kossmann, Rainer Schlosser.
+                <em>Distributed and Parallel Databases 2020.</em>
+              </li>
+              
+              <li>
+                <strong>One Model to Rule them All: Towards Zero-Shot Learning for Databases.</strong>
+                Benjamin Hilprecht, Carsten Binnig.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>UDO: Universal Database Optimization using Reinforcement Learning.</strong>
+                Junxiong Wang, Immanuel Trummer, Debabrota Basu.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Towards a Benchmark for Learned Systems.</strong>
+                Laurent Bindschaedler, Andreas Kipf, Tim Kraska, Ryan Marcus, Umar Farooq Minhas.
+                <em>SMDB workshop 2021.</em>
+              </li>
+              
+              <li>
+                <strong>A Unified Transferable Model for ML-Enhanced DBMS.</strong>
+                Ziniu Wu, Peilun Yang, Pei Yu, Rong Zhu, Yuxing Han, Yaliang Li, Defu Lian, Kai Zeng, Jingren Zhou.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Expand your Training Limits! Generating Training Data for ML-based Data Management.</strong>
+                Francesco Ventura, Zoi Kaoudi, Jorge-Arnulfo Quiané-Ruiz, Volker Markl.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+              <li>
+                <strong>MB2: Decomposed Behavior Modeling for Self-Driving Database Management Systems.</strong>
+                Lin Ma, William Zhang, Jie Jiao, Wuwen Wang, Matthew Butrovich, Wan Shen Lim, Prashanth Menon, Andrew Pavlo.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="index-recommendation">Index Recommendation</h3>
+            <ol>
+              
+              <li>
+                <strong>Index Selection in a Self- Adaptive Data Base Management System.</strong>
+                Michael Hammer, Arvola Chan.
+                <em>SIGMOD 1976.</em>
+              </li>
+              
+              <li>
+                <strong>AutoAdmin “What-if” Index Analysis Utility.</strong>
+                Surajit Chaudhuri, Vivek Narasayya.
+                <em>SIGMOD 1998.</em>
+              </li>
+              
+              <li>
+                <strong>Self-Tuning Database Systems: A Decade of Progress.</strong>
+                Surajit Chaudhuri, Vivek Narasayya.
+                <em>VLDB 2007.</em>
+              </li>
+              
+              <li>
+                <strong>AI Meets AI: Leveraging Query Executions to Improve Index Recommendations.</strong>
+                Bailu Ding, Sudipto Das, Ryan Marcus, Wentao Wu, Surajit Chaudhuri, Vivek R. Narasayya.
+                <em>SIGMOD 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Automated Database Indexing using Model-free Reinforcement Learning.</strong>
+                Gabriel Paludo Licks, Felipe Meneguzzi.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>DRLindex: deep reinforcement learning index advisor for a cluster database.</strong>
+                Zahra Sadri, Le Gruenwald, Eleazar Lead.
+                <em>Symposium on International Database Engineering &amp; Applications 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Magic mirror in my hand, which is the best in the land? An Experimental Evaluation of Index Selection Algorithms.</strong>
+                Jan Kossmann, Stefan Halfpap, Marcel Jankrift, Rainer Schlosser.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>An Index Advisor Using Deep Reinforcement Learning.</strong>
+                Hai Lan, Zhifeng Bao, Yuwei Peng.
+                <em>CIKM 2020.</em>
+              </li>
+              
+              <li>
+                <strong>DBA bandits: Self-driving index tuning under ad-hoc, analytical workloads with safety guarantees.</strong>
+                R. Malinga Perera, Bastian Oetomo, Benjamin I. P. Rubinstein, Renata Borovica.
+                <em>Gajic (ICDE 2021).</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="configuration-tuning">Configuration Tuning</h3>
+            <ol>
+              
+              <li>
+                <strong>SARD: A statistical approach for ranking database tuning parameters.</strong>
+                Biplob K. Debnath, David J. Lilja, Mohamed F. Mokbel.
+                <em>ICDEW 2008.</em>
+              </li>
+              
+              <li>
+                <strong>Regularized Cost-Model Oblivious Database Tuning with Reinforcement Learning.</strong>
+                Debabrota Basu, Qian Lin, Weidong Chen, Hoang Tam Vo, Zihong Yuan, Pierre Senellart, Stéphane Bressan.
+                <em>Springer 2016.</em>
+              </li>
+              
+              <li>
+                <strong>Automatic Database Management System Tuning Through Large-scale Machine Learning.</strong>
+                Dana Van Aken, Andrew Pavlo, Geoffrey J. Gordon, Bohan Zhang.
+                <em>SIGMOD 2017.</em>
+              </li>
+              
+              <li>
+                <strong>The Case for Automatic Database Administration using Deep Reinforcement Learning.</strong>
+                Ankur Sharma, Felix Martin Schuhknecht, Jens Dittrich.
+                <em>arXiv 2018.</em>
+              </li>
+              
+              <li>
+                <strong>An End-to-End Automatic Cloud Database Tuning System Using Deep Reinforcement Learning.</strong>
+                Ji Zhang, Yu Liu, Ke Zhou, Guoliang Li, Zhili Xiao, Bin Cheng, Jiashu Xing, Yangtao Wang, Tianheng Cheng, Li Liu, Minwei Ran, Zekang Li.
+                <em>SIGMOD 2019.</em>
+              </li>
+              
+              <li>
+                <strong>External vs. Internal: An Essay on Machine Learning Agents for Autonomous Database Management Systems.</strong>
+                Andrew Pavlo, Matthew Butrovich,, Ananya Joshi, Lin Ma, Prashanth Menon, Dana Van Aken, Lisa Lee, Ruslan Salakhutdinov.
+                <em>IEEE 2019.</em>
+              </li>
+              
+              <li>
+                <strong>QTune: A Query-Aware Database Tuning System with Deep Reinforcement Learning.</strong>
+                Guoliang Li, Xuanhe Zhou, Shifu Li, Bo Gao.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Optimizing Databases by Learning Hidden Parameters of Solid State Drives.</strong>
+                Aarati Kakaraparthy, Jignesh M. Patel, Kwanghyun Park, Brian P. Kroth.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>iBTune: Individualized Buffer Tuning for Large-scale Cloud Databases.</strong>
+                Jian Tan, Tieying Zhang, Feifei Li, Jie Chen, Qixing Zheng, Ping Zhang, Honglin Qiao, Yue Shi, Wei Cao, Rui Zhang.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Black or White? How to Develop an AutoTuner for Memory-based Analytics.</strong>
+                Mayuresh Kunjir, Shivnath Babu.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Learning Efficient Parameter Server Synchronization Policies for Distributed SGD.</strong>
+                Rong Zhu, Sheng Yang, Andreas Pfadler, Zhengping Qian, Jingren Zhou.
+                <em>ICLR 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Too Many Knobs to Tune? Towards Faster Database Tuning by Pre-selecting Important Knobs.</strong>
+                Konstantinos Kanellis, Ramnatthan Alagappan, Shivaram Venkataraman.
+                <em>HotStorage 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Dynamic Configuration Tuning of Working Database Management Systems.</strong>
+                Yoshiteru Ishihara, Masahito Shiba.
+                <em>LifeTech 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Adaptive Multi-Model Reinforcement Learning for Online Database Tuning.</strong>
+                Yaniv Gur, Dongsheng Yang, Frederik Stalschus, Berthold Reinwald.
+                <em>EDBT 2021.</em>
+              </li>
+              
+              <li>
+                <strong>An inquiry into machine learning-based automatic configuration tuning services on real-world database management systems.</strong>
+                Dana Van Aken, Dongsheng Yang, Sebastien Brillard, Ari Fiorino Bohan Zhang, Christian Bilien, Andrew Pavlo.
+                <em>VLDB 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="cardinality-selectivity-estimation">Cardinality / Selectivity Estimation</h3>
+            <ol>
+              
+              <li>
+                <strong>Cardinality Estimation Using Neural Networks.</strong>
+                Henry Liu, Mingbin Xu, Ziting Yu, Vincent Corvinelli, Calisto Zuzarte.
+                <em>CASCON 2015.</em>
+              </li>
+              
+              <li>
+                <strong>Adaptive Cardinality Estimation.</strong>
+                Oleg Ivanov, Sergey Bartunov.
+                <em>On arXiv (2017).</em>
+              </li>
+              
+              <li>
+                <strong>Learned Cardinalities: Estimating Correlated Joins with Deep Learning.</strong>
+                Andreas Kipf, Thomas Kipf, Bernhard Radke, Viktor Leis, Peter Boncz, Alfons Kemper.
+                <em>CoRR 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Towards a learning optimizer for shared clouds.</strong>
+                Chenggang Wu, Alekh Jindal, Saeed Amizadeh, Hiren Patel, Wangchao Le, Shi Qiao, Sriram Rao.
+                <em>VLDB 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Towards a Hands-Free Query Optimizer through Deep Learning.</strong>
+                Ryan Marcus, Olga Papaemmanouil.
+                <em>CIDR 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Neo: A Learned Query Optimizer.</strong>
+                Ryan Marcus, Parimarjan Negi, Hongzi Mao, Chi Zhang, Mohammad Alizadeh, Tim Kraska, Olga Papaemmanouil, Nesime Tatbul.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Selectivity Estimation for Range Predicates using Lightweight Models.</strong>
+                Anshuman Dutt, Chi Wang, Azade Nazi, Srikanth Kandula, Vivek Narasayya, Surajit Chaudhuri.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Cardinality Estimation with Local Deep Learning Models.</strong>
+                Lucas Woltmann, Claudio Hartmann, Maik Thiele, Dirk Habich, Wolfgang Lehner.
+                <em>aiDM 2019.</em>
+              </li>
+              
+              <li>
+                <strong>An empirical analysis of deep learning for cardinality estimation.</strong>
+                Jennifer Ortiz, Magdalena Balazinska, Johannes Gehrke, S. Sathiya Keerthi.
+                <em>arXiv 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Deep Unsupervised Cardinality Estimation.</strong>
+                Zongheng Yang, Eric Liang, Amog Kamsetty, Chenggang Wu, Yan Duan, Xi Chen, Pieter Abbeel, Joseph M. Hellerstein, Sanjay Krishnan, Ion Stoica.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Improved Cardinality Estimation by Learning Queries Containment Rates.</strong>
+                Rojeh Hayek, Oded Shmueli.
+                <em>EDBT 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Estimating Cardinalities with Deep Sketches.</strong>
+                Andreas Kipf, Dimitri Vorona, Jonas Müller, Thomas Kipf, Bernhard Radke, Viktor Leis, Peter Boncz, Thomas Neumann, and Alfons Kemper.
+                <em>SIGMOD Demo 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Estimating Filtered Group-By Queries is Hard: Deep Learning to the Rescue.</strong>
+                Andreas Kipf, Michael Freitag, Dimitri Vorona, Peter Boncz, Thomas Neumann, Alfons Kemper.
+                <em>AIDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Quicksel: Quick selectivity learning with mixture models.</strong>
+                Yongjoo Park, Shucheng Zhong, Barzan Mozafari.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Monotonic Cardinality Estimation of Similarity Selection: A Deep Learning Approach.</strong>
+                Yaoshu Wang, Chuan Xiao, Jianbin Qin, Xin Cao, Yifang Sun, Wei Wang, Makoto Onizuka.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Cost-Guided Cardinality Estimation: Focus Where it Matters.</strong>
+                Parimarjan Negi, Ryan Marcus, Hongzi Mao, Nesime Tatbul, Tim Kraska, Mohammad Alizadeh.
+                <em>SMDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>DeepDB: learn from data, not from queries!.</strong>
+                Benjamin Hilprecht, Andreas Schmidt, Moritz Kulessa, Alejandro Molina, Kristian Kersting, Carsten Binnig.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Machine Learning-based Cardinality Estimation in DBMS on Pre-Aggregated Data.</strong>
+                Lucas Woltmann, Claudio Hartmann, Dirk Habich, Wolfgang Lehner.
+                <em>On arXiv (2020).</em>
+              </li>
+              
+              <li>
+                <strong>Best of Both Worlds: Combining Traditional and Machine Learning Models for Cardinality Estimation.</strong>
+                Lucas Woltmann, Claudio Hartmann, Dirk Habich, Wolfgang Lehner.
+                <em>aiDM 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Are We Ready For Learned Cardinality Estimation?.</strong>
+                Xiaoying Wang, Changbo Qu, Weiyuan Wu, Jiannan Wang, Qingqing Zhou.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Flow-Loss: Learning Cardinality Estimates That Matter.</strong>
+                Parimarjan Negi, Ryan Marcus, Andreas Kipf, Hongzi Mao, Nesime Tatbul, Tim Kraska, Mohammad Alizadeh.
+                <em>CoRR 2021.</em>
+              </li>
+              
+              <li>
+                <strong>A Unified Deep Model of Learning from both Data and Queries for Cardinality Estimation.</strong>
+                Peizhi Wu, Gao Cong.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+              <li>
+                <strong>LATEST: Learning-Assisted Selectivity Estimation Over Spatio-Textual Streams.</strong>
+                Mayur Patil, Amr Magdy.
+                <em>ICDE 2021.</em>
+              </li>
+              
+              <li>
+                <strong>NeuroCard: One Cardinality Estimator for All Tables.</strong>
+                Zongheng Yang, Amog Kamsetty, Sifei Luan, Eric Liang, Yan Duan, Xi Chen, Ion Stoica.
+                <em>VLDB 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="data-based-cardinality-estimation">Data-based Cardinality Estimation</h3>
+            <ol>
+              
+              <li>
+                <strong>Self-Tuning, GPU-Accelerated Kernel Density Models for Multidimensional Selectivity Estimation.</strong>
+                Max Heimel, Martin Kiefer, and Volker Markl.
+                <em>SIGMOD 2015.</em>
+              </li>
+              
+              <li>
+                <strong>Estimating Join Selectivities using Bandwidth-Optimized Kernel Density Models.</strong>
+                Martin Kiefer, Max Heimel, Sebastian Breß, and Volker Markl.
+                <em>VLDB 2017.</em>
+              </li>
+              
+              <li>
+                <strong>Deep Learning Models for Selectivity Estimation of Multi-Attribute Queries.</strong>
+                Shohedul Hasan, Saravanan Thirumuruganathan, Jees Augustine, Nick Koudas, and Gautam Das.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Learning to Sample: Counting with Complex Queries.</strong>
+                Brett Walenz, Stavros Sintos, Sudeepa Roy, and Jun Yang.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Selectivity estimation using probabilistic models.</strong>
+                Lise Getoor, Benjamin Taskar, and Daphne Koller.
+                <em>SIGMOD 2001.</em>
+              </li>
+              
+              <li>
+                <strong>Lightweight graphical models for selectivity estimation without independence assumptions.</strong>
+                Kostas Tzoumas, Amol Deshpande, and Christian S. Jensen.
+                <em>VLDB 2011.</em>
+              </li>
+              
+              <li>
+                <strong>Efficiently adapting graphical models for selectivity estimation.</strong>
+                Kostas Tzoumas, Amol Deshpande, and Christian S. Jensen.
+                <em>VLDB 2013.</em>
+              </li>
+              
+              <li>
+                <strong>An Approach Based on Bayesian Networks for Query Selectivity Estimation.</strong>
+                Max Halford, Philippe Saint-Pierre, and Franck Morvan.
+                <em>DASFAA 2019.</em>
+              </li>
+              
+              <li>
+                <strong>FLAT: Fast, Lightweight and Accurate Method for Cardinality Estimation.</strong>
+                Rong Zhu, Ziniu Wu, Yuxing Han, Kai Zeng, Andreas Pfadler, Zhengping Qian, Jingren Zhou, and Bin Cui.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Astrid: Accurate Selectivity Estimation for String Predicates using Deep Learning.</strong>
+                Suraj Shetiya, Saravanan Thirumuruganathan, Nick Koudas, and Gautam Das.
+                <em>VLDB 2021.</em>
+              </li>
+              
+              <li>
+                <strong>BayesCard: A Unified Bayesian Framework for Cardinality Estimation.</strong>
+                Ziniu Wu, and Amir Shaikhha.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>LMKG: Learned Models for Cardinality Estimation in Knowledge Graphs.</strong>
+                Angjela Davitkova, Damjan Gjurovski, and Sebastian Michel.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>LHist: Towards Learning Multi-dimensional Histogram for Massive Spatial Data.</strong>
+                Qiyu Liu, Yanyan Shen, and Lei Chen.
+                <em>ICDE 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="query-based-cardinality-estimation">Query-based Cardinality Estimation</h3>
+            <ol>
+              
+              <li>
+                <strong>Adaptive selectivity estimation using query feedback.</strong>
+                Chungmin Melvin Chen, and Nick Roussopoulos.
+                <em>SIGMOD 1994.</em>
+              </li>
+              
+              <li>
+                <strong>Selectivity Estimation in Extensible Databases - A Neural Network Approach.</strong>
+                Seetha Lakshmi, and Shaoyu Zhou.
+                <em>VLDB 1998.</em>
+              </li>
+              
+              <li>
+                <strong>Effective query size estimation using neural networks.</strong>
+                Hongjun Lu, and Rudy Setiono.
+                <em>Applied Intelligence 2002.</em>
+              </li>
+              
+              <li>
+                <strong>LEO - DB2&#39;s LEarning optimizer.</strong>
+                Michael Stillger, Guy M. Lohman, Volker Markl, and Mokhtar Kandil.
+                <em>VLDB 2001.</em>
+              </li>
+              
+              <li>
+                <strong>A Black-Box Approach to Query Cardinality Estimation.</strong>
+                Tanu Malik, Randal C. Burns, and Nitesh V. Chawla.
+                <em>CIDR 2007.</em>
+              </li>
+              
+              <li>
+                <strong>Learning State Representations for Query Optimization with Deep Reinforcement Learning.</strong>
+                Jennifer Ortiz, Magdalena Balazinska, Johannes Gehrke, and S. Sathiya Keerthi.
+                <em>DEEM@SIGMOD 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Flexible Operator Embeddings via Deep Learning.</strong>
+                Ryan Marcus, and Olga Papaemmanouil.
+                <em>arXiv 2019.</em>
+              </li>
+              
+              <li>
+                <strong>NN-based Transformation of Any SQL Cardinality Estimator for Handling DISTINCT, AND, OR and NOT.</strong>
+                Rojeh Hayek, and Oded Shmueli.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Efficiently Approximating Selectivity Functions using Low Overhead Regression Models.</strong>
+                Anshuman Dutt, Chi Wang, Vivek Narasayya, and Surajit Chaudhuri.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Learned Cardinality Estimation for Similarity Queries.</strong>
+                Ji Sun, Guoliang Li, and Nan Tang.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="cost-estimation">Cost Estimation</h3>
+            <ol>
+              
+              <li>
+                <strong>Statistical learning techniques for costing XML queries.</strong>
+                Ning Zhang, Peter J. Haas, Vanja Josifovski, Guy M. Lohman, Chun Zhang.
+                <em>VLDB 2005.</em>
+              </li>
+              
+              <li>
+                <strong>PQR: Predicting Query Execution Times for Autonomous Workload Management.</strong>
+                Chetan Gupta, Abhay Mehta, Umeshwar Dayal.
+                <em>ICAC 2008.</em>
+              </li>
+              
+              <li>
+                <strong>Predicting Multiple Metrics for Queries: Better Decisions Enabled by Machine Learning.</strong>
+                Archana Ganapathi, Harumi Kuno, Umeshwar Dayal, Janet L. Wiener, Armando Fox, Michael Jordan, David Patterson.
+                <em>ICDE 2009.</em>
+              </li>
+              
+              <li>
+                <strong>The Case for Predictive Database Systems: Opportunities and Challenges.</strong>
+                Mert Akdere, Ugur Cetintemel, Matteo Riondato, Eli Upfal, Stan Zdonik.
+                <em>CIDR 2011.</em>
+              </li>
+              
+              <li>
+                <strong>Performance Prediction for Concurrent Database Workloads.</strong>
+                Jennie Duggan, Ugur Cetintemel, Olga Papaemmanouil, Eli Upfal.
+                <em>SIGMOD 2011.</em>
+              </li>
+              
+              <li>
+                <strong>Predicting Completion Times of Batch Query Workloads Using Interaction-aware Models and Simulation.</strong>
+                Mumtaz Ahmad, Songyun Duan, Ashraf Aboulnaga, Shivnath Babu.
+                <em>EDBT 2011.</em>
+              </li>
+              
+              <li>
+                <strong>Interaction-Aware Scheduling of Report Generation Workloads.</strong>
+                Mumtaz Ahmad, Ashraf Aboulnaga, Shivnath Babu, Kamesh Munagala.
+                <em>VLDB 2011.</em>
+              </li>
+              
+              <li>
+                <strong>Learning-based Query Performance Modeling and Prediction.</strong>
+                Mert Akdere, Ugur Çetintemel, Matteo Riondato, Eli Upfal, Stanley B. Zdonik.
+                <em>ICDE 2012.</em>
+              </li>
+              
+              <li>
+                <strong>Robust Estimation of Resource Consumption for SQL Queries using Statistical Techniques.</strong>
+                Jiexing Li, Arnd Christian Konig, Vivek Narasayya, Surajit Chaudhuri.
+                <em>VLDB 2012.</em>
+              </li>
+              
+              <li>
+                <strong>Towards predicting query execution time for concurrent and dynamic database workloads.</strong>
+                Wentao Wu, Yun Chi, Hakan Hacígümüş, Jeffrey F. Naughton.
+                <em>VLDB 2014.</em>
+              </li>
+              
+              <li>
+                <strong>Contender: A Resource Modeling Approach for Concurrent Query Performance Prediction.</strong>
+                Jennie Duggan, Olga Papaemmanouil, Ugur Cetintemel, Eli Upfal.
+                <em>EDBT 2014.</em>
+              </li>
+              
+              <li>
+                <strong>Plan-Structured Deep Neural Network Models for Query Performance Prediction.</strong>
+                Ryan Marcus, Olga Papaemmanouil.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Cost Models for Big Data Query Processing: Learning, Retrofitting, and Our Findings.</strong>
+                Tarique Siddiqui, Alekh Jindal, Shi Qiao, Hiren Patel, Wangchao le.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>DBMS Fitting: Why should we learn what we already know?.</strong>
+                Benjamin Hilprecht, Tiemo Bang, Muhammad El-Hindi, Benjamin Hättasch, Aditya Khanna, Robin Rehrmann, Uwe Röhm, Andreas Schmidt, Lasse Thostrup, Tobias Ziegler, Carsten Binnig.
+                <em>CIDR 2020.</em>
+              </li>
+              
+              <li>
+                <strong>A Note On Operator-Level Query Execution Cost Modeling.</strong>
+                Wentao Wu.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Query Performance Prediction for Concurrent Queries using Graph Embedding.</strong>
+                Xuanhe Zhou, Ji Sun, Guoliang Li, Jianhua Feng.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Efficient Deep Learning Pipelines for Accurate Cost Estimations Over Large Scale Query Workload.</strong>
+                Johan Kok Zhi Kang, Gaurav, Sien Yi Tan, Feng Cheng, Shixuan Sun, Bingsheng He.
+                <em>arXiv 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="query-optimization">Query Optimization</h3>
+            <ol>
+              
+              <li>
+                <strong>Plan Selection Based on Query Clustering.</strong>
+                Antara Ghosh, Jignashu Parikh, Vibhuti S. Sengar, Jayant R. Haritsa.
+                <em>VLDB 2002.</em>
+              </li>
+              
+              <li>
+                <strong>Cost-Based Query Optimization via AI Planning.</strong>
+                Nathan Robinson, Sheila A. McIlraith, David Toman.
+                <em>AAAI 2014.</em>
+              </li>
+              
+              <li>
+                <strong>Sampling-Based Query Re-Optimization.</strong>
+                Wentao Wu, Jeffrey F. Naughton, Harneet Singh.
+                <em>SIGMOD 2016.</em>
+              </li>
+              
+              <li>
+                <strong>Learning State Representations for Query Optimization with Deep Reinforcement Learning.</strong>
+                Jennifer Ortiz, Magdalena Balazinska, Johannes Gehrke, S. Sathiya Keerthi.
+                <em>DEEM 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Learning to optimize join queries with deep reinforcement learning.</strong>
+                Sanjay Krishnan, Zongheng Yang, Ken Goldberg, Joseph Hellerstein, Ion Stoica.
+                <em>CoRR 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Adaptive Optimization of Very Large Join Queries.</strong>
+                Thomas Neumann, Bernhard Radke.
+                <em>SIGMOD 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Deep Reinforcement Learning for Join Order Enumeration.</strong>
+                Ryan Marcus, Olga Papaemmanouil.
+                <em>aiDM 2018.</em>
+              </li>
+              
+              <li>
+                <strong>SkinnerDB : Regret-Bounded Query Evaluation via Reinforcement Learning.</strong>
+                Immanuel Trummer, Junxiong Wang, Deepak Maram, Samuel Moseley, Saehan Jo, Joseph Antonakakis.
+                <em>VLDB 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Neo: A Learned Query Optimizer.</strong>
+                Ryan Marcus, Parimarjan Negi, Hongzi Mao, Chi Zhang, Mohammad Alizadeh, Tim Kraska, Olga Papaemmanouil, Nesime Tatbul.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>An End-to-End Learning-based Cost Estimator.</strong>
+                Ji Sun, Guoliang Li.
+                <em>VLDB 2019.</em>
+              </li>
+              
+              <li>
+                <strong>ML-based Cross-Platform Query Optimization.</strong>
+                Zoi Kaoudi, Jorge-Arnulfo Quiane-Ruiz, Bertty Contreras-Rojas, Rodrigo Pardo-Meza, Anis Troudi, Sanjay Chawla.
+                <em>ICDE 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Reinforcement Learning with Tree-LSTM for Join Order Selection.</strong>
+                Xiang Yu, Guoliang Li, Chengliang Chai, Nan Tang.
+                <em>ICDE 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Research Challenges in Deep Reinforcement Learning-based Join Query Optimization.</strong>
+                Runsheng Bengson.
+                <em>aiDM 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Bao: Making Learned Query Optimizers Practical.</strong>
+                Ryan Marcus, Parimarjan Negi, Hongzi Mao, Nesime Tatbul, Mohammad Alizadeh, Tim Kraska.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Sia: Optimizing Queries using Learned Predicates.</strong>
+                Qi Zhou, Joy Arulraj, Shamkant Navathe, William Harris, Jinpeng Wu.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Learning-based Declarative Query Optimization.</strong>
+                Shivani Tripathi.
+                <em>CODS COMAD 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Microlearner: A fine-grained Learning Optimizer for Big Data Workloads at Microsoft.</strong>
+                Alekh Jindal, Shi Qiao, Rathijit Sen, Hiren Patel.
+                <em>ICDE 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Steering Query Optimizers: A Practical Take on Big Data Workloads.</strong>
+                Parimarjan Negi, Matteo Interlandi, Ryan Marcus, Mohammad Alizadeh, Tim Kraska, Marc Friedman, Alekh Jindal.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+              <li>
+                <strong>COMPASS: Online Sketch-based Query Optimization for In-Memory Databases.</strong>
+                Yesdaulet Izenov, Asoke Datta, Florin Rusu, Jun Hyung Shin.
+                <em>SIGMOD 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="query-processing">Query Processing</h3>
+            <ol>
+              
+              <li>
+                <strong>Eddies: Continuously adaptive query processing.</strong>
+                Ron Avnur, Joseph M. Hellerstein.
+                <em>SIGMOD 2000.</em>
+              </li>
+              
+              <li>
+                <strong>Micro adaptivity in Vectorwise.</strong>
+                Bogdan Răducanu, Peter Boncz, Marcin Zukowski.
+                <em>SIGMOD 2013.</em>
+              </li>
+              
+              <li>
+                <strong>Cuttlefish: A Lightweight Primitive for Adaptive Query Processing.</strong>
+                Tomer Kaftan, Magdalena Balazinska, Alvin Cheung, Johannes Gehrke.
+                <em>arXiv 2018.</em>
+              </li>
+              
+              <li>
+                <strong>ML-AQP: Query-Driven Approximate Query Processing based on Machine Learning.</strong>
+                Fotis Savva, Christos Anagnostopoulos, Peter Triantafillou.
+                <em>ACM Symposium on Neural Gaze Detection 2018.</em>
+              </li>
+              
+              <li>
+                <strong>DBEST: Revisiting approximate query processing engines with machine learning models.</strong>
+                Qingzhi Ma, Peter Triantafillou.
+                <em>SIGMOD 2019.</em>
+              </li>
+              
+              <li>
+                <strong>DeepSPACE: Approximate Geospatial Query Processing with Deep Learning.</strong>
+                Dimitri Vorona, Andreas Kipf, Thomas Neumann, Alfons Kemper.
+                <em>SIGSPATIAL 2019.</em>
+              </li>
+              
+              <li>
+                <strong>LAQP: Learning-based Approximate Query Processing.</strong>
+                Meifan Zhang, Hongzhi Wang.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Approximate Query Processing for Data Exploration using Deep Generative Models.</strong>
+                Saravanan Thirumuruganathan, Shohedul Hasan, Nick Koudas, Gautam Das.
+                <em>ICDE 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Approximate Query Processing for Group-By Queries based on Conditional Generative Models.</strong>
+                Meifan Zhang, Hongzhi Wang.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Learned Approximate Query Processing: Make it Light, Accurate and Fast.</strong>
+                Qingzhi Ma, Ali M. Shanghooshabad, Mehrdad Almasi, Meghdad Kurmanji, Peter Triantafillou.
+                <em>CIDR 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="scheduling">Scheduling</h3>
+            <ol>
+              
+              <li>
+                <strong>Resource Management with Deep Reinforcement Learning.</strong>
+                Hongzi Mao, Mohammad Alizadeh, Ishai Menache, Srikanth Kandula.
+                <em>HotNets 2016.</em>
+              </li>
+              
+              <li>
+                <strong>WiSeDB: A Learning-based Workload Management Advisor for Cloud Databases.</strong>
+                Ryan Marcus, Olga Papaemmanouil.
+                <em>VLDB 2016.</em>
+              </li>
+              
+              <li>
+                <strong>Model-free Control for Distributed Stream Data Processing using Deep Reinforcement Learning.</strong>
+                Teng Li, Zhiyuan Xu, Jian Tang, Yanzhi Wang.
+                <em>VLDB 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Learning Scheduling Algorithms for Data Processing Clusters.</strong>
+                Hongzi Mao, Malte Schwarzkopf, Shaileshh Bojja Venkatakrishnan, Zili Meng, Mohammad Alizadeh.
+                <em>SIGCOMM 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Scheduling OLTP Transactions via Learned Abort Prediction.</strong>
+                Yangjun Sheng, Anthony Tomasic, Tieying Zhang, Andrew Pavlo.
+                <em>aiDM 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Scheduling OLTP Transactions via Machine Learning.</strong>
+                Yangjun Sheng, Anthony Tomasic, Tieying Zhang, Andrew Pavlo.
+                <em>arXiv 2019.</em>
+              </li>
+              
+              <li>
+                <strong>CrocodileDB: Efficient Database Execution through Intelligent Deferment.</strong>
+                Zechao Shang, Xi Liang, Dixin Tang, Cong Ding, Aaron J. Elmore, Sanjay Krishnan, Michael J. Franklin.
+                <em>CIDT 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Buffer Pool Aware Query Scheduling via Deep Reinforcement Learning.</strong>
+                Chi Zhang, Ryan Marcus, Anat Kleiman, Olga Papaemmanouil.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Polyjuice: High-Performance Transactions via Learned Concurrency Control.</strong>
+                Jiachen Wang, Ding Ding, Huan Wang, Conrad Christensen, Zhaoguo Wang, Haibo Chen, Jinyang Li.
+                <em>arXiv 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="caching">Caching</h3>
+            <ol>
+              
+              <li>
+                <strong>Competitive Caching with Machine Learned Advice.</strong>
+                Thodoris Lykouris, Sergei Vassilvitskii.
+                <em>ICML 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Learning Caching Policies with Subsampling.</strong>
+                Haonan Wang, Hao He, Mohammad Alizadeh, Hongzi Mao.
+                <em>NeurIPS 2019.</em>
+              </li>
+              
+              <li>
+                <strong>RL-Cache: Learning-Based Cache Admission for Content Delivery.</strong>
+                Vadim Kirilin; Aditya Sundarrajan; Sergey Gorinsky; Ramesh K. Sitaraman.
+                <em>IEEE 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Leaper: A Learned Prefetcher for Cache Invalidation in LSM-tree based Storage Engines.</strong>
+                Lei Yang, Hong Wu, Tieying Zhang, Xuntao Cheng, Feifei Li, Lei Zou, Yujie Wang, Rongyao Chen, Jianying Wang, Gui Huang.
+                <em>VLDB 2020.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="sorting">Sorting</h3>
+            <ol>
+              
+              <li>
+                <strong>The Case for a Learned Sorting Algorithm.</strong>
+                Ani Kristo, Kapil Vaidya, Ugur Çetintemel, Sanchit Misra, Tim Kraska.
+                <em>SIGMOD 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Defeating duplicates: A re-design of the LearnedSort algorithm.</strong>
+                Ani Kristo, Kapil Vaidya, Tim Kraska.
+                <em>arxiv.</em>
+              </li>
+              
+              <li>
+                <strong>Centroid Sort: a Clustering-based Technique for Accelerating Sorting Algorithms.</strong>
+                Peter Olukanmi, Peter Popoola, Michael Olusanya.
+                <em>IMITEC 2020.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="garbage-collection">Garbage Collection</h3>
+            <ol>
+              
+              <li>
+                <strong>To Collect or Not to Collect? Machine Learning for Memory Management.</strong>
+                Eva Andreasson, Frank Hoffmann, Olof Lindholm.
+                <em>JVM 2002.</em>
+              </li>
+              
+              <li>
+                <strong>Garbage Collection Auto-Tuning for Java MapReduce on Multi-Cores.</strong>
+                Jeremy Singer, George Kovoor, Gavin Brown, Mikel Luján.
+                <em>ACM SIGPLAN Notices 2011.</em>
+              </li>
+              
+              <li>
+                <strong>A method for reducing garbage collection overhead of SSD using machine learning algorithms.</strong>
+                Jung Kyu Park, Jaeho Kim.
+                <em>ICTC 2017.</em>
+              </li>
+              
+              <li>
+                <strong>Reducing Garbage Collection Overhead in SSD Based on Workload Prediction.</strong>
+                Pan Yang, Ni Xue, Yuqi Zhang, Yangxu Zhou, Li Sun, Wenwen Chen, Zhonggang Chen, Wei Xia, Junke Li, Kihyoun Kwon.
+                <em>HotStorage 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Optimal Choice of When to Garbage Collect.</strong>
+                Nicholas Jacek, Meng-Chieh Chiu, Benjamin M. Marlin, J. Eliot B. Moss.
+                <em>ACM Transactions on Programming Languages and Systems 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Learning When to Garbage Collect with Random Forests.</strong>
+                Nicholas Jacek, J. Eliot B. Moss.
+                <em>ISMM 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Learned Garbage Collection.</strong>
+                Lujing Cen, Ryan Marcus, Hongzi Mao, Justin Gottschlich, Mohammad Alizadeh, Tim Kraska.
+                <em>MAPL 2020.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="sketches">Sketches</h3>
+            <ol>
+              
+              <li>
+                <strong>Learning-Based Frequency Estimation Algorithms.</strong>
+                Chen-Yu Hsu, Piotr Indyk, Dina Katabi, Ali Vakilian.
+                <em>ICLR 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Composable Sketches for Functions of Frequencies: Beyond the Worst Case.</strong>
+                Edith Cohen, Ofir Geri, Rasmus Pagh.
+                <em>ICML 2020.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="compilation-compilers">Compilation / Compilers</h3>
+            <ol>
+              
+              <li>
+                <strong>Compiler Auto-Vectorization with Imitation Learning.</strong>
+                Charith Mendis, Cambridge Yang, Yewen Pu, Saman Amarasinghe, Michael Carbin.
+                <em>NeurIPS 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Ithemal: Accurate, Portable and Fast Basic Block Throughput Estimation using Deep Neural Networks.</strong>
+                Charith Mendis, Alex Renda, Saman Amarasinghe, Michael Carbin.
+                <em>ICML 2019.</em>
+              </li>
+              
+              <li>
+                <strong>A Learned Performance Model for Tensor Processing Units.</strong>
+                Samuel J. Kaufman, Phitchaya Mangpo Phothilimthana, Yanqi Zhou, Charith Mendis, Sudip Roy, Amit Sabne, Mike Burrows.
+                <em>MLSys 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Learning to Optimize Tensor Programs.</strong>
+                Tianqi Chen, Lianmin Zheng, Eddie Yan, Ziheng Jiang, Thierry Moreau, Luis Ceze, Carlos Guestrin, Arvind Krishnamurthy.
+                <em>NeurIPS 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Learning to optimize halide with tree search and random programs.</strong>
+                Andrew Adams, Karima Ma, Luke Anderson, Riyadh Baghdadi, Tzu-Mao Li, Michael Gharbi, Benoit Steiner, Steven Johnson, Kayvon Fatahalian, Fredo Durand, Jonathan Ragan-Kelley.
+                <em>ACM Transactions on Graphics Vol. 38, No. 4, Article 121, 2019.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="sqlrelated">SQL-Related</h3>
+            <ol>
+              
+              <li>
+                <strong>SQLNet: Generating Structured Queries From Natural Language Without Reinforcement Learning.</strong>
+                Xiaojun Xu, Chang Liu, Dawn Song.
+                <em>arXiv 2017.</em>
+              </li>
+              
+              <li>
+                <strong>Query2Vec: An Evaluation of NLP Techniques for Generalized Workload Analytics.</strong>
+                Shrainik Jain, Bill Howe, Jiaqi Yan, Thierry Cruanes.
+                <em>VLDB 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Bootstrapping an End-to-End Natural Language Interface for Databases.</strong>
+                Nathaniel Weir, Prasetya Utama.
+                <em>SIGMOD 2019.</em>
+              </li>
+              
+              <li>
+                <strong>Facilitating SQL Query Composition and Analysis.</strong>
+                Zainab Zolaktaf, Mostafa Milani, Rachel Pottinger.
+                <em>arXiv 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Natural language to SQL: Where are we today?.</strong>
+                Hyeonji Kim, Byeong-Hoon So, Wook-Shin Han, Hongrae Lee.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>From Natural Language Processing to Neural Databases.</strong>
+                James Thorne, Majid Yazdani, Marzieh Saeidi, Fabrizio Silvestri, Sebastian Riedel, Alon Halevy.
+                <em>VLDB 2021.</em>
+              </li>
+              
+              <li>
+                <strong>BERT Meets Relational DB: Contextual Representations of Relational Databases.</strong>
+                Siddhant Arora, Vinayak Gupta, Garima Gaur, Srikanta Bedathur.
+                <em>arXiv 2021.</em>
+              </li>
+              
+            </ol>
+            
+            <h3 id="workload-related">Workload Related</h3>
+            <ol>
+              
+              <li>
+                <strong>Workload Models for Autonomic Database Management Systems.</strong>
+                Patrick Martin, Said Elnaffar, and Ted Wasserman.
+                <em>International Conference on Autonomic and Autonomous Systems 2006.</em>
+              </li>
+              
+              <li>
+                <strong>Towards workload shift detection and prediction for autonomic databases.</strong>
+                Marc Holze, and Norbert Ritter.
+                <em>CIKM 2007.</em>
+              </li>
+              
+              <li>
+                <strong>Query-based Workload Forecasting for Self-Driving Database Management Systems.</strong>
+                Lin Ma, Dana Van Aken, Ahmed Hefny, Gustavo Mezerhane, Andrew Pavlo, and Geoffrey J. Gordon.
+                <em>SIGMOD 2018.</em>
+              </li>
+              
+              <li>
+                <strong>Diagnosing Root Causes of Intermittent Slow Queries in Cloud Databases.</strong>
+                Minghua Ma, Zheng Yin, Shenglin Zhang, Sheng Wang, Christopher Zheng, Xinhao Jiang, Hanwen Hu, Cheng Luo, Yilin Li, Nengjun Qiu, Feifei Li, Changcheng Chen, and Dan Pei.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Seagull: An Infrastructure for Load Prediction and Optimized Resource Allocation.</strong>
+                Olga Poppe, Tayo Amuneke, Dalitso Banda, Aritra De, Ari Green, Manon Knoertzer, Ehi Nosakhare, Karthik Rajendran, Deepak Shankargouda, Meina Wang, Alan Au, Carlo Curino, Qun Guo, Alekh Jindal, Ajay Kalhan, Morgan Oslake, Sonia Parchani, Vijay Ramani, Raj Sellappan, Saikat Sen, Sheetal Shrotri, Soundararajan Srinivasan, Ping Xia, Shize Xu, Alicia Yang, Yiwen Zhu.
+                <em>VLDB 2020.</em>
+              </li>
+              
+              <li>
+                <strong>Database Workload Characterization with Query Plan Encoders.</strong>
+                Debjyoti Paul, Jie Cao, Feifei Li, and Vivek Srikumar.
+                <em>arXiv 2021.</em>
+              </li>
+              
+              <li>
+                <strong>Workload-Aware Performance Tuning for Autonomous DBMSs.</strong>
+                Zhengtong Yan, Jiaheng Lu, Naresh Chainani, and Chunbin Lin.
+                <em>ICDE 2021.</em>
+              </li>
+              
+            </ol>
+            
           </div>
         </div>
       </div>
