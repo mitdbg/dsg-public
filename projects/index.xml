@@ -5,11 +5,7 @@
     <link>http://dsg.csail.mit.edu/projects/</link>
     <description>Recent content in Projects on Data Systems Group at MIT</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="http://dsg.csail.mit.edu/projects/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="http://dsg.csail.mit.edu/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Alpine Meadow - Interactive Auto ML</title>
       <link>http://dsg.csail.mit.edu/projects/active/alpine-meadow/</link>
@@ -102,7 +98,7 @@ Participants Tim Kraska</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://dsg.csail.mit.edu/projects/active/learned-multi-index-dw/</guid>
-      <description>Given a multi-dimensional table in a data warehouse, an analyst will often want to run queries on subsets of those dimensions. For example, given a table that tracks employee attributes such as age, salary, level, and start date, one possible range query is, “Return all employees between ages 25-30 with salary between $90K and $100K.&amp;rdquo;
+      <description>Given a multi-dimensional table in a data warehouse, an analyst will often want to run queries on subsets of those dimensions. For example, given a table that tracks employee attributes such as age, salary, level, and start date, one possible range query is, “Return all employees between ages 25-30 with salary between $90K and $100K.&amp;quot;
 Current methods for indexing multi-dimensional data are often unsatisfactory when there are many dimensions that are used in small combinations in queries.</description>
     </item>
     
