@@ -1,0 +1,290 @@
+[
+  {
+    "name": "Tim Kraska",
+    "image": "../images/people/tim_Kraska.jpg",
+    "link": "http://people.csail.mit.edu/kraska/",
+    "type": "faculty"
+  },
+  {
+    "name": "Sam Madden",
+    "image": "../images/people/madden.jpg",
+    "link": "http://db.csail.mit.edu/madden/",
+    "type": "faculty"
+  },
+  {
+    "name": "Michael Stonebraker",
+    "image": "../images/people/stonebraker-71.png",
+    "link": "https://www.csail.mit.edu/person/michael-stonebraker",
+    "type": "faculty"
+  },
+  {
+    "name": "Michael Cafarella",
+    "image": "../images/people/michjc-1.jpg",
+    "link": "https://web.eecs.umich.edu/~michjc/",
+    "type": "faculty"
+  },
+  {
+    "name": "Julian Shun",
+    "image": "../images/people/pic.jpg",
+    "link": "https://people.csail.mit.edu/jshun/",
+    "type": "faculty"
+  },
+  {
+    "name": "Nesime Tatbul",
+    "image": "../images/people/nesime_tatbul-200x200.png",
+    "link": "https://people.csail.mit.edu/tatbul/",
+    "type": "associated"
+  },
+  {
+    "name": "Laurent Bindschaedler",
+    "image": "../images/people/Laurent.jpg",
+    "link": "https://people.csail.mit.edu/bindscha/",
+    "type": "alumni"
+  },
+  {
+    "name": "Lei Cao",
+    "image": "../images/people/leicao-1-2.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Andreas Kipf",
+    "image": "../images/people/Andreas.jpg",
+    "link": "https://people.csail.mit.edu/kipf/",
+    "type": "alumni"
+  },
+  {
+    "name": "Ryan Marcus",
+    "image": "../images/people/RyanM.png",
+    "link": "https://rmarcus.info",
+    "type": "alumni"
+  },
+  {
+    "name": "Elkindi Rezig",
+    "image": "../images/people/elkindi.jpeg",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Ibrahim Sabek",
+    "image": "../images/people/ibrahim-sabek.jpeg",
+    "link": "http://people.csail.mit.edu/ibrahimsabek/",
+    "type": "alumni"
+  },
+  {
+    "name": "Brit Youngmann",
+    "image": "../images/people/brity.jpg",
+    "link": "https://brityoungmann.github.io/brityoungmann/",
+    "type": "alumni"
+  },
+  {
+    "name": "Chunwei Liu",
+    "image": "../images/people/Chunwei_liu.jpg",
+    "link": "https://people.csail.mit.edu/chunwei/",
+    "type": "postdoc"
+  },
+  {
+    "name": "Jialin Ding",
+    "image": "../images/people/jialin.jpg",
+    "link": "https://jialinding.github.io/",
+    "type": "alumni"
+  },
+  {
+    "name": "Tianyu Li",
+    "image": "../images/people/tianyu.png",
+    "link": null,
+    "type": "student"
+  },
+  {
+    "name": "Markos Markakis",
+    "image": "../images/people/markos2.jpg",
+    "link": "https://people.csail.mit.edu/markakis/",
+    "type": "student"
+  },
+  {
+    "name": "Oscar Moll",
+    "image": "../images/people/oscarmoll.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Aniruddha Nrusimha",
+    "image": "../images/people/ani.jpg",
+    "link": "https://anin.dev/",
+    "type": "alumni"
+  },
+  {
+    "name": "Matt Perron",
+    "image": "../images/people/Matt-Perron-Photo-1.png",
+    "link": null,
+    "type": "student"
+  },
+  {
+    "name": "Sivaprasad Sudhir",
+    "image": "../images/people/sivaprasad.jpeg",
+    "link": null,
+    "type": "student"
+  },
+  {
+    "name": "Joana M.F. da Trindade",
+    "image": "../images/people/Joana-1.png",
+    "link": "https://joana.fyi ",
+    "type": "student"
+  },
+  {
+    "name": "Geoffrey Yu",
+    "image": "../images/people/geoffrey.jpg",
+    "link": "https://www.geoffreyyu.com",
+    "type": "student"
+  },
+  {
+    "name": "Amadou Latyr Ngom",
+    "image": "../images/people/amadou.jpg",
+    "link": "https://amadoungom.com/",
+    "type": "student"
+  },
+  {
+    "name": "Anna Zeng",
+    "image": "../images/people/anna.jpg",
+    "link": null,
+    "type": "student"
+  },
+  {
+    "name": "Kapil Vaidya",
+    "image": "../images/people/kapil.png",
+    "link": "https://kapilvaidya24.github.io/",
+    "type": "alumni"
+  },
+  {
+    "name": "Ferdinand Kossmann",
+    "image": "../images/people/ferdi.png",
+    "link": null,
+    "type": "student"
+  },
+  {
+    "name": "Eugenie Lai",
+    "image": "../images/people/eylai.jpg",
+    "link": "https://eugenielai.github.io/",
+    "type": "student"
+  },
+  {
+    "name": "Ziniu Wu",
+    "image": "../images/people/ziniu.jpeg",
+    "link": "https://wuziniu.github.io/",
+    "type": "student"
+  },
+  {
+    "name": "Xinjing Zhou",
+    "image": "../images/people/xinjing.jpg",
+    "link": "https://zxjcarrot.github.io/",
+    "type": "student"
+  },
+  {
+    "name": "Darryl Ho",
+    "image": "../images/people/darryl.png",
+    "link": null,
+    "type": "student"
+  },
+  {
+    "name": "Peter Baile Chen",
+    "image": "../images/people/peter.jpg",
+    "link": "https://peterbaile.github.io/",
+    "type": "student"
+  },
+  {
+    "name": "Daniel Weitzner",
+    "image": "../images/people/weitzner-sm.jpg",
+    "link": null,
+    "type": "affiliate"
+  },
+  {
+    "name": "Yuze Lou",
+    "image": "../images/people/Yuze.png",
+    "link": null,
+    "type": "visiting student"
+  },
+  {
+    "name": "Wenjia He",
+    "image": "../images/people/wenjia.jpeg",
+    "link": "https://web.eecs.umich.edu/~wenjiah/",
+    "type": "visiting student"
+  },
+  {
+    "name": "Dominik Horn",
+    "image": "../images/people/dominik.png",
+    "link": "https://www.linkedin.com/in/dominik-horn-9b9187220/",
+    "type": "alumni"
+  },
+  {
+    "name": "Pascal Pfeil",
+    "image": "../images/people/pascal.png",
+    "link": "https://www.linkedin.com/in/pascalpfeil/",
+    "type": "alumni"
+  },
+  {
+    "name": "Xiangyao Yu",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Emanuel Zgraggen",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Anil Shanbhag",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Yi Lu",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Zeyuan Shang",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Wenbo Tao",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Albert Kim",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Favyen Bastani",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Alana Marzoev",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Michael Brodie",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  },
+  {
+    "name": "Xiaoyu Liu",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "alumni"
+  }
+]
