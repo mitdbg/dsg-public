@@ -14,7 +14,7 @@ module.exports = {
     author: `@peterbaile`,
     siteUrl: `http://dsg.csail.mit.edu/`,
     ogTitle: `Data Systems Group (DSG) @ MIT`,
-    ogImage: `https://dsg-dsail.netlify.app/images/dsg-logo.png`
+    ogImage: `http://dsg.csail.mit.edu/images/dsg-logo.png`
   },
   plugins: [
     `gatsby-plugin-image`,
