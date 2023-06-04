@@ -51,7 +51,7 @@ const NavBar = ({ dsail }) => {
           <Image src={imageSource} className="img-fluid" />
         </StyledLink>
         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".dual-collapse2" aria-expanded="false">
-          <span className="navbar-toggler-icon"><img src="/icons/menu.svg" style={{ transform: 'translate(0, 0.2rem)' }} /></span>
+          <span className="navbar-toggler-icon"><img src="/images/menu.svg" style={{ transform: 'translate(0, 0.2rem)' }} /></span>
         </button>
       </div>
       <div className="navbar-collapse w-100 dual-collapse2 order-2 order-md-2 collapse">
