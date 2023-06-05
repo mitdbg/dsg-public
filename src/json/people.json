@@ -27,7 +27,7 @@
     "name": "Julian Shun",
     "image": "../images/people/pic.jpg",
     "link": "https://people.csail.mit.edu/jshun/",
-    "type": "faculty"
+    "type": "associated"
   },
   {
     "name": "Nesime Tatbul",
@@ -105,7 +105,7 @@
     "name": "Oscar Moll",
     "image": "../images/people/oscarmoll.png",
     "link": null,
-    "type": "alumni"
+    "type": "postdoc"
   },
   {
     "name": "Aniruddha Nrusimha",
@@ -261,7 +261,7 @@
     "name": "Albert Kim",
     "image": "../images/people/beaver.png",
     "link": null,
-    "type": "alumni"
+    "type": "student"
   },
   {
     "name": "Favyen Bastani",

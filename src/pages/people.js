@@ -42,7 +42,9 @@ const PeoplePage = ({ data }) => {
   let people = data.allPeopleJson.edges
   people = people.map(person => person.node)
   // console.log(people.slice(0, 5))
-  people.sort((a, b) => a.name > b.name ? 1 : -1)
+
+  // use last name to sort
+  people.sort((a, b) => a.name.split(' ').slice(-1) > b.name.split(' ').slice(-1) ? 1 : -1)
   // console.log(people.slice(0, 5))
   people = _.groupBy(people, 'type')
 
