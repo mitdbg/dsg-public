@@ -45,7 +45,7 @@ Images are in two locations, either `src/images` or `static/`. Only the carousel
 
 ### Clone and Deploy
 
-To use this repository, make sure you have installed [NodeJS](https://nodejs.org/en). Then, after cloning the respository, open a terminal and run
+To use this repository, make sure you have installed [NodeJS](https://nodejs.org/en) (the latest LTS version (>= v18)). Then, after cloning the respository, open a terminal and run
 
 ```
 npm install --force # this only need to be done the first time
