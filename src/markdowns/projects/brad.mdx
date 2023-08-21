@@ -26,6 +26,9 @@ summary: >
 status: current
 ---
 
+import Bibtex from '../../components/bibtex.js';
+import RandomOrder from '../../utils/random_order.js';
+
 # BRAD: Simplifying Cloud Data Processing with Learned Automated Data Meshes
 
 The last decade of database research has led to the prevalence of specialized
@@ -50,7 +53,35 @@ exemplifies a new class of systems that utilize machine learning and the cloud
 to make complex data processing more accessible to end users, raising numerous
 new problems in database systems, machine learning, and the cloud.
 
-## Project Participants
+<a href="https://doi.org/10.14778/3611479.3611526" target="_blank">Read the Vision Paper (VLDB 2023)</a>
+ | 
+<Bibtex withToggle={true}>{`@article{brad-kraska23,
+  author = {Kraska, Tim and Li, Tianyu and Madden, Samuel and Markakis, Markos
+    and Ngom, Amadou and Wu, Ziniu and Yu, Geoffrey X.},
+  doi = {10.14778/3611479.3611526},
+  journal = {{Proceedings of the VLDB Endowment}},
+  month = {8},
+  number = {11},
+  pages = {3293--3301},
+  title = {{Check Out the Big Brain on BRAD: Simplifying Cloud Data Processing
+    with Learned Automated Data Meshes}},
+  volume = {16},
+  year = {2023},
+}`}</Bibtex>
 
-Ferdinand Kossmann, Tim Kraska, Tianyu Li, Samuel Madden, Markos Markakis, Amadou Ngom, Ziniu Wu, Geoffrey Yu
+### Project Participants
 
+<p>
+<RandomOrder items={[
+  "Ferdinand Kossmann",
+  "Tim Kraska",
+  "Tianyu Li",
+  "Samuel Madden",
+  "Markos Markakis",
+  "Amadou Ngom",
+  "Ziniu Wu",
+  "Geoffrey Yu",
+]} />
+</p>
+
+<p>(Participant order is randomized.)</p>
