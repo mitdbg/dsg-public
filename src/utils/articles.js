@@ -83,4 +83,4 @@ const pull_articles = async () => {
   // await writeJsonFile('../json/pubs.json', unique_papers)
 }
 
-// pull_articles()
+pull_articles()
