@@ -1,0 +1,97 @@
+---
+title: "Serverless State Management Systems"
+link: /ssms
+summary: >
+    Modern cloud developers face many distributed systems complexities when building
+    disaggregated applications from cloud building blocks. We propose a new class of
+    cloud services, called Serverless State Management Systems (SSMS), that abstracts away
+    these complexities and transparently manages fault-tolerance, deployment, and scaling
+    of a logical cloud application on physical cloud resources. An SSMS, analogous to a
+    DBMS, provides three important abstractions for disaggregated applications: 1) a
+    logical application model, similar to relational algebra, that describes application
+    semantics but abstracts away the deployment details, 2) strong resilient programming
+    primitives, similar to ACID transactions, that simplifies fault-tolerant programming
+    in the cloud, and 3) smart, cost-based optimization schemes that automates scheduling,
+    placement, and other details, similar to a query optimizer. SSMS is an overarching
+    research direction that encapsulates several projects in cloud, distributed and
+    concurrent systems.
+status: current
+---
+
+import Bibtex from '../../components/bibtex.js';
+
+# Serverless State Management Systems
+
+Modern cloud developers face many distributed systems complexities when building
+disaggregated applications from cloud building blocks. We propose a new class of
+cloud services, called Serverless State Management Systems (SSMS), that abstracts away
+these complexities and transparently manages fault-tolerance, deployment, and scaling
+of a logical cloud application on physical cloud resources. An SSMS, analogous to a
+DBMS, provides three important abstractions for disaggregated applications: 1) a
+logical application model, similar to relational algebra, that describes application
+semantics but abstracts away the deployment details, 2) strong resilient programming
+primitives, similar to ACID transactions, that simplifies fault-tolerant programming
+in the cloud, and 3) smart, cost-based optimization schemes that automates scheduling,
+placement, and other details, similar to a query optimizer. SSMS is an overarching
+research direction that encapsulates several projects in cloud, distributed and
+concurrent systems. For more details, please check out each of the individual projects:
+
+
+<a href="https://dl.acm.org/doi/10.1145/3589262" target="_blank">CReSt abstraction and DARQ system for resilient, composable cloud systems (SIGMOD 2023)</a>
+ | 
+<Bibtex withToggle={true}>{`@article{li23darq,
+author = {Li, Tianyu and Chandramouli, Badrish and Burckhardt, Sebastian and Madden, Samuel},
+title = {DARQ Matter Binds Everything: Performant and Composable Cloud Programming via Resilient Steps},
+year = {2023},
+issue_date = {June 2023},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {1},
+number = {2},
+url = {https://doi.org/10.1145/3589262},
+doi = {10.1145/3589262},
+journal = {Proc. ACM Manag. Data},
+month = {jun},
+articleno = {117},
+numpages = {27},
+keywords = {service composition, cloud programming, distributed system, recoverability}}`}</Bibtex>
+
+<a href="https://dl.acm.org/doi/abs/10.1145/3533737.3535091" target="_blank"> Epoch Protected Versions Schemes (DaMoN 2022)</a>
+ | 
+<Bibtex withToggle={true}>{`@inproceedings{li22performant,
+author = {Li, Tianyu and Chandramouli, Badrish and Madden, Samuel},
+title = {Performant Almost-Latch-Free Data Structures Using Epoch Protection},
+year = {2022},
+isbn = {9781450393782},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3533737.3535091},
+doi = {10.1145/3533737.3535091},
+booktitle = {Proceedings of the 18th International Workshop on Data Management on New Hardware},
+articleno = {1},
+numpages = {10},
+location = {Philadelphia, PA, USA},
+series = {DaMoN '22}
+}`}</Bibtex>
+
+
+<a href="https://dl.acm.org/doi/abs/10.1145/3448016.3458454" target="_blank">Asynchronous Prefix Recoverability for Fast Distributed Stores (SIGMOD 2021)</a>
+ | 
+<Bibtex withToggle={true}>{`@inproceedings{10.1145/3448016.3458454,
+author = {Li, Tianyu and Chandramouli, Badrish and Faleiro, Jose M. and Madden, Samuel and Kossmann, Donald},
+title = {Asynchronous Prefix Recoverability for Fast Distributed Stores},
+year = {2021},
+isbn = {9781450383431},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3448016.3458454},
+doi = {10.1145/3448016.3458454},
+pages = {1090–1102},
+numpages = {13},
+keywords = {key-value store, failure recovery, distributed system},
+location = {Virtual Event, China},
+series = {SIGMOD '21}
+}`}</Bibtex>
+
+### Project Participants
+Tianyu Li, Samuel Madden, Badrish Chandramouli (Microsoft Research), Sebastian Burckhardt (Microsoft Research) 
