@@ -26,6 +26,7 @@ const sections = {
 const ProjectsPages = ({ data }) => {
   let projects = data.allMdx.nodes
   projects = projects.map(project => project.frontmatter)
+  projects.sort((a, b) => a.title > b.title ? 1 : -1)
 
   projects = _.groupBy(projects, 'status')
 
