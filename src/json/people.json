@@ -286,5 +286,11 @@
     "image": "../images/people/beaver.png",
     "link": null,
     "type": "alumni"
+  },
+  {
+    "name": "Matthew Russo",
+    "image": "../images/people/mdrusso.png",
+    "link": "https://mdr223.github.io/",
+    "type": "student"
   }
 ]
