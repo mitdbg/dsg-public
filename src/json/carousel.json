@@ -1,5 +1,13 @@
 [
   {
+    "caption": "2023 Outing",
+    "image": "/images/carousel/2023_lake.JPG"
+  },
+  {
+    "caption": "2023 VLDB",
+    "image": "/images/carousel/2023_vldb.jpg"
+  },
+  {
     "caption": "2023 Graduation celebration for Dr. Oscal Moll",
     "image": "/images/carousel/2023_oscar.jpg"
   },
@@ -17,10 +25,10 @@
   },
   {
     "caption": "2022 Outing",
-    "image": "/images/carousel/2022_sam.JPG"
+    "image": "/images/carousel/2022_lake.JPG"
   },
   {
-    "caption": "2022 SIGMOD at Philadelphia",
+    "caption": "2022 SIGMOD",
     "image": "/images/carousel/2022_sigmod.jpg"
   },
   {
