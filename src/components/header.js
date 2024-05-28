@@ -8,7 +8,7 @@ const Header = ({ siteTitle }) => (
       padding: `var(--space-4) var(--size-gutter)`,
       display: `flex`,
       alignItems: `center`,
-      justifyContent: `space-between`,
+      justifyContent: `left`,
     }}
   >
     <Link

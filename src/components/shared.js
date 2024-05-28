@@ -18,7 +18,7 @@ export const Wrapper = s.div`
   ${({ font = GEORGIA_REGULAR }) => font}
   padding: 4rem 10rem;
   padding-bottom: 1rem;
-  text-align: justify;
+  text-align: left;
 
   @media (max-width: 768px) {
     padding: 1rem;

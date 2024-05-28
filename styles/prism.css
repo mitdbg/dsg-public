@@ -95,20 +95,31 @@ pre[class*="language-"] {
 .token.attr-name,
 .token.string,
 .token.char,
-.token.builtin,
 .token.inserted {
 	color: #690;
 }
 
-.token.operator,
+/*
+ * NOTE TO POSTERITY:
+ * if you find this comment b/c you're debugging why your built-in operators
+ * aren't highlighting properly, I am deeply sorry. I have a regular python
+ * function called 'filter' which is getting rendered as a built-in and I need
+ * to turn it off. My CSS / web-dev skills are limited so this is the fastest
+ * hack available to me. I will try to remedy this in the future before you
+ * will ever find this message.
+ */
+.token.builtin {
+	color: #000
+}
+
+/* .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
 .style .token.string {
 	color: #9a6e3a;
-	/* This background color was intended by the author of this theme. */
 	background: hsla(0, 0%, 100%, .5);
-}
+} */
 
 .token.atrule,
 .token.attr-value,
@@ -147,10 +158,12 @@ pre[class*="language-"] {
 	margin: 0.5em 0;
 	padding: 1em;
 	overflow: auto;
+	background: #f5f2f0;
 }
 
 .gatsby-highlight pre[class*="language-"].line-numbers {
 	padding: 0;
 	padding-left: 2.8em;
 	overflow: initial;
+	background: #f5f2f0;
 }
