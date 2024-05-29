@@ -77,7 +77,7 @@ Consider the declarative program shown below, which we used in our evaluation fo
 import palimpzest as pz
 
 class Email(pz.TextFile):
-"""Represents an email, which can subclass a text file"""
+  """Represents an email, which can subclass a text file"""
   sender = pz.StringField(desc="The email address of the sender", required=True)
   subject = pz.StringField(desc="The subject of the email", required=True)
 
