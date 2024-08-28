@@ -1,20 +1,60 @@
 ---
-title: Exposing Critical Causal Structures
+title: "ECCS: Exposing Critical Causal Structures"
 link: /eccs
-summary: "ECCS explores the problem of query-oriented interactive causal model refinement for causality-aware data systems."
+summary: >
+    For data systems that support causal queries, high quality causal models are 
+    essential to more reliable query results. The golden standard for establishing 
+    causal models for scientific domain data is carefully designed experiments, often 
+    relying on interventions in a laboratory setting. However, interventional 
+    experiments can often be not plausible while building a causal model for 
+    custom domain data. Therefore, people rely on extracting models from observational 
+    data. Standard statistical causal discovery algorithms often do not scale to 
+    accomodate the number of variables and the volume of data in custom scenarios. Most 
+    causal discovery algorithms also cater to downstream tasks with more indirect 
+    measures of accuracy. In this project, we are interested in developing framework 
+    for interactively refine a causal model for such custom domain data systems. The 
+    framework aims to efficiently use itsinteractivity budget to minimize biases in 
+    given Average Treatment Effect (ATE) queries that the user is interested in.
 status: current
+image: ../../images/projects/eccs/eccs.png
 ---
+
+import Bibtex from '../../components/bibtex.js';
 
 # ECCS: Exposing Critical Causal Structures
 
-For data systems that support causal queries, high quality causal models are essential to more reliable query results.
-The golden standard for establishing causal models for scientific domain data is carefully designed experiments, often relying
-on interventions in a laboratory setting. However, interventional experiments can often be not plausible while building a causal model
-for custom domain data. Therefore, people rely on extracting models from observational data. Standard statistical causal discovery
-algorithms often do not scale to accomodate the number of variables and the volume of data in custom scenarios. Most causal discovery
-algorithms also cater to downstream tasks with more indirect measures of accuracy. In this project, we are interested in developing a
-framework for interactively refine a causal model for such custom domain data systems. The framework aims to efficiently use its
-interactivity budget to minimize biases in given Average Treatment Effect (ATE) queries that the user is interested in.
+For data systems that support causal queries, high quality causal models are 
+essential to more reliable query results. The golden standard for establishing 
+causal models for scientific domain data is carefully designed experiments, often 
+relying on interventions in a laboratory setting. However, interventional 
+experiments can often be not plausible while building a causal model for 
+custom domain data. Therefore, people rely on extracting models from observational 
+data. Standard statistical causal discovery algorithms often do not scale to 
+accomodate the number of variables and the volume of data in custom scenarios. Most 
+causal discovery algorithms also cater to downstream tasks with more indirect 
+measures of accuracy. In this project, we are interested in developing framework 
+for interactively refine a causal model for such custom domain data systems. The 
+framework aims to efficiently use itsinteractivity budget to minimize biases in 
+given Average Treatment Effect (ATE) queries that the user is interested in.
 
-## Participants
-Sylvia Zhang, Markos Markakis, Rana Shahout, Chunwei Liu, Ibrahim Sabek, Michael Cafarella
+<a href="https://doi.org/10.1145/3665601.3669842" target="_blank">Read the Paper (GUIDE-AI 2024 at SIGMOD 2024)</a>
+ | 
+<Bibtex withToggle={true}>{`@inproceedings{markakis2024press,
+author = {Markakis, Markos and Zhang, Ziyu and Shahout, Rana and Gao, Trinity and Liu, Chunwei and Sabek, Ibrahim and Cafarella, Michael},
+title = {Press ECCS to Doubt (Your Causal Graph)},
+year = {2024},
+isbn = {9798400706943},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3665601.3669842},
+doi = {10.1145/3665601.3669842},
+booktitle = {Proceedings of the Conference on Governance, Understanding and Integration of Data for Effective and Responsible AI},
+pages = {6–15},
+numpages = {10},
+keywords = {Causal Graph, Causal Graph Verification, Causality},
+location = {Santiago, AA, Chile},
+series = {GUIDE-AI '24}
+}`}</Bibtex>
+
+## Project Participants
+Markos Markakis, Sylvia Zhang, Rana Shahout, Trinity Gao, Chunwei Liu, Ibrahim Sabek, Michael Cafarella
