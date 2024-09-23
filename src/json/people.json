@@ -105,7 +105,7 @@
     "name": "Oscar Moll",
     "image": "../images/people/oscarmoll.png",
     "link": null,
-    "type": "postdoc"
+    "type": "alumni"
   },
   {
     "name": "Aniruddha Nrusimha",
@@ -117,7 +117,7 @@
     "name": "Matt Perron",
     "image": "../images/people/Matt-Perron-Photo-1.png",
     "link": null,
-    "type": "student"
+    "type": "alumni"
   },
   {
     "name": "Sivaprasad Sudhir",
@@ -129,7 +129,7 @@
     "name": "Joana M.F. da Trindade",
     "image": "../images/people/Joana-1.png",
     "link": "https://joana.fyi ",
-    "type": "student"
+    "type": "alumni"
   },
   {
     "name": "Geoffrey Yu",
@@ -207,7 +207,7 @@
     "name": "Wenjia He",
     "image": "../images/people/wenjia.jpeg",
     "link": "https://web.eecs.umich.edu/~wenjiah/",
-    "type": "visiting student"
+    "type": "alumni"
   },
   {
     "name": "Dominik Horn",
@@ -261,7 +261,7 @@
     "name": "Albert Kim",
     "image": "../images/people/beaver.png",
     "link": null,
-    "type": "student"
+    "type": "alumni"
   },
   {
     "name": "Favyen Bastani",
@@ -292,5 +292,17 @@
     "image": "../images/people/mdrusso.png",
     "link": "https://mdr223.github.io/",
     "type": "student"
+  },
+  {
+    "name": "Gerardo Vitagliano",
+    "image": "../images/people/gerardo.png",
+    "link": "https://www.csail.mit.edu/person/gerardo-vitagliano",
+    "type": "postdoc"
+  },
+  {
+    "name": "Fabian Wenz",
+    "image": "../images/people/beaver.png",
+    "link": "https://www.linkedin.com/in/fabian-wenz",
+    "type": "visiting student"
   }
 ]
