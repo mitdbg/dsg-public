@@ -271,9 +271,9 @@
   },
   {
     "name": "Alana Marzoev",
-    "image": "../images/people/beaver.png",
-    "link": null,
-    "type": "alumni"
+    "image": "../images/people/alana.jpeg",
+    "link": "https://www.alanamarzoev.com/",
+    "type": "student"
   },
   {
     "name": "Michael Brodie",
