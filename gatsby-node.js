@@ -2,7 +2,7 @@ const path = require("path")
 const ProjectTemplate = path.resolve('./src/templates/project.js')
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   const result = await graphql(`
     query {
@@ -39,5 +39,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // our page layout component
       context: { id: node.id },
     })
+  })
+
+  createRedirect({
+    fromPath: `/mlforsystems`,
+    toPath: `/projects/mlforsystems`,
+    isPermanent: true, force: true, redirectInBrowser: true
   })
 }
