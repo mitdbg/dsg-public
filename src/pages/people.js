@@ -52,12 +52,14 @@ const PeoplePage = ({ data }) => {
     <Layout>
       <Wrapper>
         {Object.keys(sections).map(section => (
-          <>
+          Boolean(section in people) &&  (
+            <>
             <Title> {_.startCase(sections[section])} </Title>
-            <div className="row justify-content-center" style={{ marginBottom: '2rem' }}>
-              {people[section].map(person => <Person {...person} />)}
-            </div>
-          </>
+              <div className="row justify-content-center" style={{ marginBottom: '2rem' }}>
+                {people[section].map(person => <Person {...person} />)}
+              </div>
+            </>
+          )
         ))}
       </Wrapper>
   

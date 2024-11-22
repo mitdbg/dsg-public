@@ -201,7 +201,7 @@
     "name": "Yuze Lou",
     "image": "../images/people/Yuze.png",
     "link": null,
-    "type": "visiting student"
+    "type": "alumni"
   },
   {
     "name": "Wenjia He",
@@ -303,6 +303,12 @@
     "name": "Fabian Wenz",
     "image": "../images/people/fabian.jpg",
     "link": "https://www.linkedin.com/in/fabian-wenz",
-    "type": "visiting student"
+    "type": "alumni"
+  },
+  {
+    "name": "Sylvia Zhang",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "student"
   }
 ]
