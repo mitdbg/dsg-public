@@ -13,7 +13,7 @@
   },
   {
     "name": "Michael Stonebraker",
-    "image": "../images/people/stonebraker-71.png",
+    "image": "../images/people/stonebraker.png",
     "link": "https://www.csail.mit.edu/person/michael-stonebraker",
     "type": "faculty"
   },
@@ -25,7 +25,7 @@
   },
   {
     "name": "Julian Shun",
-    "image": "../images/people/pic.jpg",
+    "image": "../images/people/julian.jpg",
     "link": "https://people.csail.mit.edu/jshun/",
     "type": "associated"
   },
@@ -307,7 +307,7 @@
   },
   {
     "name": "Sylvia Zhang",
-    "image": "../images/people/beaver.png",
+    "image": "../images/people/sylvia.jpg",
     "link": null,
     "type": "student"
   }

@@ -10,12 +10,13 @@ import { Wrapper, Title, CardWrapper, StyledLink, LinkTitle, NoLinkTitle } from 
 
 const PersonTitle = s(LinkTitle)`
   margin-top: 1rem;
-  font-size: 110%;
+  font-size: 100%;
+  text-decoration: underline;
 `
 
 const PersonNoLinkTitle = s(NoLinkTitle)`
   margin-top: 1rem;
-  font-size: 110%;
+  font-size: 100%;
 `
 
 

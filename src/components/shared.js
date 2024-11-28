@@ -40,7 +40,7 @@ export const CardWrapper = s.div`
   background-color: ${WHITE};
   border-radius: 24px;
   box-shadow: 0px 0px 15px rgba(0,0,0,0.06);
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
