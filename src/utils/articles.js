@@ -77,7 +77,7 @@ const pull_articles = async () => {
   console.log(unique_papers[0])
   console.log(unique_papers[unique_papers.length - 1])
 
-  fs.writeFileSync('../json/pubs.json', JSON.stringify(unique_papers))
+  fs.writeFileSync('./src/json/pubs.json', JSON.stringify(unique_papers))
 
   // await csvWriter.writeRecords(unique_papers)
   // await writeJsonFile('../json/pubs.json', unique_papers)
