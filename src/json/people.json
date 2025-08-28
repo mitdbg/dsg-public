@@ -310,5 +310,11 @@
     "image": "../images/people/sylvia.jpg",
     "link": null,
     "type": "student"
+  },
+  {
+    "name": "Zhuohan (Joshua) Gu",
+    "image": "../images/people/zhuohan.jpg",
+    "link": "https://zhuohangu.github.io/",
+    "type": "student"
   }
 ]
