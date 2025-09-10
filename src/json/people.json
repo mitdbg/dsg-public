@@ -81,7 +81,7 @@
     "name": "Chunwei Liu",
     "image": "../images/people/Chunwei_liu.jpg",
     "link": "https://people.csail.mit.edu/chunwei/",
-    "type": "postdoc"
+    "type": "alumni"
   },
   {
     "name": "Jialin Ding",
@@ -93,7 +93,7 @@
     "name": "Tianyu Li",
     "image": "../images/people/tianyu.png",
     "link": null,
-    "type": "student"
+    "type": "postdoc"
   },
   {
     "name": "Markos Markakis",
@@ -123,7 +123,7 @@
     "name": "Sivaprasad Sudhir",
     "image": "../images/people/sivaprasad.jpeg",
     "link": null,
-    "type": "student"
+    "type": "alumni"
   },
   {
     "name": "Joana M.F. da Trindade",
@@ -273,7 +273,7 @@
     "name": "Alana Marzoev",
     "image": "../images/people/alana.jpeg",
     "link": "https://www.alanamarzoev.com/",
-    "type": "student"
+    "type": "almuni"
   },
   {
     "name": "Michael Brodie",
