@@ -27,7 +27,7 @@ const Footer = s.div`
   }
 `
 
-const Layout = ({ children, dsail=false }) => {
+const Layout = ({ children, dsail=false, everest=false }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -41,7 +41,7 @@ const Layout = ({ children, dsail=false }) => {
   return (
     <>
       {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-      <NavBar dsail={dsail} />
+      <NavBar dsail={dsail} everest={everest} />
       <div
         style={{
           margin: `0 auto`,

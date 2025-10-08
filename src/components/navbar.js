@@ -32,9 +32,10 @@ const RightUL = s.ul`
   }
 `
 
-const NavBar = ({ dsail }) => {
-  const imageSource = dsail ? '/images/dsail-logo.png': '/images/dsg-logo.png'
-
+const NavBar = ({ dsail, everest}) => {
+  var imageSource = dsail ? '/images/dsail-logo.png': '/images/dsg-logo.png'
+  imageSource = everest ? '/images/everest-logo.png': imageSource
+  var text = everest ? 'hi' : 'bye'
   return (
     <NavbarWrapper
       className="navbar sticky-top navbar-expand-lg"
@@ -50,6 +51,7 @@ const NavBar = ({ dsail }) => {
         <StyledLink to='/'>
           <Image src={imageSource} className="img-fluid" />
         </StyledLink>
+        {text}
         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".dual-collapse2" aria-expanded="false">
           <span className="navbar-toggler-icon"><img src="/images/menu.svg" style={{ transform: 'translate(0, 0.2rem)' }} /></span>
         </button>

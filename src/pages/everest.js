@@ -16,28 +16,8 @@ const Caption = s.div`
 
 const EverestPage = () => (
   <Layout everest>
-    <Wrapper>
+    <Wrapper style={{ fontFamily: 'Helvetica, Arial, sans-serif', fontSize: '18pt' }}>
       <EverestMDX />
-    </Wrapper>
-
-    <!-- <div className="row" style={{ margin: '0 1rem' }}>
-      <div className="col-md-10"> <StaticImage src='../images/dsail/retreat.jpg' placeholder="blurred" />  </div>
-      <Caption className="col-md-2"> Industry partners, researchers and students came together to share research progress and ideas at the first annual DSAIL Research Retreat, held November 1, 2019, in Cambridge, Mass. (Missing from photo: co-director Sam Madden, who’s taking the photo.) </Caption>
-    </div> -->
-
-    <Wrapper>
-      <div className="row justify-content-md-center">
-        <div className="col-md-4">
-          <StaticImage src='../images/dsail/amazon.png' placeholder="blurred"/>
-        </div>
-        <div className="col-md-4">
-        <StaticImage src='../images/dsail/google.png' placeholder="blurred"/>
-        </div>
-        <div className="col-md-4">
-        <StaticImage src='../images/dsail/intel.jpg' placeholder="blurred" />
-        </div>
-        <Caption> DSAIL is also supported by NSF award 1900933 III: Medium: Learning-based Synthesis of Data Processing Engines. </Caption>
-      </div>
     </Wrapper>
   </Layout>
 )
