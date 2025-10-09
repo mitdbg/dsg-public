@@ -16,7 +16,7 @@ const Caption = s.div`
 
 const EverestPage = () => (
   <Layout everest>
-    <Wrapper style={{ fontFamily: 'Helvetica, Arial, sans-serif', fontSize: '18pt' }}>
+    <Wrapper style={{ fontFamily: 'Helvetica, Arial, sans-serif', fontSize: '14pt' }}>
       <EverestMDX />
     </Wrapper>
   </Layout>
