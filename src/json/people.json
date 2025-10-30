@@ -96,6 +96,12 @@
     "type": "postdoc"
   },
   {
+    "name": "Jason Mohoney",
+    "image": "../images/people/jason.jpg",
+    "link": null,
+    "type": "postdoc"
+  },
+  {
     "name": "Markos Markakis",
     "image": "../images/people/markos2.jpg",
     "link": "https://people.csail.mit.edu/markakis/",

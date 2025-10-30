@@ -41,12 +41,12 @@ const Layout = ({ children, dsail=false, everest=false }) => {
   return (
     <>
       {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-      <NavBar dsail={dsail} everest={everest} />
+      {!everest && <NavBar dsail={dsail} everest={everest} />}
       <div
         style={{
-          margin: `0 auto`,
-          maxWidth: `var(--size-content)`,
-          padding: `var(--size-gutter)`,
+          margin: everest ? '0' : `0 auto`,
+          maxWidth: everest ? 'none' : `var(--size-content)`,
+          padding: everest ? '0' : `var(--size-gutter)`,
         }}
       >
         <main>{children}</main>

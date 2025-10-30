@@ -1,0 +1,132 @@
+{
+  "faculty": [
+    {
+      "name": "Samuel Madden",
+      "photo": "madden.jpg",
+      "url": "http://db.csail.mit.edu/madden/"
+    },
+    {
+      "name": "Tim Kraska",
+      "photo": "kraska.jpg",
+      "url": "http://people.csail.mit.edu/kraska/"
+    },
+    {
+      "name": "Michael Cafarella",
+      "photo": "cafarella.jpg",
+      "url": "https://people.csail.mit.edu/michjc/"
+    },
+    {
+      "name": "Omar Khattab",
+      "photo": "omarkhattab.jpg",
+      "url": "https://omarkhattab.com/"
+    }
+  ],
+  "affiliate_faculty": [
+    {
+      "name": "Christoph Paus",
+      "photo": "christophpaus.jpg",
+      "url": "https://physics.mit.edu/faculty/christoph-paus/"
+    }
+  ],
+  "postdocs": [
+    {
+      "name": "Tianyu Li",
+      "photo": "tianyu.png",
+      "url": "#"
+    },
+    {
+      "name": "Jason Mohoney",
+      "photo": "jason.jpg",
+      "url": "#"
+    },
+    {
+      "name": "Gerardo Vitagliano",
+      "photo": "gerardo.png",
+      "url": "https://www.csail.mit.edu/person/gerardo-vitagliano"
+    }
+  ],
+  "research_engineers": [
+    {
+      "name": "James Moore",
+      "photo": null,
+      "url": "#"
+    }
+  ],
+  "students": [
+    {
+      "name": "Sushrut Borkar",
+      "photo": null,
+      "url": "#"
+    },
+    {
+      "name": "Peter Baile Chen",
+      "photo": "peter.jpg",
+      "url": "https://peterbaile.github.io/"
+    },
+    {
+      "name": "Zhuohan (Joshua) Gu",
+      "photo": "zhuohan.jpg",
+      "url": "https://zhuohangu.github.io/"
+    },
+    {
+      "name": "Darryl Ho",
+      "photo": "darryl.png",
+      "url": "#"
+    },
+    {
+      "name": "Ferdinand Kossmann",
+      "photo": "ferdi.png",
+      "url": "#"
+    },
+    {
+      "name": "Eugenie Lai",
+      "photo": "eylai.jpg",
+      "url": "https://eugenielai.github.io/"
+    },
+    {
+      "name": "Markos Markakis",
+      "photo": "markos2.jpg",
+      "url": "https://people.csail.mit.edu/markakis/"
+    },
+    {
+      "name": "Amadou Latyr Ngom",
+      "photo": "amadou.jpg",
+      "url": "https://amadoungom.com/"
+    },
+    {
+      "name": "Matthew Russo",
+      "photo": "mdrusso.png",
+      "url": "https://mdr223.github.io/"
+    },
+    {
+      "name": "Ziniu Wu",
+      "photo": "ziniu.jpeg",
+      "url": "https://wuziniu.github.io/"
+    },
+    {
+      "name": "Geoffrey Yu",
+      "photo": "geoffrey.jpg",
+      "url": "https://www.geoffreyyu.com"
+    },
+    {
+      "name": "Alex Zhang",
+      "photo": null,
+      "url": "#"
+    },
+    {
+      "name": "Anna Zeng",
+      "photo": "anna.jpg",
+      "url": "#"
+    },
+    {
+      "name": "Sylvia Zhang",
+      "photo": "sylvia.jpg",
+      "url": "https://sylviaziyuzhang.github.io/"
+    },
+    {
+      "name": "Xinjing Zhou",
+      "photo": "xinjing.jpg",
+      "url": "https://zxjcarrot.github.io/"
+    }
+  ]
+}
