@@ -433,7 +433,7 @@ const ProjectsGrid = s.div`
   }
 `
 
-const Project = s.article`
+const Project = s.a`
   background-color: ${COLOR_WHITE};
   border: 1px solid ${COLOR_BORDER};
   border-radius: 8px;
@@ -441,6 +441,8 @@ const Project = s.article`
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     border-color: ${COLOR_PRIMARY};
@@ -454,22 +456,13 @@ const ProjectTitle = s.h3`
   font-weight: 600;
   color: ${COLOR_TEXT};
   line-height: 1.2;
-  margin: 0 0 1rem -2rem;
-  padding-left: 2rem;
+  margin: 0 0 1rem 0;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  text-decoration: none;
 
-  a {
-    color: ${COLOR_TEXT};
-    text-decoration: none;
-    transition: color 0.2s ease;
-    font-size: inherit;
-    font-weight: inherit;
-    display: block;
-    margin-left: -2rem;
-    padding-left: 2rem;
-
-    &:hover {
-      color: ${COLOR_PRIMARY};
-    }
+  ${Project}:hover & {
+    color: ${COLOR_PRIMARY};
+    text-decoration: underline;
   }
 
   @media (min-width: 768px) {
@@ -640,6 +633,13 @@ const EventsList = s.div`
   margin-top: 2rem;
 `
 
+const EventItemLink = s.a`
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+`
+
 const EventItem = s.article`
   background-color: ${COLOR_WHITE};
   border: 2px solid ${COLOR_BORDER};
@@ -648,7 +648,7 @@ const EventItem = s.article`
   margin-bottom: 1.5rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  &:hover {
+  ${EventItemLink}:hover & {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
@@ -723,6 +723,12 @@ const EventTitle = s.h3`
   font-weight: 600;
   color: ${COLOR_TEXT};
   margin-bottom: 0.5rem;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+
+  ${EventItemLink}:hover & {
+    text-decoration: underline;
+  }
 `
 
 const EventLocation = s.p`
@@ -1200,47 +1206,38 @@ const EverestPage = () => {
             <SectionHeading>Projects</SectionHeading>
 
             <ProjectsGrid>
-              <Project>
-                <ProjectTitle>
-                  <ProjectLink href="#" aria-label="Learn more about D4">
-                    D4: Design Doc Driven Development
-                  </ProjectLink>
-                </ProjectTitle>
+              <Project href="#" aria-label="Learn more about D4">
+                <ProjectTitle>D4: Design Doc Driven Development</ProjectTitle>
                 <ProjectDescription>
                   D4 achieves a 54.8% average pass rate on the commit-0 benchmark, outperforming the next-best system by 14 percentage points. The system is an LLM-based compiler that generates code from design documents, treating design specifications as input and automatically producing implementation code.
                 </ProjectDescription>
               </Project>
 
-              <Project>
-                <ProjectTitle>
-                  <ProjectLink href="#" aria-label="Learn more about Palimpzest">
-                    Palimpzest
-                  </ProjectLink>
-                </ProjectTitle>
+              <Project href="https://dsg.csail.mit.edu/projects/palimpzest/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about Palimpzest">
+                <ProjectTitle>Palimpzest</ProjectTitle>
                 <ProjectDescription>
                   Palimpzest achieves a 90.3x speedup and 9.1x cost reduction on document processing benchmarks. The system applies cost-based query optimization techniques to AI-powered data processing, automatically selecting optimal combinations of models, prompts, and execution strategies for data transformation tasks.
                 </ProjectDescription>
               </Project>
 
-              <Project>
-                <ProjectTitle>
-                  <ProjectLink href="#" aria-label="Learn more about A2rchi">
-                    A2rchi
-                  </ProjectLink>
-                </ProjectTitle>
+              <Project href="https://ppc.mit.edu/a2/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about A2rchi">
+                <ProjectTitle>A2rchi</ProjectTitle>
                 <ProjectDescription>
                   A2rchi is an open-source RAG framework for AI support systems. The system enables retrieval-augmented generation for technical assistance and has been deployed at MIT (SubMIT system and multiple courses) and CERN for particle physics data processing support.
                 </ProjectDescription>
               </Project>
 
-              <Project>
-                <ProjectTitle>
-                  <ProjectLink href="#" aria-label="Learn more about BRAD">
-                    BRAD
-                  </ProjectLink>
-                </ProjectTitle>
+              <Project href="https://dsg.csail.mit.edu/projects/brad/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about BRAD">
+                <ProjectTitle>BRAD</ProjectTitle>
                 <ProjectDescription>
                   BRAD (Blueprint for Relational Adaptive Databases) virtualizes cloud data infrastructures, automatically optimizing cloud database deployments across different storage engines and compute resources to balance performance and cost.
+                </ProjectDescription>
+              </Project>
+
+              <Project href="https://kramabench.org/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about KramaBench">
+                <ProjectTitle>KramaBench</ProjectTitle>
+                <ProjectDescription>
+                  KramaBench is a comprehensive benchmark for evaluating AI agents on knowledge-intensive tasks. The benchmark provides a systematic framework for assessing agent performance across diverse scenarios requiring deep domain knowledge and reasoning capabilities.
                 </ProjectDescription>
               </Project>
             </ProjectsGrid>
@@ -1388,28 +1385,31 @@ const EverestPage = () => {
             <SectionHeading>Events</SectionHeading>
 
             <EventsList>
-              <EventItem className="upcoming">
-                <EventHeader>
-                  <EventDate>
-                    <EventMonth>November</EventMonth>
-                    <EventDay>14</EventDay>
-                    <EventYear>2025</EventYear>
-                  </EventDate>
-                  <EventDetails>
-                    <EventTitle>Everest Lab Annual Meeting 2025</EventTitle>
-                    <EventLocation>MIT CSAIL, Cambridge, MA</EventLocation>
-                  </EventDetails>
-                </EventHeader>
-                <EventContent>
-                  <EventDescription>
-                    Join us for our annual meeting where lab members will present their latest research findings, discuss ongoing projects, and share insights on the future directions of AI-driven data systems. The event will feature technical talks, poster sessions, and networking opportunities.
-                  </EventDescription>
-                  <EventMeta>
-                    <span>9:00 AM - 5:00 PM EST</span>
-                    <span>In-Person Event</span>
-                  </EventMeta>
-                </EventContent>
-              </EventItem>
+              <EventItemLink href="/everest-annual-meeting-2025">
+                <EventItem className="upcoming">
+                  <EventHeader>
+                    <EventDate>
+                      <EventMonth>November</EventMonth>
+                      <EventDay>14</EventDay>
+                      <EventYear>2025</EventYear>
+                    </EventDate>
+                    <EventDetails>
+                      <EventTitle>Everest Lab Annual Meeting 2025</EventTitle>
+                      <EventLocation>MIT Building 45, 8th Floor · 51 Vassar Street, Cambridge, MA</EventLocation>
+                    </EventDetails>
+                  </EventHeader>
+                  <EventContent>
+                    <EventDescription>
+                      Join us for our annual meeting where lab members will present their latest research findings, discuss ongoing projects, and share insights on the future directions of AI-driven data systems. The event will feature technical talks, poster sessions, and networking opportunities.
+                    </EventDescription>
+                    <EventMeta>
+                      <span>8:30 AM - 6:00 PM EST</span>
+                      <span>In-Person Event</span>
+                      <span>Click for full agenda →</span>
+                    </EventMeta>
+                  </EventContent>
+                </EventItem>
+              </EventItemLink>
             </EventsList>
           </Container>
         </Section>
