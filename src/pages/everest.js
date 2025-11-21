@@ -16,6 +16,7 @@ import IntelLogo from '../images/everest/sponsors/intel.png'
 import AccentureLogo from '../images/everest/sponsors/accenture.png'
 import TwoSigmaLogo from '../images/everest/sponsors/twosigma.png'
 import IntersystemsLogo from '../images/everest/sponsors/intersystems.png'
+import TwgLogo from '../images/everest/sponsors/twg.png'
 
 // Import all team member photos using require.context
 const importAll = (r) => {
@@ -1458,6 +1459,9 @@ const EverestPage = () => {
               </SponsorItem>
               <SponsorItem>
                 <SponsorLogo src={IntersystemsLogo} alt="InterSystems" />
+              </SponsorItem>
+              <SponsorItem>
+                <SponsorLogo src={TwgLogo} alt="TWG Global" />
               </SponsorItem>
             </SponsorsGrid>
 
