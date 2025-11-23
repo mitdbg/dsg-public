@@ -322,5 +322,11 @@
     "image": "../images/people/zhuohan.jpg",
     "link": "https://zhuohangu.github.io/",
     "type": "student"
+  },
+  {
+    "name": "Sushrut Borkar",
+    "image": "../images/people/beaver.png",
+    "link": null,
+    "type": "student"
   }
 ]
