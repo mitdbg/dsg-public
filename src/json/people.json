@@ -92,19 +92,19 @@
   {
     "name": "Tianyu Li",
     "image": "../images/people/tianyu.png",
-    "link": null,
+    "link": "https://tli2.github.io/",
     "type": "postdoc"
   },
   {
     "name": "Jason Mohoney",
     "image": "../images/people/jason.jpg",
-    "link": null,
+    "link": "https://jasonmohoney.com/",
     "type": "postdoc"
   },
   {
     "name": "Markos Markakis",
     "image": "../images/people/markos2.jpg",
-    "link": "https://people.csail.mit.edu/markakis/",
+    "link": "https://mmarkakis.github.io/",
     "type": "student"
   },
   {
@@ -165,7 +165,7 @@
     "name": "Ferdinand Kossmann",
     "image": "../images/people/ferdi.png",
     "link": null,
-    "type": "student"
+    "type": "alumni"
   },
   {
     "name": "Eugenie Lai",

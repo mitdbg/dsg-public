@@ -30,15 +30,16 @@
     "react": "^18.2.0",
     "react-collapsible": "^2.10.0",
     "react-dom": "^18.2.0",
+    "react-is": "^19.2.5",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
     "swiper": "^9.2.0"
   },
   "devDependencies": {
-    "prettier": "^2.8.4",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
+    "prettier": "^2.8.4",
     "schema-utils": "^4.3.3"
   },
   "keywords": [
@@ -47,7 +48,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "GATSBY_CPU_COUNT=$(nproc) PARALLEL_SOURCING=true PARALLEL_QUERY_RUNNING=true gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",

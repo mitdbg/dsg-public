@@ -32,7 +32,7 @@ const Person = ({ name, image, link }) => {
 const sections = {
   'faculty': 'faculty',
   'associated': 'associated',
-  'postdoc': 'Postdoctoral Students',
+  'postdoc': 'Postdoctoral Researchers',
   'student': 'students',
   'visiting student': 'visiting students',
   'affiliate': 'affiliates',
