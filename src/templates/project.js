@@ -2,9 +2,7 @@ import React from 'react'
 import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { Link } from "gatsby"
-import BackgroundImage from 'gatsby-background-image'
-import { getImage } from 'gatsby-plugin-image'
-import { convertToBgImage } from 'gbimage-bridge'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import s from 'styled-components'
 
 import Layout from "../components/layout"
@@ -16,31 +14,43 @@ const ProjectTitle = s.h2`
   ${LIBRE_BOLD}
   color: white;
   padding-left: 1rem;
+  position: relative;
+  z-index: 2;
 `
 
-const StyledBg = s(BackgroundImage)`
-  &::before, &::after {
-    filter: brightness(40%);
-  }
+const StyledBgWrapper = s.div`
+  position: relative;
+  height: 400px;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  background-color: #ebeef2;
+`
+
+const BgImageWrapper = s.div`
+  position: absolute;
+  inset: 0;
+  & > * {
+    width: 100%;
+    height: 100%;
+    filter: brightness(40%);
+  }
 `
 
 const ProjectTemplate = ({ data, children }) => {
   const { mdx: { frontmatter: {image, title} } } = data
-  const bgImage = convertToBgImage(getImage(image))
+  const img = getImage(image)
 
   return (
     <Layout>
-      <StyledBg
-        Tag="div"
-        {...bgImage}
-        style={{'height': '400px'}}
-        className='align-middle'
-        backgroundColor='#ebeef2'
-      >
+      <StyledBgWrapper>
+        {img && (
+          <BgImageWrapper>
+            <GatsbyImage image={img} alt={title} />
+          </BgImageWrapper>
+        )}
         <ProjectTitle>{title}</ProjectTitle>
-      </StyledBg>
+      </StyledBgWrapper>
       <Wrapper>
         <MDXProvider>
           {children}
