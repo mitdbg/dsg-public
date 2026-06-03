@@ -30,13 +30,13 @@ const Person = ({ name, image, link }) => {
 }
 
 const sections = {
-  'faculty': 'faculty',
-  'associated': 'associated',
+  'faculty': 'Faculty',
+  'associated': 'Associated',
   'postdoc': 'Postdoctoral Researchers',
-  'student': 'students',
-  'visiting student': 'visiting students',
-  'affiliate': 'affiliates',
-  'alumni': 'alumni'
+  'student': 'Doctoral Students',
+  'visiting student': 'Visiting Students',
+  'affiliate': 'Affiliates',
+  'alumni': 'Alumni'
 }
 
 const PeoplePage = ({ data }) => {
