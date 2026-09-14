@@ -12,9 +12,9 @@ module.exports = {
     title: `DSG`,
     description: `The main website of the Data Systems Group (DSG) at MIT.`,
     author: `@peterbaile`,
-    siteUrl: `http://dsg.csail.mit.edu/`,
+    siteUrl: `https://dsg.csail.mit.edu/`,
     ogTitle: `Data Systems Group (DSG) @ MIT`,
-    ogImage: `http://dsg.csail.mit.edu/images/dsg-logo.png`
+    ogImage: `https://dsg.csail.mit.edu/images/dsg-logo.png`
   },
   plugins: [
     `gatsby-plugin-image`,

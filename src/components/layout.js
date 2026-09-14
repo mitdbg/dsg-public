@@ -13,17 +13,24 @@ import Header from "./header"
 import "./layout.css"
 import NavBar from "./navbar"
 
+const footerBackground = ({ dsail, everest }) => {
+  if (everest) return '#A31F34'
+  return dsail ? 'rgba(177,0,28,0.8)' : 'rgba(233,210,73,1)'
+}
+
+const footerText = ({ dsail, everest }) => (dsail || everest) ? '#FFFFFF' : '#000000'
+
 const Footer = s.div`
-  margin-top: 2rem;
-  background-color: ${({ dsail }) => dsail ? 'rgba(177,0,28,0.8)' : 'rgba(233,210,73,1)'};
-  color: ${({ dsail }) => dsail ? '#FFFFFF' : '#000000'};
+  margin-top: ${({ everest }) => everest ? '0' : '2rem'};
+  background-color: ${footerBackground};
+  color: ${footerText};
   font-family: 'Roboto', sans-serif;
   text-align: center;
   padding: 1rem;
   font-size: 80%;
 
   a {
-    color: ${({ dsail }) => dsail ? '#FFFFFF' : '#000000'} !important;
+    color: ${footerText} !important;
   }
 `
 
@@ -50,7 +57,7 @@ const Layout = ({ children, dsail=false, everest=false }) => {
         }}
       >
         <main>{children}</main>
-        <Footer dsail={dsail}>
+        <Footer dsail={dsail} everest={everest}>
           © {new Date().getFullYear()} &middot; Built with 💖 by DSG @ MIT.
           {` `}
           <a href="https://accessibility.mit.edu/">Accessibility</a>.

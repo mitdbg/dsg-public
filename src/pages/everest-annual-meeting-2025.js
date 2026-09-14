@@ -2,8 +2,9 @@ import * as React from "react"
 import s, { createGlobalStyle } from 'styled-components'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import LogoCircular from '../images/everest/logo_circular.png'
-import LogoMain from '../images/everest/logo.png'
+
+// Absolute because everest.csail.mit.edu does not serve /everest/
+const EVEREST_URL = 'https://dsg.csail.mit.edu/everest/'
 
 // Global styles
 const GlobalStyle = createGlobalStyle`
@@ -35,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
 
 // MIT Red color scheme
 const COLOR_PRIMARY = '#A31F34'
-const COLOR_PRIMARY_DARK = '#8B1A2D'
 const COLOR_GRAY_100 = '#F5F5F5'
 const COLOR_GRAY_300 = '#D1D1D1'
 const COLOR_BORDER = '#D1D1D1'
@@ -257,7 +257,7 @@ const EverestAnnualMeeting2025 = () => {
       <PageWrapper>
         <Header>
           <HeaderContainer>
-            <BackLink href="/everest">
+            <BackLink href={EVEREST_URL}>
               <span>←</span>
               <span>Back to Everest</span>
             </BackLink>
@@ -666,6 +666,15 @@ const EverestAnnualMeeting2025 = () => {
   )
 }
 
-export const Head = () => <Seo title="Everest Lab Annual Meeting 2025 | MIT CSAIL" />
+export const Head = () => (
+  <Seo
+    title="Everest Lab Annual Meeting 2025 | MIT CSAIL"
+    description="Agenda and posters from the Everest Lab Annual Meeting on November 14, 2025, at MIT."
+    ogTitle="Everest Lab Annual Meeting 2025"
+    ogImage="https://dsg.csail.mit.edu/images/everest-social.png"
+  >
+    <link rel="canonical" href="https://dsg.csail.mit.edu/everest-annual-meeting-2025/" />
+  </Seo>
+)
 
 export default EverestAnnualMeeting2025

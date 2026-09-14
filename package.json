@@ -46,7 +46,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "develop": "GATSBY_CPU_COUNT=$(nproc) PARALLEL_SOURCING=true PARALLEL_QUERY_RUNNING=true gatsby develop",
+    "develop": "GATSBY_CPU_COUNT=logical_cores PARALLEL_SOURCING=true PARALLEL_QUERY_RUNNING=true gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",

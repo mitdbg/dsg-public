@@ -92,7 +92,7 @@
   {
     "name": "Tianyu Li",
     "image": "../images/people/tianyu.png",
-    "link": "https://tli2.github.io/",
+    "link": "https://pages.cs.wisc.edu/~litianyu/",
     "type": "alumni"
   },
   {
@@ -152,7 +152,7 @@
   {
     "name": "Anna Zeng",
     "image": "../images/people/anna.jpg",
-    "link": null,
+    "link": "https://www.annazeng.com/",
     "type": "student"
   },
   {
@@ -279,7 +279,7 @@
     "name": "Alana Marzoev",
     "image": "../images/people/alana.jpeg",
     "link": "https://www.alanamarzoev.com/",
-    "type": "almuni"
+    "type": "alumni"
   },
   {
     "name": "Michael Brodie",
@@ -326,7 +326,7 @@
   {
     "name": "Sushrut Borkar",
     "image": "../images/people/beaver.png",
-    "link": null,
+    "link": "https://www.csail.mit.edu/person/sushrut-borkar",
     "type": "student"
   }
 ]

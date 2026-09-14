@@ -1,9 +1,14 @@
 import * as React from "react"
-import { useState, useEffect, useRef } from "react"
-import s, { createGlobalStyle } from 'styled-components'
+import { useState, useEffect } from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import s, { createGlobalStyle, css } from 'styled-components'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import TeamData from '../json/everest-team.json'
+import ProjectsData from '../json/everest-projects.json'
+import EventsData from '../json/everest-events.json'
+import PubsData from '../json/pubs.json'
 
 // Import Everest images
 import LogoCircular from '../images/everest/logo_circular.png'
@@ -18,17 +23,99 @@ import TwoSigmaLogo from '../images/everest/sponsors/twosigma.png'
 import IntersystemsLogo from '../images/everest/sponsors/intersystems.png'
 import TwgLogo from '../images/everest/sponsors/twg.png'
 
-// Import all team member photos using require.context
-const importAll = (r) => {
-  let images = {}
-  r.keys().forEach((item) => { images[item.replace('./', '')] = r(item) })
-  return images
-}
-const teamPhotos = importAll(require.context('../images/people', false, /\.(png|jpe?g|svg)$/))
+// Links to other DSG pages are absolute because everest.csail.mit.edu does not serve them
+const DSG_URL = 'https://dsg.csail.mit.edu'
 
-// Helper function to get team photo
-const getTeamPhoto = (filename) => {
-  return teamPhotos[filename]?.default || teamPhotos[filename] || null
+const NAV_SECTIONS = [
+  { id: 'research', label: 'Research' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'team', label: 'People' },
+  { id: 'events', label: 'Events' },
+  { id: 'publications', label: 'Publications' },
+  { id: 'sponsors', label: 'Sponsors' },
+]
+
+// Each key in everest-team.json must appear here
+const TEAM_GROUPS = [
+  { key: 'faculty', heading: 'Faculty' },
+  { key: 'affiliate_faculty', heading: 'Affiliate Faculty' },
+  { key: 'postdocs', heading: 'Postdocs', role: 'Postdoctoral Researcher' },
+  { key: 'research_engineers', heading: 'Research Engineers', role: 'Research Engineer' },
+  { key: 'students', heading: 'Students', role: 'PhD Student' },
+  { key: 'alumni', heading: 'Alumni' },
+]
+
+// Fail the build on team data mistakes instead of rendering a broken page
+Object.keys(TeamData).forEach((key) => {
+  if (!TEAM_GROUPS.some((group) => group.key === key)) {
+    throw new Error(`everest-team.json: unknown group "${key}". Add it to TEAM_GROUPS in src/pages/everest.js.`)
+  }
+})
+
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+// Event dates are YYYY-MM-DD strings, compared against today's date in Boston
+const toBostonDate = (date) => new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit',
+}).format(date)
+
+/* ============================================
+   Publications
+   pubs.json comes from DBLP and is refreshed by `npm run deploy`.
+   The Everest list shows papers from the two most recent years with at least one
+   Everest postdoc, research engineer, student, or alumnus as an author.
+   ============================================ */
+
+const PUB_AUTHOR_GROUPS = ['postdocs', 'research_engineers', 'students', 'alumni']
+const RECENT_PUBS_SHOWN = 8
+
+// DBLP sometimes spells names differently; team entries list those spellings in dblpNames
+const memberNames = (members) => new Set(
+  members.flatMap((member) => [member.name, ...(member.dblpNames || [])])
+)
+const everestAuthors = memberNames(PUB_AUTHOR_GROUPS.flatMap((group) => TeamData[group] || []))
+const everestMembers = memberNames(Object.values(TeamData).flat())
+
+const splitAuthors = (authors) => authors.split(',').map((name) => name.trim())
+
+const titleWords = (title) => new Set(
+  title.toLowerCase()
+    .replace(/\b(full|extended) version\b|\btechnical report\b/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .split(' ')
+)
+
+const similarTitles = (a, b) => {
+  const wordsA = titleWords(a)
+  const wordsB = titleWords(b)
+  const shared = [...wordsA].filter((word) => wordsB.has(word)).length
+  return shared / (wordsA.size + wordsB.size - shared) >= 0.6
+}
+
+const getEverestPublications = () => {
+  const candidates = PubsData.filter((pub) =>
+    pub.type !== 'Editorship' && splitAuthors(pub.authors).some((name) => everestAuthors.has(name))
+  )
+  const published = candidates.filter((pub) => pub.venue !== 'CoRR')
+  // Drop arXiv preprints of papers that also appear at a venue
+  const deduplicated = candidates.filter((pub) =>
+    pub.venue !== 'CoRR' || !published.some((other) =>
+      splitAuthors(other.authors)[0] === splitAuthors(pub.authors)[0] && similarTitles(other.title, pub.title)
+    )
+  )
+  if (deduplicated.length === 0) return []
+  const newestYear = Math.max(...deduplicated.map((pub) => Number(pub.year)))
+  return deduplicated
+    .filter((pub) => Number(pub.year) >= newestYear - 1)
+    .sort((a, b) => Number(b.year) - Number(a.year))
+}
+
+const EVEREST_PUBLICATIONS = getEverestPublications()
+
+const formatVenue = (venue) => {
+  const name = Array.isArray(venue) ? venue.join(' / ') : venue
+  return name === 'CoRR' ? 'arXiv' : name
 }
 
 // Global styles to reset body/html margins for Everest page
@@ -57,15 +144,20 @@ const GlobalStyle = createGlobalStyle`
   /* Apply Avenir Next font to Everest page */
   body,
   h1, h2, h3, h4, h5, h6,
-  p, span, a, button, li {
+  p, span, a, button, li, summary {
     font-family: 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 `
 
 // MIT Red color scheme
 const COLOR_PRIMARY = '#A31F34'
 const COLOR_PRIMARY_DARK = '#8B1A2D'
-const COLOR_PRIMARY_LIGHT = '#C72C41'
 const COLOR_GRAY_100 = '#F5F5F5'
 const COLOR_GRAY_300 = '#D1D1D1'
 const COLOR_GRAY_500 = '#767676'
@@ -73,6 +165,22 @@ const COLOR_BORDER = '#D1D1D1'
 const COLOR_TEXT = '#1A1A1A'
 const COLOR_TEXT_SECONDARY = '#3A3A3A'
 const COLOR_WHITE = '#FFFFFF'
+
+const HEADER_HEIGHT = '70px'
+// The full desktop navigation needs about 1000px; narrower screens use the menu button
+const NAV_BREAKPOINT = '1024px'
+
+// Show a focus outline for keyboard users only
+const focusRing = css`
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${COLOR_PRIMARY};
+    outline-offset: 2px;
+  }
+`
 
 /* ============================================
    Styled Components - Navigation
@@ -97,7 +205,7 @@ const HeaderContainer = s.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: ${HEADER_HEIGHT};
 `
 
 const HeaderBranding = s.div`
@@ -119,6 +227,8 @@ const LogoLink = s.a`
   &:hover {
     opacity: 0.8;
   }
+
+  ${focusRing}
 `
 
 const HeaderLogoImg = s.img`
@@ -127,6 +237,7 @@ const HeaderLogoImg = s.img`
   border-radius: 50%;
   flex-shrink: 0;
   object-fit: cover;
+  filter: brightness(1.03);
 `
 
 const LogoText = s.span`
@@ -142,7 +253,7 @@ const MainNav = s.nav`
   display: none;
   align-items: center;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${NAV_BREAKPOINT}) {
     display: flex;
   }
 `
@@ -150,10 +261,14 @@ const MainNav = s.nav`
 const NavList = s.ul`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
+
+  @media (min-width: 1280px) {
+    gap: 0.5rem;
+  }
 `
 
 const NavItem = s.li`
@@ -162,9 +277,16 @@ const NavItem = s.li`
 
 const NavLink = s.a`
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
+
+  @media (min-width: 1280px) {
+    padding: 0.5rem 1rem;
+  }
+
   color: ${COLOR_TEXT};
   text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 4px;
@@ -174,12 +296,15 @@ const NavLink = s.a`
   &:hover {
     color: ${COLOR_PRIMARY};
     background-color: ${COLOR_GRAY_100};
+    text-decoration: none;
   }
 
-  &.active {
+  &[aria-current='true'] {
     color: ${COLOR_PRIMARY};
     font-weight: 600;
   }
+
+  ${focusRing}
 `
 
 const MobileMenuToggle = s.button`
@@ -194,9 +319,11 @@ const MobileMenuToggle = s.button`
   cursor: pointer;
   z-index: 1001;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${NAV_BREAKPOINT}) {
     display: none;
   }
+
+  ${focusRing}
 `
 
 const HamburgerLine = s.span`
@@ -208,7 +335,7 @@ const HamburgerLine = s.span`
   transition: all 0.3s ease;
   transform-origin: center;
 
-  ${({ isOpen }) => isOpen && `
+  ${({ $isOpen }) => $isOpen && `
     &:nth-child(1) {
       transform: translateY(10.5px) rotate(45deg);
     }
@@ -224,18 +351,19 @@ const HamburgerLine = s.span`
 
 const MobileMenu = s.div`
   position: fixed;
-  top: 70px;
+  top: ${HEADER_HEIGHT};
   left: 0;
   right: 0;
   bottom: 0;
   background-color: ${COLOR_WHITE};
   z-index: 998;
   overflow-y: auto;
-  transform: translateX(${props => props.isOpen ? '0' : '100%'});
-  transition: transform 0.3s ease;
+  transform: translateX(${({ $isOpen }) => $isOpen ? '0' : '100%'});
+  visibility: ${({ $isOpen }) => $isOpen ? 'visible' : 'hidden'};
+  transition: transform 0.3s ease, visibility 0.3s ease;
   display: block;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${NAV_BREAKPOINT}) {
     display: none;
   }
 `
@@ -258,6 +386,7 @@ const MobileNavLink = s.a`
   padding: 1rem 1.5rem;
   color: ${COLOR_TEXT};
   text-decoration: none;
+  text-transform: uppercase;
   font-size: 1.25rem;
   font-weight: 500;
   border-radius: 8px;
@@ -269,7 +398,10 @@ const MobileNavLink = s.a`
     color: ${COLOR_PRIMARY};
     background-color: ${COLOR_GRAY_100};
     border-color: ${COLOR_GRAY_300};
+    text-decoration: none;
   }
+
+  ${focusRing}
 `
 
 /* ============================================
@@ -277,7 +409,7 @@ const MobileNavLink = s.a`
    ============================================ */
 
 const MainContent = s.main`
-  padding-top: 70px;
+  padding-top: ${HEADER_HEIGHT};
 `
 
 const HeroSection = s.section`
@@ -288,6 +420,7 @@ const HeroSection = s.section`
   padding: 8rem 1.5rem 2rem;
   background-color: ${COLOR_WHITE};
   text-align: center;
+  scroll-margin-top: ${HEADER_HEIGHT};
 `
 
 const HeroContent = s.div`
@@ -309,6 +442,8 @@ const HeroLogo = s.img`
   height: auto;
   margin: 0 auto 0.5rem;
   display: block;
+  /* The logo file has an off-white (250-254) background; this lifts it to the page's white */
+  filter: brightness(1.03);
 
   @media (max-width: 640px) {
     max-width: 300px;
@@ -321,6 +456,10 @@ const HeroAffiliation = s.p`
   color: ${COLOR_TEXT_SECONDARY};
   margin-bottom: 2rem;
   line-height: 1.5;
+
+  @media (max-width: 640px) {
+    font-size: 1.25rem;
+  }
 `
 
 const HeroVision = s.p`
@@ -334,7 +473,12 @@ const HeroVision = s.p`
 
 const Section = s.section`
   padding: 5rem 1.5rem;
-  background-color: ${props => props.bgGray ? COLOR_GRAY_100 : COLOR_WHITE};
+  background-color: ${({ $gray }) => $gray ? COLOR_GRAY_100 : COLOR_WHITE};
+  scroll-margin-top: ${HEADER_HEIGHT};
+
+  @media (max-width: 640px) {
+    padding: 3.5rem 0.5rem;
+  }
 `
 
 const Container = s.div`
@@ -350,6 +494,31 @@ const SectionHeading = s.h2`
   text-align: center;
   margin-bottom: 3rem;
   line-height: 1.2;
+
+  @media (max-width: 640px) {
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+  }
+`
+
+const SectionIntro = s.p`
+  text-align: center;
+  max-width: 800px;
+  margin: -1.5rem auto 3rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: ${COLOR_TEXT_SECONDARY};
+
+  a {
+    color: ${COLOR_PRIMARY};
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      color: ${COLOR_PRIMARY_DARK};
+      text-decoration: underline;
+    }
+  }
 `
 
 /* Research Directions */
@@ -434,14 +603,18 @@ const ProjectsGrid = s.div`
   }
 `
 
-const Project = s.a`
+const projectCard = css`
   background-color: ${COLOR_WHITE};
   border: 1px solid ${COLOR_BORDER};
   border-radius: 8px;
   padding: 2rem;
-  transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
+`
+
+const ProjectLinkCard = s.a`
+  ${projectCard}
+  transition: all 0.2s ease;
   text-decoration: none;
   cursor: pointer;
 
@@ -449,7 +622,14 @@ const Project = s.a`
     border-color: ${COLOR_PRIMARY};
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
+    text-decoration: none;
   }
+
+  ${focusRing}
+`
+
+const ProjectCard = s.article`
+  ${projectCard}
 `
 
 const ProjectTitle = s.h3`
@@ -461,7 +641,7 @@ const ProjectTitle = s.h3`
   transition: color 0.2s ease, text-decoration 0.2s ease;
   text-decoration: none;
 
-  ${Project}:hover & {
+  ${ProjectLinkCard}:hover & {
     color: ${COLOR_PRIMARY};
     text-decoration: underline;
   }
@@ -475,7 +655,7 @@ const ProjectDescription = s.p`
   font-size: 1rem;
   line-height: 1.65;
   color: ${COLOR_TEXT_SECONDARY};
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   flex-grow: 1;
 
   @media (min-width: 768px) {
@@ -483,27 +663,11 @@ const ProjectDescription = s.p`
   }
 `
 
-const ProjectLinks = s.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: auto;
-`
-
-const ProjectLink = s.a`
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: 500;
+const ProjectHost = s.span`
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
   color: ${COLOR_PRIMARY};
-  text-decoration: underline;
-  background-color: transparent;
-  border: none;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: ${COLOR_PRIMARY_DARK};
-  }
 `
 
 /* Team Section */
@@ -531,7 +695,7 @@ const TeamGrid = s.div`
   gap: 2rem;
   margin: 0 auto;
 
-  @media (min-width: 640px) {
+  @media (min-width: 340px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -563,6 +727,11 @@ const TeamMemberPhoto = s.div`
   margin: 0 auto 1rem;
   flex-shrink: 0;
 
+  @media (max-width: 639px) {
+    width: 120px;
+    height: 120px;
+  }
+
   @media (min-width: 1024px) {
     width: 120px;
     height: 120px;
@@ -591,13 +760,15 @@ const PhotoPlaceholder = s.div`
   }
 `
 
-const TeamPhotoImg = s.img`
+const TeamPhotoImage = s(GatsbyImage)`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  object-fit: cover;
   border: 2px solid ${COLOR_BORDER};
   transition: border-color 0.2s ease;
+  /* Keep Safari from drawing the image outside the circle */
+  isolation: isolate;
+  transform: translateZ(0);
 
   ${TeamMember}:hover & {
     border-color: ${COLOR_PRIMARY};
@@ -607,6 +778,7 @@ const TeamPhotoImg = s.img`
 const TeamMemberName = s.h4`
   font-size: 1.25rem;
   font-weight: 600;
+  color: ${COLOR_TEXT};
   margin-bottom: 0.25rem;
   line-height: 1.2;
 `
@@ -618,7 +790,10 @@ const TeamMemberLink = s.a`
 
   &:hover {
     color: ${COLOR_PRIMARY};
+    text-decoration: underline;
   }
+
+  ${focusRing}
 `
 
 const TeamMemberRole = s.p`
@@ -630,8 +805,19 @@ const TeamMemberRole = s.p`
 `
 
 /* Events Section */
+const EventGroupHeading = s.h3`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: ${COLOR_TEXT_SECONDARY};
+  margin: 0 0 1.25rem 0;
+`
+
 const EventsList = s.div`
-  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `
 
 const EventItemLink = s.a`
@@ -639,6 +825,14 @@ const EventItemLink = s.a`
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  border-radius: 8px;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ${focusRing}
 `
 
 const EventItem = s.article`
@@ -672,11 +866,11 @@ const EventHeader = s.div`
   }
 `
 
-const EventDate = s.div`
+const EventDate = s.time`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${COLOR_PRIMARY};
+  background-color: ${({ $past }) => $past ? COLOR_GRAY_500 : COLOR_PRIMARY};
   color: ${COLOR_WHITE};
   padding: 0.75rem;
   border-radius: 8px;
@@ -719,7 +913,7 @@ const EventDetails = s.div`
   flex: 1;
 `
 
-const EventTitle = s.h3`
+const EventTitle = s.h4`
   font-size: 1.5rem;
   font-weight: 600;
   color: ${COLOR_TEXT};
@@ -733,11 +927,12 @@ const EventTitle = s.h3`
 `
 
 const EventLocation = s.p`
-  color: ${COLOR_GRAY_500};
+  color: ${COLOR_TEXT_SECONDARY};
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  margin-bottom: 0;
 `
 
 const EventContent = s.div`
@@ -757,18 +952,27 @@ const EventMeta = s.div`
   padding-top: 1rem;
   border-top: 1px solid ${COLOR_BORDER};
   font-size: 0.875rem;
-  color: ${COLOR_GRAY_500};
+  color: ${COLOR_TEXT_SECONDARY};
   font-weight: 500;
 `
 
-/* Publications Section */
-const RecentPublications = s.div`
-  margin-bottom: 2rem;
+const EventLinkText = s.span`
+  color: ${COLOR_PRIMARY};
+  font-weight: 600;
 `
 
-const PublicationItem = s.div`
+/* Publications Section */
+const PublicationList = s.ol`
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 960px;
+  text-align: left;
+`
+
+const PublicationItem = s.li`
   margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid ${COLOR_GRAY_300};
 
   &:last-child {
@@ -778,11 +982,11 @@ const PublicationItem = s.div`
   }
 `
 
-const PublicationTitle = s.h4`
+const PublicationTitle = s.h3`
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  line-height: 1.2;
+  line-height: 1.3;
 
   a {
     color: ${COLOR_TEXT};
@@ -791,36 +995,56 @@ const PublicationTitle = s.h4`
 
     &:hover {
       color: ${COLOR_PRIMARY};
+      text-decoration: underline;
     }
+
+    ${focusRing}
   }
 
   @media (min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 `
 
 const PublicationAuthors = s.p`
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: ${COLOR_TEXT_SECONDARY};
   margin-bottom: 0.25rem;
   line-height: 1.5;
+
+  strong {
+    color: ${COLOR_TEXT};
+    font-weight: 600;
+  }
 `
 
 const PublicationVenue = s.p`
   font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
   font-size: 0.875rem;
   color: ${COLOR_TEXT_SECONDARY};
-  font-style: normal;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   line-height: 1.5;
 `
 
-const AllPubsToggleContainer = s.div`
+const MorePublications = s.details`
+  margin-top: 2rem;
   text-align: center;
-  margin: 2rem 0;
+
+  &[open] > summary {
+    margin-bottom: 2rem;
+  }
+
+  .label-open,
+  &[open] .label-closed {
+    display: none;
+  }
+
+  &[open] .label-open {
+    display: inline;
+  }
 `
 
-const AllPubsToggle = s.button`
+const MorePublicationsToggle = s.summary`
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -833,30 +1057,40 @@ const AllPubsToggle = s.button`
   border: 2px solid ${COLOR_PRIMARY};
   border-radius: 4px;
   transition: all 0.2s ease;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
 
   &:hover {
     background-color: ${COLOR_PRIMARY_DARK};
     border-color: ${COLOR_PRIMARY_DARK};
-    transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(163, 31, 52, 0.2);
+  }
+
+  ${focusRing}
+`
+
+const PublicationsFooter = s.p`
+  text-align: center;
+  margin: 2.5rem 0 0;
+  font-size: 1rem;
+  color: ${COLOR_TEXT_SECONDARY};
+
+  a {
+    color: ${COLOR_PRIMARY};
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      color: ${COLOR_PRIMARY_DARK};
+      text-decoration: underline;
+    }
   }
 `
 
-const AllPublications = s.div`
-  margin-top: 2rem;
-  display: ${props => props.isOpen ? 'block' : 'none'};
-`
-
 /* Sponsors Section */
-const SponsorsIntro = s.p`
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 4rem;
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: ${COLOR_TEXT_SECONDARY};
-`
-
 const SponsorsGrid = s.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -874,16 +1108,11 @@ const SponsorsGrid = s.div`
   }
 `
 
-const SponsorItem = s.article`
+const SponsorItem = s.div`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 0.8;
-  }
 `
 
 const SponsorLogo = s.img`
@@ -949,6 +1178,10 @@ const ContactInfo = s.div`
   padding-bottom: 2rem;
   border-bottom: 1px solid ${COLOR_BORDER};
 
+  &:last-child {
+    border-bottom: none;
+  }
+
   @media (min-width: 768px) {
     border-bottom: none;
     padding-bottom: 0;
@@ -987,55 +1220,190 @@ const ContactText = s.p`
 `
 
 /* ============================================
-   Helper Component - Person Placeholder SVG
+   Helper Components
    ============================================ */
 
 const PersonPlaceholder = () => (
-  <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none">
+  <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none" aria-hidden="true">
     <circle cx="100" cy="100" r="100" fill={COLOR_GRAY_300} />
     <circle cx="100" cy="80" r="35" fill={COLOR_GRAY_500} />
     <path d="M40 160 Q40 120 100 120 Q160 120 160 160 L160 200 L40 200 Z" fill={COLOR_GRAY_500} />
   </svg>
 )
 
+const TeamMemberCard = ({ member, photo, defaultRole }) => {
+  const role = member.role || defaultRole
+  const hasLink = Boolean(member.url) && member.url !== '#'
+
+  return (
+    <TeamMember>
+      <TeamMemberPhoto>
+        {photo ? (
+          <TeamPhotoImage image={photo} alt="" />
+        ) : (
+          <PhotoPlaceholder>
+            <PersonPlaceholder />
+          </PhotoPlaceholder>
+        )}
+      </TeamMemberPhoto>
+      <TeamMemberName>
+        {hasLink ? (
+          <TeamMemberLink href={member.url} target="_blank" rel="noopener noreferrer">
+            {member.name}
+          </TeamMemberLink>
+        ) : member.name}
+      </TeamMemberName>
+      {role && <TeamMemberRole>{role}</TeamMemberRole>}
+    </TeamMember>
+  )
+}
+
+const ProjectEntry = ({ project }) => {
+  const content = (
+    <>
+      <ProjectTitle>{project.name}</ProjectTitle>
+      <ProjectDescription>{project.description}</ProjectDescription>
+    </>
+  )
+
+  if (!project.url) {
+    return <ProjectCard>{content}</ProjectCard>
+  }
+
+  return (
+    <ProjectLinkCard href={project.url} target="_blank" rel="noopener noreferrer">
+      {content}
+      <ProjectHost>{new URL(project.url, DSG_URL).hostname.replace(/^www\./, '')} ↗</ProjectHost>
+    </ProjectLinkCard>
+  )
+}
+
+const EventEntry = ({ event, upcoming }) => {
+  const [year, month, day] = event.date.split('-')
+  const card = (
+    <EventItem className={upcoming ? 'upcoming' : undefined}>
+      <EventHeader>
+        <EventDate dateTime={event.date} $past={!upcoming}>
+          <EventMonth>{MONTHS[Number(month) - 1]}</EventMonth>
+          <EventDay>{Number(day)}</EventDay>
+          <EventYear>{year}</EventYear>
+        </EventDate>
+        <EventDetails>
+          <EventTitle>{event.title}</EventTitle>
+          <EventLocation>{event.location}</EventLocation>
+        </EventDetails>
+      </EventHeader>
+      <EventContent>
+        <EventDescription>{event.description}</EventDescription>
+        <EventMeta>
+          {event.time && <span>{event.time}</span>}
+          {event.format && <span>{event.format}</span>}
+          {event.url && <EventLinkText>{event.linkText || 'Details'} →</EventLinkText>}
+        </EventMeta>
+      </EventContent>
+    </EventItem>
+  )
+
+  return event.url ? <EventItemLink href={event.url}>{card}</EventItemLink> : card
+}
+
+const PublicationEntry = ({ pub }) => {
+  const link = (Array.isArray(pub.ee) ? pub.ee[0] : pub.ee) || pub.url
+  const authors = splitAuthors(pub.authors)
+
+  return (
+    <PublicationItem>
+      <PublicationTitle>
+        <a href={link} target="_blank" rel="noopener noreferrer">{pub.title.replace(/\.$/, '')}</a>
+      </PublicationTitle>
+      <PublicationAuthors>
+        {authors.map((name, index) => (
+          <React.Fragment key={`${name}-${index}`}>
+            {index > 0 && ', '}
+            {everestMembers.has(name) ? <strong>{name}</strong> : name}
+          </React.Fragment>
+        ))}
+      </PublicationAuthors>
+      <PublicationVenue>{formatVenue(pub.venue)} {pub.year}</PublicationVenue>
+    </PublicationItem>
+  )
+}
+
 /* ============================================
    Main Component
    ============================================ */
 
 const EverestPage = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [allPubsOpen, setAllPubsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
-
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen)
-  }
-
-  // Close mobile menu
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false)
-  }
-
-  // Smooth scroll to section
-  const scrollToSection = (sectionId) => {
-    closeMobileMenu()
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const offset = 140 // Account for both navbars
-      const targetPosition = element.offsetTop - offset
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      })
+  const { site, peoplePhotos } = useStaticQuery(graphql`
+    query EverestPageData {
+      site {
+        buildTime
+      }
+      peoplePhotos: allFile(filter: { sourceInstanceName: { eq: "images" }, relativeDirectory: { eq: "people" } }) {
+        nodes {
+          base
+          childImageSharp {
+            gatsbyImageData(width: 280, height: 280, layout: CONSTRAINED, sizes: "140px", placeholder: BLURRED, transformOptions: { cropFocus: CENTER })
+          }
+        }
+      }
     }
+  `)
+  // Photos are resized at build time, so large source files do not slow the page
+  const photosByFile = new Map(peoplePhotos.nodes.map((node) => [node.base, getImage(node.childImageSharp)]))
+  const getTeamPhoto = (member) => {
+    if (!member.photo) return null
+    const photo = photosByFile.get(member.photo)
+    if (!photo) {
+      throw new Error(`everest-team.json: photo "${member.photo}" for ${member.name} is not an image in src/images/people.`)
+    }
+    return photo
   }
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  // Start from the build date so the server HTML and first render match, then use today's date
+  const [today, setToday] = useState(() => toBostonDate(new Date(site.buildTime)))
+
+  useEffect(() => {
+    setToday(toBostonDate(new Date()))
+  }, [])
+
+  const eventsByDate = [...EventsData].sort((a, b) => b.date.localeCompare(a.date))
+  const upcomingEvents = eventsByDate.filter((event) => event.date >= today).reverse()
+  const pastEvents = eventsByDate.filter((event) => event.date < today)
+  const recentPublications = EVEREST_PUBLICATIONS.slice(0, RECENT_PUBS_SHOWN)
+  const olderPublications = EVEREST_PUBLICATIONS.slice(RECENT_PUBS_SHOWN)
+
+  // Scroll to a section without a page jump; the links still work as plain anchors without JavaScript
+  const handleNavClick = (event, sectionId) => {
+    const target = document.getElementById(sectionId)
+    if (!target) return
+    event.preventDefault()
+    setMobileMenuOpen(false)
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
+    window.history.replaceState(null, '', `#${sectionId}`)
+  }
+
+  // Highlight the navigation item for the section in view
+  useEffect(() => {
+    const sections = document.querySelectorAll('main section[id]')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id)
+        }
+      })
+    }, { rootMargin: `-${HEADER_HEIGHT} 0px -60% 0px` })
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
 
   // Handle escape key
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
-        closeMobileMenu()
+        setMobileMenuOpen(false)
       }
     }
     document.addEventListener('keydown', handleEscape)
@@ -1061,44 +1429,49 @@ const EverestPage = () => {
       <EverestHeader>
         <HeaderContainer>
           <HeaderBranding>
-            <LogoLink href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>
+            <LogoLink href="#hero" onClick={(e) => handleNavClick(e, 'hero')}>
               <LogoText>EVEREST</LogoText>
-              <HeaderLogoImg src={LogoCircular} alt="Everest Lab Logo" />
+              <HeaderLogoImg src={LogoCircular} alt="" width={511} height={373} />
             </LogoLink>
           </HeaderBranding>
 
           {/* Mobile Menu Toggle */}
-          <MobileMenuToggle onClick={toggleMobileMenu} aria-label="Toggle navigation menu" aria-expanded={mobileMenuOpen}>
-            <HamburgerLine isOpen={mobileMenuOpen} />
-            <HamburgerLine isOpen={mobileMenuOpen} />
-            <HamburgerLine isOpen={mobileMenuOpen} />
+          <MobileMenuToggle
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="everest-mobile-menu"
+          >
+            <HamburgerLine $isOpen={mobileMenuOpen} />
+            <HamburgerLine $isOpen={mobileMenuOpen} />
+            <HamburgerLine $isOpen={mobileMenuOpen} />
           </MobileMenuToggle>
 
           {/* Desktop Navigation */}
-          <MainNav>
+          <MainNav aria-label="Everest sections">
             <NavList>
-              <NavItem><NavLink onClick={() => scrollToSection('research')} className={activeSection === 'research' ? 'active' : ''}>RESEARCH</NavLink></NavItem>
-              <NavItem><NavLink onClick={() => scrollToSection('projects')} className={activeSection === 'projects' ? 'active' : ''}>PROJECTS</NavLink></NavItem>
-              <NavItem><NavLink onClick={() => scrollToSection('team')} className={activeSection === 'team' ? 'active' : ''}>PEOPLE</NavLink></NavItem>
-              <NavItem><NavLink onClick={() => scrollToSection('events')} className={activeSection === 'events' ? 'active' : ''}>EVENTS</NavLink></NavItem>
-              <NavItem><NavLink onClick={() => scrollToSection('publications')} className={activeSection === 'publications' ? 'active' : ''}>PUBLICATIONS</NavLink></NavItem>
-              <NavItem><NavLink onClick={() => scrollToSection('sponsors')} className={activeSection === 'sponsors' ? 'active' : ''}>SPONSORS</NavLink></NavItem>
-              <NavItem><NavLink href="https://dsg.csail.mit.edu" target="_blank" rel="noopener noreferrer">DSG ↗</NavLink></NavItem>
+              {NAV_SECTIONS.map(({ id, label }) => (
+                <NavItem key={id}>
+                  <NavLink href={`#${id}`} onClick={(e) => handleNavClick(e, id)} aria-current={activeSection === id ? 'true' : undefined}>
+                    {label}
+                  </NavLink>
+                </NavItem>
+              ))}
+              <NavItem><NavLink href={DSG_URL} target="_blank" rel="noopener noreferrer">DSG ↗</NavLink></NavItem>
             </NavList>
           </MainNav>
         </HeaderContainer>
 
         {/* Mobile Menu Overlay */}
-        <MobileMenu isOpen={mobileMenuOpen}>
-          <MobileNav>
+        <MobileMenu id="everest-mobile-menu" $isOpen={mobileMenuOpen}>
+          <MobileNav aria-label="Everest sections">
             <MobileNavList>
-              <li><MobileNavLink onClick={() => scrollToSection('research')}>RESEARCH</MobileNavLink></li>
-              <li><MobileNavLink onClick={() => scrollToSection('projects')}>PROJECTS</MobileNavLink></li>
-              <li><MobileNavLink onClick={() => scrollToSection('team')}>PEOPLE</MobileNavLink></li>
-              <li><MobileNavLink onClick={() => scrollToSection('events')}>EVENTS</MobileNavLink></li>
-              <li><MobileNavLink onClick={() => scrollToSection('publications')}>PUBLICATIONS</MobileNavLink></li>
-              <li><MobileNavLink onClick={() => scrollToSection('sponsors')}>SPONSORS</MobileNavLink></li>
-              <li><MobileNavLink href="https://dsg.csail.mit.edu" target="_blank" rel="noopener noreferrer">DSG</MobileNavLink></li>
+              {NAV_SECTIONS.map(({ id, label }) => (
+                <li key={id}>
+                  <MobileNavLink href={`#${id}`} onClick={(e) => handleNavClick(e, id)}>{label}</MobileNavLink>
+                </li>
+              ))}
+              <li><MobileNavLink href={DSG_URL} target="_blank" rel="noopener noreferrer">DSG ↗</MobileNavLink></li>
             </MobileNavList>
           </MobileNav>
         </MobileMenu>
@@ -1109,8 +1482,8 @@ const EverestPage = () => {
         <HeroSection id="hero">
           <HeroContent>
             <HeroTitle>EVEREST</HeroTitle>
-            <HeroLogo src={LogoMain} alt="Everest Lab Logo" />
-            <HeroAffiliation>Data Systems Group · MIT CSAIL</HeroAffiliation>
+            <HeroLogo src={LogoMain} alt="Everest Lab logo" width={511} height={373} />
+            <HeroAffiliation>Data Systems Group · MIT&nbsp;CSAIL</HeroAffiliation>
             <HeroVision>
               Our mission is to establish the engineering principles for AI-driven data systems. We move beyond ad-hoc experimentation to build a foundation of new abstractions, reusable software components, and rigorous development tools.
             </HeroVision>
@@ -1124,7 +1497,7 @@ const EverestPage = () => {
 
             <ResearchDirection>
               <DirectionIcon>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <polyline points="16 18 22 12 16 6"></polyline>
                   <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
@@ -1139,7 +1512,7 @@ const EverestPage = () => {
 
             <ResearchDirection>
               <DirectionIcon>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <line x1="18" y1="20" x2="18" y2="10"></line>
                   <line x1="12" y1="20" x2="12" y2="4"></line>
                   <line x1="6" y1="20" x2="6" y2="14"></line>
@@ -1155,7 +1528,7 @@ const EverestPage = () => {
 
             <ResearchDirection>
               <DirectionIcon>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="11" cy="11" r="8"></circle>
                   <path d="m21 21-4.35-4.35"></path>
                 </svg>
@@ -1170,7 +1543,7 @@ const EverestPage = () => {
 
             <ResearchDirection>
               <DirectionIcon>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <rect x="2" y="3" width="20" height="14" rx="2"></rect>
                   <line x1="8" y1="21" x2="16" y2="21"></line>
                   <line x1="12" y1="17" x2="12" y2="21"></line>
@@ -1186,7 +1559,7 @@ const EverestPage = () => {
 
             <ResearchDirection>
               <DirectionIcon>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
@@ -1202,45 +1575,14 @@ const EverestPage = () => {
         </Section>
 
         {/* Projects Section */}
-        <Section id="projects" bgGray>
+        <Section id="projects" $gray>
           <Container>
             <SectionHeading>Projects</SectionHeading>
 
             <ProjectsGrid>
-              <Project href="#" aria-label="Learn more about D4">
-                <ProjectTitle>D4: Design Doc Driven Development</ProjectTitle>
-                <ProjectDescription>
-                  D4 achieves a 54.8% average pass rate on the commit-0 benchmark, outperforming the next-best system by 14 percentage points. The system is an LLM-based compiler that generates code from design documents, treating design specifications as input and automatically producing implementation code.
-                </ProjectDescription>
-              </Project>
-
-              <Project href="https://dsg.csail.mit.edu/projects/palimpzest/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about Palimpzest">
-                <ProjectTitle>Palimpzest</ProjectTitle>
-                <ProjectDescription>
-                  Palimpzest achieves a 90.3x speedup and 9.1x cost reduction on document processing benchmarks. The system applies cost-based query optimization techniques to AI-powered data processing, automatically selecting optimal combinations of models, prompts, and execution strategies for data transformation tasks.
-                </ProjectDescription>
-              </Project>
-
-              <Project href="https://ppc.mit.edu/a2/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about A2rchi">
-                <ProjectTitle>A2rchi</ProjectTitle>
-                <ProjectDescription>
-                  A2rchi is an open-source RAG framework for AI support systems. The system enables retrieval-augmented generation for technical assistance and has been deployed at MIT (SubMIT system and multiple courses) and CERN for particle physics data processing support.
-                </ProjectDescription>
-              </Project>
-
-              <Project href="https://dsg.csail.mit.edu/projects/brad/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about BRAD">
-                <ProjectTitle>BRAD</ProjectTitle>
-                <ProjectDescription>
-                  BRAD (Blueprint for Relational Adaptive Databases) virtualizes cloud data infrastructures, automatically optimizing cloud database deployments across different storage engines and compute resources to balance performance and cost.
-                </ProjectDescription>
-              </Project>
-
-              <Project href="https://kramabench.org/" target="_blank" rel="noopener noreferrer" aria-label="Learn more about KramaBench">
-                <ProjectTitle>KramaBench</ProjectTitle>
-                <ProjectDescription>
-                  KramaBench is a comprehensive benchmark for evaluating AI agents on knowledge-intensive tasks. The benchmark provides a systematic framework for assessing agent performance across diverse scenarios requiring deep domain knowledge and reasoning capabilities.
-                </ProjectDescription>
-              </Project>
+              {ProjectsData.map((project) => (
+                <ProjectEntry key={project.name} project={project} />
+              ))}
             </ProjectsGrid>
           </Container>
         </Section>
@@ -1250,168 +1592,41 @@ const EverestPage = () => {
           <Container>
             <SectionHeading>Team</SectionHeading>
 
-            {/* Faculty */}
-            <TeamCategory>
-              <TeamCategoryHeading>Faculty</TeamCategoryHeading>
-              <TeamGrid>
-                {TeamData.faculty.map((member, index) => (
-                  <TeamMember key={index}>
-                    <TeamMemberPhoto>
-                      {member.photo ? (
-                        <TeamPhotoImg src={getTeamPhoto(member.photo)} alt={`Photo of ${member.name}`} />
-                      ) : (
-                        <PhotoPlaceholder>
-                          <PersonPlaceholder />
-                        </PhotoPlaceholder>
-                      )}
-                    </TeamMemberPhoto>
-                    <TeamMemberName>
-                      <TeamMemberLink href={member.url} target="_blank" rel="noopener noreferrer">
-                        {member.name}
-                      </TeamMemberLink>
-                    </TeamMemberName>
-                  </TeamMember>
-                ))}
-              </TeamGrid>
-            </TeamCategory>
-
-            {/* Affiliate Faculty */}
-            <TeamCategory>
-              <TeamCategoryHeading>Affiliate Faculty</TeamCategoryHeading>
-              <TeamGrid>
-                {TeamData.affiliate_faculty.map((member, index) => (
-                  <TeamMember key={index}>
-                    <TeamMemberPhoto>
-                      {member.photo ? (
-                        <TeamPhotoImg src={getTeamPhoto(member.photo)} alt={`Photo of ${member.name}`} />
-                      ) : (
-                        <PhotoPlaceholder>
-                          <PersonPlaceholder />
-                        </PhotoPlaceholder>
-                      )}
-                    </TeamMemberPhoto>
-                    <TeamMemberName>
-                      <TeamMemberLink href={member.url} target="_blank" rel="noopener noreferrer">
-                        {member.name}
-                      </TeamMemberLink>
-                    </TeamMemberName>
-                  </TeamMember>
-                ))}
-              </TeamGrid>
-            </TeamCategory>
-
-            {/* Postdocs */}
-            <TeamCategory>
-              <TeamCategoryHeading>Postdocs</TeamCategoryHeading>
-              <TeamGrid>
-                {TeamData.postdocs.map((member, index) => (
-                  <TeamMember key={index}>
-                    <TeamMemberPhoto>
-                      {member.photo ? (
-                        <TeamPhotoImg src={getTeamPhoto(member.photo)} alt={`Photo of ${member.name}`} />
-                      ) : (
-                        <PhotoPlaceholder>
-                          <PersonPlaceholder />
-                        </PhotoPlaceholder>
-                      )}
-                    </TeamMemberPhoto>
-                    <TeamMemberName>
-                      <TeamMemberLink href={member.url} target="_blank" rel="noopener noreferrer">
-                        {member.name}
-                      </TeamMemberLink>
-                    </TeamMemberName>
-                    <TeamMemberRole>Postdoctoral Researcher</TeamMemberRole>
-                  </TeamMember>
-                ))}
-              </TeamGrid>
-            </TeamCategory>
-
-            {/* Research Engineers */}
-            <TeamCategory>
-              <TeamCategoryHeading>Research Engineers</TeamCategoryHeading>
-              <TeamGrid>
-                {TeamData.research_engineers.map((member, index) => (
-                  <TeamMember key={index}>
-                    <TeamMemberPhoto>
-                      {member.photo ? (
-                        <TeamPhotoImg src={getTeamPhoto(member.photo)} alt={`Photo of ${member.name}`} />
-                      ) : (
-                        <PhotoPlaceholder>
-                          <PersonPlaceholder />
-                        </PhotoPlaceholder>
-                      )}
-                    </TeamMemberPhoto>
-                    <TeamMemberName>
-                      <TeamMemberLink href={member.url} target="_blank" rel="noopener noreferrer">
-                        {member.name}
-                      </TeamMemberLink>
-                    </TeamMemberName>
-                    <TeamMemberRole>Research Engineer</TeamMemberRole>
-                  </TeamMember>
-                ))}
-              </TeamGrid>
-            </TeamCategory>
-
-            {/* Students */}
-            <TeamCategory>
-              <TeamCategoryHeading>Students</TeamCategoryHeading>
-              <TeamGrid>
-                {TeamData.students.map((member, index) => (
-                  <TeamMember key={index}>
-                    <TeamMemberPhoto>
-                      {member.photo ? (
-                        <TeamPhotoImg src={getTeamPhoto(member.photo)} alt={`Photo of ${member.name}`} />
-                      ) : (
-                        <PhotoPlaceholder>
-                          <PersonPlaceholder />
-                        </PhotoPlaceholder>
-                      )}
-                    </TeamMemberPhoto>
-                    <TeamMemberName>
-                      <TeamMemberLink href={member.url} target="_blank" rel="noopener noreferrer">
-                        {member.name}
-                      </TeamMemberLink>
-                    </TeamMemberName>
-                    <TeamMemberRole>PhD Student</TeamMemberRole>
-                  </TeamMember>
-                ))}
-              </TeamGrid>
-            </TeamCategory>
+            {TEAM_GROUPS.filter(({ key }) => TeamData[key]?.length > 0).map(({ key, heading, role }) => (
+              <TeamCategory key={key}>
+                <TeamCategoryHeading>{heading}</TeamCategoryHeading>
+                <TeamGrid>
+                  {TeamData[key].map((member) => (
+                    <TeamMemberCard key={member.name} member={member} photo={getTeamPhoto(member)} defaultRole={role} />
+                  ))}
+                </TeamGrid>
+              </TeamCategory>
+            ))}
           </Container>
         </Section>
 
         {/* Events Section */}
-        <Section id="events" bgGray>
+        <Section id="events" $gray>
           <Container>
             <SectionHeading>Events</SectionHeading>
 
-            <EventsList>
-              <EventItemLink href="/everest-annual-meeting-2025">
-                <EventItem className="upcoming">
-                  <EventHeader>
-                    <EventDate>
-                      <EventMonth>November</EventMonth>
-                      <EventDay>14</EventDay>
-                      <EventYear>2025</EventYear>
-                    </EventDate>
-                    <EventDetails>
-                      <EventTitle>Everest Lab Annual Meeting 2025</EventTitle>
-                      <EventLocation>MIT Building 45, 8th Floor · 51 Vassar Street, Cambridge, MA</EventLocation>
-                    </EventDetails>
-                  </EventHeader>
-                  <EventContent>
-                    <EventDescription>
-                      Join us for our annual meeting where lab members will present their latest research findings, discuss ongoing projects, and share insights on the future directions of AI-driven data systems. The event will feature technical talks, poster sessions, and networking opportunities.
-                    </EventDescription>
-                    <EventMeta>
-                      <span>8:30 AM - 6:00 PM EST</span>
-                      <span>In-Person Event</span>
-                      <span>Click for full agenda →</span>
-                    </EventMeta>
-                  </EventContent>
-                </EventItem>
-              </EventItemLink>
-            </EventsList>
+            {upcomingEvents.length > 0 && (
+              <EventsList>
+                <EventGroupHeading>Upcoming</EventGroupHeading>
+                {upcomingEvents.map((event) => (
+                  <EventEntry key={event.title} event={event} upcoming />
+                ))}
+              </EventsList>
+            )}
+
+            {pastEvents.length > 0 && (
+              <EventsList>
+                <EventGroupHeading>Past events</EventGroupHeading>
+                {pastEvents.map((event) => (
+                  <EventEntry key={event.title} event={event} />
+                ))}
+              </EventsList>
+            )}
           </Container>
         </Section>
 
@@ -1420,20 +1635,44 @@ const EverestPage = () => {
           <Container>
             <SectionHeading>Publications</SectionHeading>
 
-            <p style={{ textAlign: 'center', color: COLOR_TEXT_SECONDARY, marginBottom: '2rem' }}>
-              For a complete list of publications from Everest Lab members, please visit the <a href="/publications" style={{ color: COLOR_PRIMARY, textDecoration: 'none', fontWeight: 500 }}>DSG Publications page</a>.
-            </p>
+            <SectionIntro>
+              Recent papers by Everest members, drawn from DBLP. Current and former members are shown in bold.
+            </SectionIntro>
+
+            <PublicationList>
+              {recentPublications.map((pub) => (
+                <PublicationEntry key={pub.key} pub={pub} />
+              ))}
+            </PublicationList>
+
+            {olderPublications.length > 0 && (
+              <MorePublications>
+                <MorePublicationsToggle>
+                  <span className="label-closed">Show {olderPublications.length} more</span>
+                  <span className="label-open">Show fewer</span>
+                </MorePublicationsToggle>
+                <PublicationList>
+                  {olderPublications.map((pub) => (
+                    <PublicationEntry key={pub.key} pub={pub} />
+                  ))}
+                </PublicationList>
+              </MorePublications>
+            )}
+
+            <PublicationsFooter>
+              For all publications from the Data Systems Group, see the <a href={`${DSG_URL}/publications/`}>DSG publications page</a>.
+            </PublicationsFooter>
           </Container>
         </Section>
 
         {/* Sponsors Section */}
-        <Section id="sponsors" bgGray>
+        <Section id="sponsors" $gray>
           <Container>
             <SectionHeading>Sponsors</SectionHeading>
 
-            <SponsorsIntro>
+            <SectionIntro>
               Our research is made possible through the generous support of industry partners and funding agencies who share our vision for advancing AI-driven data systems.
-            </SponsorsIntro>
+            </SectionIntro>
 
             <SponsorsGrid>
               <SponsorItem>
@@ -1505,6 +1744,15 @@ const EverestPage = () => {
   )
 }
 
-export const Head = () => <Seo title="Everest Lab | MIT CSAIL" />
+export const Head = () => (
+  <Seo
+    title="Everest Lab | MIT CSAIL"
+    description="Everest, part of the Data Systems Group at MIT CSAIL, establishes engineering principles for AI-driven data systems: new abstractions, reusable software components, and rigorous development tools."
+    ogTitle="Everest Lab @ MIT CSAIL"
+    ogImage={`${DSG_URL}/images/everest-social.png`}
+  >
+    <link rel="canonical" href={`${DSG_URL}/everest/`} />
+  </Seo>
+)
 
 export default EverestPage

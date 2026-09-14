@@ -3,17 +3,19 @@
     {
       "name": "Samuel Madden",
       "photo": "madden.jpg",
-      "url": "http://db.csail.mit.edu/madden/"
+      "url": "https://db.csail.mit.edu/madden/",
+      "dblpNames": ["Sam Madden"]
     },
     {
       "name": "Tim Kraska",
       "photo": "kraska.jpg",
-      "url": "http://people.csail.mit.edu/kraska/"
+      "url": "https://people.csail.mit.edu/kraska/"
     },
     {
       "name": "Michael Cafarella",
       "photo": "cafarella.jpg",
-      "url": "https://people.csail.mit.edu/michjc/"
+      "url": "https://people.csail.mit.edu/michjc/",
+      "dblpNames": ["Michael J. Cafarella", "Mike Cafarella"]
     },
     {
       "name": "Omar Khattab",
@@ -30,33 +32,33 @@
   ],
   "postdocs": [
     {
-      "name": "Tianyu Li",
-      "photo": "tianyu.png",
-      "url": "#"
-    },
-    {
       "name": "Jason Mohoney",
       "photo": "jason.jpg",
-      "url": "#"
+      "url": "https://www.csail.mit.edu/person/jason-mohoney"
     },
     {
       "name": "Gerardo Vitagliano",
       "photo": "gerardo.png",
       "url": "https://www.csail.mit.edu/person/gerardo-vitagliano"
-    }
-  ],
-  "research_engineers": [
+    },
     {
-      "name": "James Moore",
-      "photo": null,
-      "url": "#"
+      "name": "Geoffrey Yu",
+      "photo": "geoffrey.jpg",
+      "url": "https://www.geoffreyyu.com",
+      "dblpNames": ["Geoffrey X. Yu"]
+    },
+    {
+      "name": "Xinjing Zhou",
+      "photo": "xinjing.jpg",
+      "url": "https://zxjcarrot.github.io/"
     }
   ],
+  "research_engineers": [],
   "students": [
     {
       "name": "Sushrut Borkar",
       "photo": null,
-      "url": "#"
+      "url": "https://www.csail.mit.edu/person/sushrut-borkar"
     },
     {
       "name": "Peter Baile Chen",
@@ -66,32 +68,25 @@
     {
       "name": "Zhuohan (Joshua) Gu",
       "photo": "zhuohan.jpg",
-      "url": "https://zhuohangu.github.io/"
+      "url": "https://zhuohangu.github.io/",
+      "dblpNames": ["Zhuohan Gu"]
     },
     {
       "name": "Darryl Ho",
       "photo": "darryl.png",
-      "url": "#"
-    },
-    {
-      "name": "Ferdinand Kossmann",
-      "photo": "ferdi.png",
-      "url": "#"
+      "url": "https://www.linkedin.com/in/darryl-ho-175473169/"
     },
     {
       "name": "Eugenie Lai",
       "photo": "eylai.jpg",
-      "url": "https://eugenielai.github.io/"
-    },
-    {
-      "name": "Markos Markakis",
-      "photo": "markos2.jpg",
-      "url": "https://people.csail.mit.edu/markakis/"
+      "url": "https://eugenielai.github.io/",
+      "dblpNames": ["Eugenie Y. Lai"]
     },
     {
       "name": "Amadou Latyr Ngom",
       "photo": "amadou.jpg",
-      "url": "https://amadoungom.com/"
+      "url": "https://amadoungom.com/",
+      "dblpNames": ["Amadou Ngom"]
     },
     {
       "name": "Matthew Russo",
@@ -99,34 +94,44 @@
       "url": "https://mdr223.github.io/"
     },
     {
-      "name": "Ziniu Wu",
-      "photo": "ziniu.jpeg",
-      "url": "https://wuziniu.github.io/"
-    },
-    {
-      "name": "Geoffrey Yu",
-      "photo": "geoffrey.jpg",
-      "url": "https://www.geoffreyyu.com"
+      "name": "Anna Zeng",
+      "photo": "anna.jpg",
+      "url": "https://www.annazeng.com/"
     },
     {
       "name": "Alex Zhang",
       "photo": null,
-      "url": "#"
-    },
-    {
-      "name": "Anna Zeng",
-      "photo": "anna.jpg",
-      "url": "#"
+      "url": "https://alexzhang13.github.io/",
+      "dblpNames": ["Alex L. Zhang"]
     },
     {
       "name": "Sylvia Zhang",
       "photo": "sylvia.jpg",
-      "url": "https://sylviaziyuzhang.github.io/"
+      "url": "https://sylviaziyuzhang.github.io/",
+      "dblpNames": ["Ziyu Zhang"]
+    }
+  ],
+  "alumni": [
+    {
+      "name": "Ferdinand Kossmann",
+      "photo": "ferdi.png",
+      "url": null,
+      "dblpNames": ["Ferdi Kossmann"]
     },
     {
-      "name": "Xinjing Zhou",
-      "photo": "xinjing.jpg",
-      "url": "https://zxjcarrot.github.io/"
+      "name": "Tianyu Li",
+      "photo": "tianyu.png",
+      "url": "https://pages.cs.wisc.edu/~litianyu/"
+    },
+    {
+      "name": "Markos Markakis",
+      "photo": "markos2.jpg",
+      "url": "https://mmarkakis.github.io/"
+    },
+    {
+      "name": "Ziniu Wu",
+      "photo": "ziniu.jpeg",
+      "url": "https://wuziniu.github.io/"
     }
   ]
 }

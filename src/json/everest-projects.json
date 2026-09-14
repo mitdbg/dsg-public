@@ -1,0 +1,37 @@
+[
+  {
+    "name": "G5: Design Doc Driven Development",
+    "url": null,
+    "description": "G5 achieves a 54.8% average pass rate on the commit-0 benchmark, outperforming the next-best system by 14 percentage points. The system is an LLM-based compiler that generates code from design documents, treating design specifications as input and automatically producing implementation code."
+  },
+  {
+    "name": "Palimpzest",
+    "url": "https://palimpzest.org/",
+    "description": "Palimpzest is a declarative system for AI-powered analytics over unstructured data. Its cost-based optimizer chooses models, prompts, and execution strategies to balance runtime, cost, and output quality. With parallelism, it found plans up to 90.3x faster and 9.1x cheaper than a single-threaded GPT-4 baseline, with an F1 score within 83.5% of that baseline."
+  },
+  {
+    "name": "Carnot",
+    "url": "https://github.com/mitdbg/carnot",
+    "description": "Carnot is an interactive execution engine for AI-driven analytics, presented as a VLDB 2026 demo. It compiles natural-language requests into execution graphs shown in a notebook, where analysts can inspect intermediate data, edit operators, and set cost or latency limits for its query optimizer."
+  },
+  {
+    "name": "KramaBench",
+    "url": "https://kramabench.org/",
+    "description": "KramaBench is a benchmark for AI systems that build data-to-insight pipelines over data lakes, presented at ICLR 2026. Its 104 manually curated challenges span 1,700 files, 24 data sources, and 6 domains, and test whether a system can orchestrate extraction, cleaning, integration, analysis, and modeling end to end."
+  },
+  {
+    "name": "Log-Augmented Generation",
+    "url": "https://peterbaile.github.io/lag/",
+    "description": "Log-augmented generation (LAG) lets language models reuse reasoning from earlier tasks. It stores logs of past tasks as key-value caches and retrieves the relevant ones for each new task, outperforming agentic systems that do not use logs on knowledge- and reasoning-intensive datasets."
+  },
+  {
+    "name": "Archi",
+    "url": "https://github.com/archi-physics/archi",
+    "description": "Archi is an open-source framework for scientific collaborations: it organizes heterogeneous data sources and deploys agents that retrieve and reason over them. It supports MIT Physics' SubMIT computing cluster and MIT courses, and since February 2026 it has served as a support agent for the CMS experiment's computing operations team at CERN."
+  },
+  {
+    "name": "BRAD",
+    "url": "https://dsg.csail.mit.edu/projects/brad/",
+    "description": "BRAD is a cloud data virtualization system. Users query one SQL interface backed by multiple cloud database services, and BRAD picks the best engine for each query, provisions resources to minimize cost, and adapts as workloads shift. In the authors' evaluation it met performance targets while saving 1.6–13x in cost compared with serverless auto-scaling or HTAP systems."
+  }
+]

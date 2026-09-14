@@ -13,6 +13,20 @@ src/json
   pubs.json
 ```
 
+### Everest page
+
+The Everest page (`/everest/`) is built from these files:
+
+```
+src/json
+  everest-team.json      # people, grouped as faculty, affiliate_faculty, postdocs, research_engineers, students, alumni
+  everest-projects.json  # project cards; leave "url" as null if a project has no public page
+  everest-events.json    # events; dates are YYYY-MM-DD and move to "Past events" automatically
+```
+
+- Team photos go in `src/images/people/`; set `photo` to the file name. The build fails if the file is missing.
+- The publication list is generated from `pubs.json`. It shows papers from the two most recent years that have an Everest student, postdoc, research engineer, or alumnus as an author. If DBLP spells someone's name differently from the site, add that spelling to their `dblpNames` list.
+
 ### Markdowns
 ```
 src/markdowns

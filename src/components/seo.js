@@ -8,7 +8,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql, Script } from "gatsby"
 
-function Seo({ description, title, children }) {
+function Seo({ description, title, ogTitle, ogImage, children }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -28,7 +28,8 @@ function Seo({ description, title, children }) {
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
-  const { ogImage, ogTitle } = site.siteMetadata
+  const metaOgTitle = ogTitle || site.siteMetadata.ogTitle
+  const metaOgImage = ogImage || site.siteMetadata.ogImage
 
   // JQuery must be loaded before Bootstrap.
   // https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-script/#loading-scripts-dependently
@@ -38,15 +39,15 @@ function Seo({ description, title, children }) {
     <>
       <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
       <meta name="description" content={metaDescription} />
-      <meta property="og:title" content={ogTitle} />
+      <meta property="og:title" content={metaOgTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={ogImage}/>
+      <meta property="og:image" content={metaOgImage}/>
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
-      <meta name="twitter:title" content={ogTitle} />
+      <meta name="twitter:title" content={metaOgTitle} />
       <meta name="twitter:description" content={metaDescription} />
-      <meta property="twitter:image" content={ogImage}/>
+      <meta property="twitter:image" content={metaOgImage}/>
       <Script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js" />
       <Script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" onLoad={() => setLoadedJQuery(true)} />
       <Script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous" />
